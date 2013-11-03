@@ -46,3 +46,9 @@ This app uses Firebase to handle all of its data.
 Our app's Firebase root endpoint:
 
 https://groupthought.firebaseio.com/
+
+Dependencies
+=====
+Firebase
+AngularFire
+https://github.com/haraldrudell/uinexpress
