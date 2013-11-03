@@ -1,0 +1,28 @@
+{
+	"berenjenas": {
+		"title": "Berenjenas",
+		"description": "yum yum yum",
+		"serves": 3,
+		"nutrition": {
+			"calories": 180,
+			"fat": "2mg",
+			"saturated fat": ".5mg",
+			"carbohydrates": "5g"
+		},
+		"thumbnail": "images/thumbnails/berenjenas.jpg",
+		"photo": "images/photos/berenjenas.jpg"
+	},
+	"chorizo": {
+		"title": "Chorizo Y Tostones",
+		"description": "Sliced chorizo sausage fried with onions. Served on plantains and garnished with fresh cilantro.",
+		"serves": 3,
+		"nutrition": {
+			"calories": 180,
+			"fat": "2mg",
+			"saturated fat": ".5mg",
+			"carbohydrates": "5g"
+		},
+		"thumbnail": "images/thumbnails/chorizo.jpg",
+		"photo": "images/photos/chorizo.jpg"
+	}
+}

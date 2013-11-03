@@ -2,8 +2,17 @@ afterthink-engine
 =================
 
 Backend of a prototype interface
+James Wu
+Kai Austin
+Zach Homans
 
-For Kai and Zach
+Notes for Kai and Zach
+=====
+-The menu is in menu.json.
+-Thumbnails should go in public/images/thumbnails
+-Photos should go in public/images/photos
+
+Setup
 =====
 
 Please pull from this repo.
@@ -30,7 +39,10 @@ in your browser.
 
 For best results, run this in Ubuntu.
 
-Notes:
--The menu is in menu.json.
--Thumbnails should go in public/images/thumbnails
--Photos should go in public/images/photos
+Database
+=====
+
+This app uses Firebase to handle all of its data.
+Our app's Firebase root endpoint:
+
+https://groupthought.firebaseio.com/

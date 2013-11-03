@@ -6,3 +6,9 @@ body {
 a {
   color: #00B7FF;
 }
+
+.dish {
+	border: 1px dotted #CCCCCC;
+	margin: 5px;
+	padding: 5px;
+}
