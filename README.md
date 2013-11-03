@@ -8,9 +8,9 @@ Zach Homans
 
 Notes for Kai and Zach
 =====
--The menu is in menu.json.
--Thumbnails should go in public/images/thumbnails
--Photos should go in public/images/photos
+* The menu is in menu.json.
+* Thumbnails should go in public/images/thumbnails
+* Photos should go in public/images/photos
 
 Setup
 =====
