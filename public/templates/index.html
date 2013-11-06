@@ -1,21 +1,30 @@
 <div id="wrapper">
-  <div class="container">
-    <h1>Prototype</h1>
+  {{ debugIndex }}
 
-    <span draggable>drag me</span>
+  <h1>Prototype</h1>
 
-    <div ng-repeat="item in items"><em>{{ item }}</em></div>
-
-    {{ nextItem }}
-
-    <input type="text" ng-model="nextItem" ng-click=" 'addItem($event)' " placeholder="Add an item" />
-
-    <div ng-repeat="dish in dishes" class="dish">
-      <p>{{ dish.id }}</p>
-      <p>{{ dish.state }}</p>
-    </div>
-    <div ng-repeat="item in items">
-      <p>{{ items[$index] }}</p>
+  <div ng-repeat="section in menu">
+    <div ng-repeat="dish in section">
+      <h1>{{ dish.title }}</h1>
+      <p>{{ dish.description }}</p>
+      <p>${{ dish.price }}</p>
+      <p>{{ dish }}</p>
     </div>
   </div>
+
+  <span draggable>drag me</span>
+
+  <div class="box">
+    <div class="pad" ng-repeat="item in items" ng-click="deleteItem($event, {{ $index }})"><em>{{ item }}</em></div>
+  </div>
+
+  {{ nextItem }}
+
+  <input type="text" ng-model="nextItem" ng-keydown="addItem($event)" placeholder="Add an item" />
+
+  <div ng-repeat="dish in dishes" class="dish">
+    <p>{{ dish.id }}</p>
+    <p>{{ dish.state }}</p>
+  </div>
+
 </div>
