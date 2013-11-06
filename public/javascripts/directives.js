@@ -2,10 +2,7 @@ var directives = angular.module('afterthink.directives', []);
 
 directives.directive('draggable', function($document) {
 
-  console.log("LOAD DIRECTIVE");
   return function(scope, element, attr) {
-  console.log(element);
-  console.log(Object.keys(element));
     var startX = 0, startY = 0, x = 0, y = 0;
     element.css({
      position: 'relative',
@@ -15,7 +12,6 @@ directives.directive('draggable', function($document) {
     });
     element.on('mousedown', function(event) {
       // Prevent default dragging of selected content
-      console.log("mousemove");
       event.preventDefault();
       startX = event.screenX - x;
       startY = event.screenY - y;

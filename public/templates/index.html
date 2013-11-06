@@ -3,18 +3,16 @@
     <h1>Prototype</h1>
 
     <span draggable>drag me</span>
+    <div ng-repeat="item in items"><em>{{ item }}</em></div>
 
-    <form>
-    	<input type="text" ng-repeat="item in items" ng-model="item" ng-model-instant>
-    	{{ items }}
-    </form>
+    <input type="text" ng-model="nextItem" ng-keydown="addItem($event)" placeholder="Add an item" />
+
     <div ng-repeat="dish in dishes" class="dish">
       <p>{{ dish.id }}</p>
       <p>{{ dish.state }}</p>
     </div>
     <div ng-repeat="item in items">
-      <p>{{ item.from }}</p>
-      <p>{{ item.body }}</p>
+      <p>{{ items[item] }}</p>
     </div>
   </div>
 </div>
