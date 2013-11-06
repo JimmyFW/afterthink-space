@@ -3,16 +3,19 @@
     <h1>Prototype</h1>
 
     <span draggable>drag me</span>
+
     <div ng-repeat="item in items"><em>{{ item }}</em></div>
 
-    <input type="text" ng-model="nextItem" ng-keydown="addItem($event)" placeholder="Add an item" />
+    {{ nextItem }}
+
+    <input type="text" ng-model="nextItem" ng-click=" 'addItem($event)' " placeholder="Add an item" />
 
     <div ng-repeat="dish in dishes" class="dish">
       <p>{{ dish.id }}</p>
       <p>{{ dish.state }}</p>
     </div>
     <div ng-repeat="item in items">
-      <p>{{ items[item] }}</p>
+      <p>{{ items[$index] }}</p>
     </div>
   </div>
 </div>

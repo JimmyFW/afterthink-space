@@ -34,3 +34,20 @@ directives.directive('draggable', function($document) {
     }
   }
 });
+
+directives.directive('modifyItems', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 13) {
+                scope.$apply(function () {
+                  console.log("down!!");
+                  if(e.keyCode != 13) return;
+                  $scope.items.push($scope.nextItem);
+                  $scope.nextItem = "";
+                });
+
+                event.preventDefault();
+            }
+        });
+    };
+});
