@@ -2,6 +2,7 @@ var controllers = angular.module('afterthink.controllers', []);
 
 controllers.controller('MyCtrl', ['$scope', 'angularFire',
   function($scope, angularFire) {
+    console.log("LOAD MyCtrl");
     var url = 'https://groupthought.firebaseio.com/gamestate';
     $scope.items = angularFire(new Firebase(url), $scope, "items");
     var url = 'https://groupthought.firebaseio.com/sharedspace/dishes';
