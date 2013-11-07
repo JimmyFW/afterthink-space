@@ -4,14 +4,24 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
   function($scope, angularFire) {
     console.log("LOAD MyCtrl");
 
-    var url = 'https://groupthought.firebaseio.com/gamestate';
-    angularFire(new Firebase(url), $scope, "items");
+    var items = new Firebase('https://groupthought.firebaseio.com/gamestate');
+    angularFire(items, $scope, "items");
 
-    var url = 'https://groupthought.firebaseio.com/sharedspace/dishes';
-    angularFire(new Firebase(url), $scope, "dishes");
+    var dishes = new Firebase('https://groupthought.firebaseio.com/sharedspace/dishes');
+    angularFire(dishes, $scope, "dishes");
 
-    var url = 'https://groupthought.firebaseio.com/menu';
-    angularFire(new Firebase(url), $scope, "menu");
+    var menu = new Firebase('https://groupthought.firebaseio.com/menu');
+    angularFire(menu, $scope, "menu");
+
+    dishes.on('child_added', function (snapshot) {
+      console.log(snapshot.name());
+    });
+
+    dishes.on('child_removed', function (snapshot) {
+      console.log(snapshot.name());
+    });
+
+    $scope.currentSection = 0;
 
     $scope.addItem = function (e) {
       if(e.keyCode != 13) return;
@@ -19,13 +29,27 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
       $scope.nextItem = "";
     }
 
-    $scope.deleteItem = function (e, index) {
+    $scope.deleteItem = function (index) {
       if(index >= $scope.items.length) return;
       // splice returns the elements removed and modifies the array in place
       $scope.items.splice(index, 1); // remove one item after the index
       $scope.debugIndex = index;
-      e.preventDefault();
     }
+
+    $scope.addDish = function (dishKey) {
+      console.log($scope.dishes);
+      var dish = $scope.menu[dishKey];
+      dish["id"] = dishKey;
+      dish["state"] = "proposed";
+      $scope.dishes.push(dish);
+    }
+
+    $scope.deleteDish = function (dishKey) {
+      console.log("deleting a dish!");
+      var removed = $scope.dishes.splice(dishKey, 1);
+      console.log("removed dish :" + removed);
+    }
+
   }
 ]);
 
