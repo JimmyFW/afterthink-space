@@ -1,5 +1,4 @@
 <div id="wrapper">
-  {{ menu["CRISPY GREEN BEANS"] }}
   {{ debugIndex }}
   {{ nextItem }}
 
@@ -8,7 +7,7 @@
   <div ng-repeat="dish in dishes" class="dish" draggable>
     <div class="closeButton" ng-click='deleteDish("{{ dish.name() }}")'>x</div>
     <div class="infoBox">
-    <p><img ng-src="/{{ dish.photo }}" width="300" height="200" ></p>
+    <p><img ng-src="/{{ dish.photo }}" width="{{ photoWidth }}" height="{{ photoHeight }}" ></p>
     <p>{{ dish.title }}</p>
     <p>{{ dish.state }}</p>
     </div>

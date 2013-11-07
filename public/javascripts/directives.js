@@ -2,14 +2,19 @@ var directives = angular.module('afterthink.directives', []);
 
 directives.directive('draggable', function($document) {
 
-  return function(scope, element, attr) {
+  function drag(scope, element, attr) {
+  //return function(scope, element, attr) {
     var startX = 0, startY = 0, x = 0, y = 0;
+    /*
     element.css({
      position: 'relative',
      border: '1px solid red',
+     '-moz-border-radius': '15px',
+     border-radius: '15px',
      backgroundColor: 'lightgrey',
      cursor: 'pointer'
     });
+    */
     element.on('mousedown', function(event) {
       // Prevent default dragging of selected content
       event.preventDefault();
@@ -33,4 +38,12 @@ directives.directive('draggable', function($document) {
       $document.unbind('mouseup', mouseup);
     }
   }
+
+  return drag;
+  /*
+  return {
+    scope: {},
+    link: drag
+  };
+  */
 });
