@@ -4,17 +4,10 @@
 
   <h1>Prototype</h1>
   <div class="sharedspace">
-  <div ng-repeat="dish in dishes" class="dish" draggable>
-    <div class="closeButton" ng-click='deleteDish("{{ dish.id }}")'>x</div>
-    <div class="infoBox">
-    <p><img ng-src="/{{ dish.photo }}" width="{{ photoWidth }}" height="{{ photoHeight }}" ></p>
-    <p>{{ dish.title }}</p>
-    <p>{{ dish.state }}</p>
-    </div>
-  </div>
+      <draggable ng-repeat="dish in dishes" uniqueDish="dish"></draggable>
   </div>
 
-  <div ng-repeat="(dishKey, dish) in menu" ng-click='addDish("{{ dishKey }}")'>
+  <div ng-repeat="(dishKey, dish) in menu" ng-click='addDish("{{ dishKey }}")' class="menuItem">
     <h2>{{ dish.title }}</h2>
     <p>{{ dish.description }}</p>
     <p>${{ dish.price }}</p>

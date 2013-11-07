@@ -1,0 +1,8 @@
+<div class="dish" ng-style="{ top: dish.ypos, left: dish.xpos }">
+<div class="closeButton" ng-click='deleteDish("{{ dish.id }}")'>x</div>
+<div class="infoBox">
+<p><img ng-src="/{{ dish.photo }}" width="{{ photoWidth }}" height="{{ photoHeight }}" ></p>
+<p>{{ dish.title }}</p>
+<p>{{ dish.state }}</p>
+</div>
+</div>

@@ -45,11 +45,14 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
 
     $scope.addDish = function (dishKey) {
 
-      console.log($scope.dishes);
-      var dish = $scope.menu[dishKey];
+      console.log("adding dish: " + $scope.dishes);
+
+      var dish = jQuery.extend(true, {}, $scope.menu[dishKey]); // deep copy
       var uuid = guid();
       dish["id"] = uuid;
       dish["state"] = "proposed";
+      dish["xpos"] = 110;
+      dish["ypos"] = 110;
       $scope.dishes[uuid] = dish;
 
       function s4() {
@@ -66,10 +69,6 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     }
 
     $scope.deleteDish = function (dishId) {
-      /*
-      var itemRef = new Firebase(url + '/' + fireBaseName);
-      itemRef.remove();
-      */
 
       var removed = $scope.dishes[dishId];
       delete $scope.dishes[dishId];
@@ -80,6 +79,13 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
 
   }
 ]);
+
+/*
+controllers.controller('dishController', ['$scope'], function($scope) {
+  $scope.
+}
+
+*/
 
 controllers.controller('HomeController', ['$scope', function ($scope) {
   $scope.model = {
