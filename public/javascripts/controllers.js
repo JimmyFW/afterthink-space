@@ -34,24 +34,48 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     }
 
     $scope.deleteItem = function (index) {
-      if(index >= $scope.items.length) return;
+      if(index >= $scope.items.length) {
+        console.log("we have a problme. index: " + index);
+        return;
+      }
       // splice returns the elements removed and modifies the array in place
       $scope.items.splice(index, 1); // remove one item after the index
-      $scope.debugIndex = index;
+      console.log("removed item: " + index);
     }
 
     $scope.addDish = function (dishKey) {
+
       console.log($scope.dishes);
       var dish = $scope.menu[dishKey];
-      dish["id"] = dishKey;
+      var uuid = guid();
+      dish["id"] = uuid;
       dish["state"] = "proposed";
-      $scope.dishes.push(dish);
+      $scope.dishes[uuid] = dish;
+
+      function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000)
+                   .toString(16)
+                   .substring(1);
+      };
+
+      function guid() {
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+               s4() + '-' + s4() + s4() + s4();
+      };
+
     }
 
-    $scope.deleteDish = function (dishKey) {
-      console.log("deleting a dish!");
-      var removed = $scope.dishes.splice(dishKey, 1);
-      console.log("removed dish :" + removed);
+    $scope.deleteDish = function (dishId) {
+      /*
+      var itemRef = new Firebase(url + '/' + fireBaseName);
+      itemRef.remove();
+      */
+
+      var removed = $scope.dishes[dishId];
+      delete $scope.dishes[dishId];
+      console.log("deleting a dish! " + removed);
+      console.log("removed dish: " + dishId);
+      
     }
 
   }

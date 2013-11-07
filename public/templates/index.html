@@ -5,7 +5,7 @@
   <h1>Prototype</h1>
   <div class="sharedspace">
   <div ng-repeat="dish in dishes" class="dish" draggable>
-    <div class="closeButton" ng-click='deleteDish("{{ dish.name() }}")'>x</div>
+    <div class="closeButton" ng-click='deleteDish("{{ dish.id }}")'>x</div>
     <div class="infoBox">
     <p><img ng-src="/{{ dish.photo }}" width="{{ photoWidth }}" height="{{ photoHeight }}" ></p>
     <p>{{ dish.title }}</p>
