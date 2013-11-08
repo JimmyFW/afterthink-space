@@ -13,8 +13,8 @@ a {
 	width: 150px;
 	height: 150px;
 	position: absolute;
-	-moz-border-radius: 15px;
-	border-radius: 15px;
+	-moz-border-radius: 100px;
+	border-radius: 100px;
 	background-color: #000000;
 	cursor: pointer;
 	overflow: hidden;

@@ -1,13 +1,10 @@
 <div id="wrapper">
-  {{ debugIndex }}
-  {{ nextItem }}
-
   <h1>Prototype</h1>
 
 
 
   <div class="sharedspace">
-      <draggable class="dish" ng-repeat="dish in dishes" uniqueDish="{{ dish.id }}" ng-style="{ top: dish.ypos, left: dish.xpos }" ng-mousemove='moveDish("{{ dishKey }}", $event)'></draggable>
+      <draggable class="dish" ng-repeat="dish in dishes" uniqueDish="{{ dish.id }}" ng-style="{ top: dish.ypos, left: dish.xpos }" ng-mousedown='grabDish(dish.id, $event)' ng-mousemove='moveDish(dish.id, $event)' ng-mouseup='releaseDish(dish.id, $event)'></draggable>
   </div>
 
   <div id="menuMain">
