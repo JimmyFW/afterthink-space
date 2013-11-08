@@ -93,6 +93,16 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
       
     }
 
+    $scope.moveDish = function (dishId, event) {
+      event.preventDefault();
+
+      var y = event.screenY - startY;
+      var x = event.screenX - startX;
+
+      // update scope variable
+      $scope.dishes[dishId].xpos = x;
+      $scope.dishes[dishId].ypos = y;
+    }
 
   }
 ]);

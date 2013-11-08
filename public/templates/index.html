@@ -4,10 +4,11 @@
 
   <h1>Prototype</h1>
 
-
   <div class="sharedspace">
-      <draggable class="dish" ng-repeat="dish in dishes" uniqueDish="{{ dish.id }}" ng-style="{ top: dish.ypos, left: dish.xpos }"></draggable>
+      <draggable class="dish" ng-repeat="dish in dishes" uniqueDish="{{ dish.id }}" ng-style="{ top: dish.ypos, left: dish.xpos }" ng-mousemove='moveDish("{{ dishKey }}", $event)'></draggable>
   </div>
+
+  {{ dishes }}
 
   <div ng-repeat="(dishKey, dish) in menu" ng-click='addDish("{{ dishKey }}")' class="menuItem">
     <h2>{{ dish.title }}</h2>
