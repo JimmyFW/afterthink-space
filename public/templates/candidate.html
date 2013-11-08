@@ -1,8 +1,41 @@
-<div class="closeButton" ng-click='deleteDish("{{ dish.id }}", $event)'>x</div>
-<div class="acceptButton" ng-click='acceptDish("{{ dish.id }}", $event)'>accept</div>
-<div class="maybeButton" ng-click='maybeDish("{{ dish.id }}", $event)'>maybe</div>
-<div class="infoBox">
-<p><img ng-src="/{{ dish.photo }}" width="{{ photoWidth }}" height="{{ photoHeight }}" ></p>
-<p>{{ dish.title }}</p>
-<p>{{ dish.state }}</p>
+<style>
+	.food-icon {
+		display: block;
+	}
+	.food-icon div.infoBox{
+		display: inline-block;
+		vertical-align: top;
+		width: 100px;
+	}
+	.food-icon div.infoBox img {
+		width: 100px;
+		height: 100px;
+		border-radius: 50px;
+		border: #000 1px solid;
+	}
+	.food-icon ul {
+		display: inline-block;
+		margin-left: -10px;
+		vertical-align: top;
+	}
+	.food-icon ul li{
+		list-style-type: none;
+		padding: 8px;
+		border: #000 1px solid;
+		margin-bottom: 15px;
+		border-radius: 25px;
+	}
+</style>
+
+<div class="food-icon">
+	<div class="infoBox">
+		<p><img ng-src="/{{ dish.photo }}" width="{{ photoWidth }}" height="{{ photoHeight }}" ></p>
+		<p>{{ dish.title }}</p>
+		<p>{{ dish.state }}</p>
+	</div>
+	<ul>
+		<li class="closeButton" ng-click='deleteDish("{{ dish.id }}", $event)'>x</li>
+		<li class="maybeButton" ng-click='maybeDish("{{ dish.id }}", $event)'>?</li>
+		<li class="acceptButton" ng-click='acceptDish("{{ dish.id }}", $event)'>v/</li>
+	<ul>
 </div>

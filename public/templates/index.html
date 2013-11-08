@@ -5,21 +5,30 @@
   <h1>Prototype</h1>
 
 
+
   <div class="sharedspace">
-      <draggable class="dish" ng-repeat="dish in dishes" uniqueDish="{{ dish.id }}" ng-style="{ top: dish.ypos, left: dish.xpos }"></draggable>
+      <draggable class="dish" ng-repeat="dish in dishes" uniqueDish="{{ dish.id }}" ng-style="{ top: dish.ypos, left: dish.xpos }" ng-mousemove='moveDish("{{ dishKey }}", $event)'></draggable>
   </div>
 
-  <div ng-repeat="(dishKey, dish) in menu" ng-click='addDish("{{ dishKey }}")' class="menuItem">
-    <h2>{{ dish.title }}</h2>
-    <p>{{ dish.description }}</p>
-    <p>${{ dish.price }}</p>
-    <p>{{ dishKey }}{{ dish }}</p>
-  </div>
+  <div id="menuMain">
+      <div class="menuLeft">
+        <div>Insert section_nav here</div>
+        <h2 class="section-title">~ Section Title ~</h2>
+         <div ng-repeat="(dishKey, dish) in menu" ng-click='addDish("{{ dishKey }}")' class="menuItem">
+            <h2 class="title">{{ dish.title }}</h2>
+            <p class="price">${{ dish.price }}</p>
+            <p class="description">{{ dish.description }}</p>
+            <!--<p>{{ dishKey }}{{ dish }}</p>-->
+        </div>
+        <div class="menuNav">
 
-  <div class="box">
-    <div class="pad" ng-repeat="item in items" ng-click="deleteItem({{ $index }})"><em>{{ item }}</em></div>
-  </div>
+        </div>
+      </div>
 
-  <input type="text" ng-model="nextItem" ng-keydown="addItem($event)" placeholder="Add an item" />
+      <div class="menuRight">
+          Insert detailed_view here
+      </div>
+
+  </div>
 
 </div>
