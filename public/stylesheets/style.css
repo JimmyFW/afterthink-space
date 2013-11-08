@@ -57,8 +57,11 @@ a {
 }
 
 .sharedspace {
+  display: block;
 	width: 800px;
 	height: 400px;
+  margin-left: auto;
+  margin-right: auto;
 	border: 1px #CCCCCC dotted;
 }
 
