@@ -22,8 +22,6 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     });
 
     $scope.currentSection = 0;
-    $scope.boxWidth = 150;
-    $scope.boxHeight = 150;
     $scope.photoWidth = 150;
     $scope.photoHeight = 100;
 
