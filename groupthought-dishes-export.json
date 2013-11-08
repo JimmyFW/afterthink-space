@@ -1,0 +1,48 @@
+{
+  "dsf-32-2-fed-f" : "yes",
+  "798a252f-8f3f-3866-2ffc-340f73290bc3" : {
+    "price" : "7.50",
+    "thumbnail" : "images/thumbnails/starters/chickenlettucewraps.jpg",
+    "state" : "proposed",
+    "serves" : 3,
+    "gluten free" : true,
+    "description" : "Wok-seared chicken, mushrooms, green onions and water chestnuts served over crispy rice sticks with cool, crisp lettuce cups",
+    "photo" : "images/photos/chickenlettucewraps.jpg",
+    "title" : "CHANG'S CHICKEN LETTUCE WRAPS",
+    "nutrition" : {
+      "fat" : 24,
+      "fiber" : 8,
+      "saturated fat" : 6,
+      "protein" : 32,
+      "sodium" : 2090,
+      "carbohydrates" : 47,
+      "calories" : 530
+    },
+    "vegetarian" : false,
+    "spiciness" : 0,
+    "id" : "798a252f-8f3f-3866-2ffc-340f73290bc3"
+  },
+  "234hn32-b34n3-3" : "jimmy",
+  "aa0748cc-06df-7c22-865b-15a6c2c2aa05" : {
+    "price" : "7.50",
+    "thumbnail" : "images/thumbnails/starters/chickenlettucewraps.jpg",
+    "state" : "proposed",
+    "serves" : 3,
+    "gluten free" : true,
+    "description" : "Wok-seared chicken, mushrooms, green onions and water chestnuts served over crispy rice sticks with cool, crisp lettuce cups",
+    "photo" : "images/photos/chickenlettucewraps.jpg",
+    "title" : "CHANG'S CHICKEN LETTUCE WRAPS",
+    "nutrition" : {
+      "fat" : 24,
+      "fiber" : 8,
+      "saturated fat" : 6,
+      "protein" : 32,
+      "sodium" : 2090,
+      "carbohydrates" : 47,
+      "calories" : 530
+    },
+    "vegetarian" : false,
+    "spiciness" : 0,
+    "id" : "aa0748cc-06df-7c22-865b-15a6c2c2aa05"
+  }
+}

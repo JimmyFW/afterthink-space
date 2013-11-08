@@ -1,28 +1,488 @@
 {
-	"berenjenas": {
-		"title": "Berenjenas",
-		"description": "yum yum yum",
-		"serves": 3,
-		"nutrition": {
-			"calories": 180,
-			"fat": "2mg",
-			"saturated fat": ".5mg",
-			"carbohydrates": "5g"
-		},
-		"thumbnail": "images/thumbnails/berenjenas.jpg",
-		"photo": "images/photos/berenjenas.jpg"
-	},
-	"chorizo": {
-		"title": "Chorizo Y Tostones",
-		"description": "Sliced chorizo sausage fried with onions. Served on plantains and garnished with fresh cilantro.",
-		"serves": 3,
-		"nutrition": {
-			"calories": 180,
-			"fat": "2mg",
-			"saturated fat": ".5mg",
-			"carbohydrates": "5g"
-		},
-		"thumbnail": "images/thumbnails/chorizo.jpg",
-		"photo": "images/photos/chorizo.jpg"
-	}
+"Chang’s Chicken Lettuce Wraps": {
+                        "title": "CHANG'S CHICKEN LETTUCE WRAPS",
+                        "description": "Wok-seared chicken, mushrooms, green onions and water chestnuts served over crispy rice sticks with cool, crisp lettuce cups",
+        "price":  "7.50",
+        "spiciness": 0,
+                        "serves": 3,
+        "vegetarian": false,
+        "gluten free": true,
+                        "nutrition": {
+                                    "calories": 530,
+                                    "fat": 24,
+                                    "saturated fat": 6,
+            "sodium": 2090, 
+                                    "carbohydrates": 47,
+            "fiber": 8,
+            "protein": 32
+                        },
+                        "thumbnail": "images/thumbnails/starters/chickenlettucewraps.jpg",
+                        "photo": "images/photos/chickenlettucewraps.jpg"
+            },
+"DUMPLINGS": {
+                        "title": "DUMPLINGS",
+                        "description": "Made fresh by hand in our kitchen, served steamed or pan-fried. Choose filling: Shrimp (+1.40), Pork, or Vegetarian",
+        "price":  "5.95",
+        "spiciness": 1,
+                        "serves": 4,
+                        "vegetarian": true,
+        "gluten free": false,
+"nutrition": {
+                                    "calories": 420,
+                                    "fat": 20,
+                                    "saturated fat": 5,
+            "sodium": 1200, 
+                                    "carbohydrates": 39,
+            "fiber": 5,
+            "protein": 23
+                        },
+                        "thumbnail": "images/thumbnails/starters/dumplings.jpg",
+                        "photo": "images/photos/dumplings.jpg"
+            },
+"AHI CRISP": {
+                        "title": "AHI CRISP",
+                        "description": "Diced Ahi, crisp cucumber and scallions tossed in a citrus-sesame soy sauce served with avocado slices on a crispy wonton. *",
+        "price":  "8.95",
+        "spiciness": 0,
+                        "serves": 1,
+"vegetarian": false,
+        "gluten free": false,
+                        "nutrition": {
+                                    "calories": 300,
+                                    "fat": 14,
+                                    "saturated fat": 2,
+            "sodium": 520, 
+                                    "carbohydrates": 17,
+            "fiber": 3,
+            "protein": 26
+                        },
+                        "thumbnail": "images/thumbnails/starters/ahicrisps.jpg",
+                        "photo": "images/photos/ahicrisps.jpg"
+            },
+"SALT & PEPPER CALAMARI": {
+                        "title": "SALT & PEPPER CALAMARI",
+                        "description": "Tender strips of calamari lightly dusted and tossed with a salt and pepper mix and green onions, served with a dipping sauce.",
+        "price":  "7.25",
+        "spiciness": 0,
+                        "serves": 1,
+                        "vegetarian": false,
+        "gluten free": false,
+"nutrition": {
+                                    "calories": 610,
+                                    "fat": 37,
+                                    "saturated fat": 4,
+                                    "sodium": 1250,
+                                    "carbohydrates": 44,
+            "fiber": 1,
+            "protein": 26
+                        },
+                        "thumbnail": "images/thumbnails/starters/saltpeppercalamari.jpg",
+                        "photo": "images/photos/saltpeppercalamari.jpg"
+            },
+"NORTHERN-STYLE SPARE RIBS": {
+                        "title": "NORTHERN-STYLE SPARE RIBS",
+                        "description": "Slow-braised and dry rubbed with Chang’s five-spice seasoning.",
+        "price":  "8.75",
+        "spiciness": 0,
+                        "serves": 1,
+        "vegetarian": false,
+        "gluten free": false,
+                        "nutrition": {
+                                    "calories": 1120,
+                                    "fat": 63,
+                                    "saturated fat": 18,
+            "sodium": 3070, 
+                                    "carbohydrates": 41,
+            "fiber": 2,
+            "protein": 97
+                        },
+                        "thumbnail": "images/thumbnails/starters/northernstylespareribs.jpg",
+                        "photo": "images/photos/northernstylespareribs.jpg"
+            },
+
+"CHANG'S VEGETARIAN LETTUCE WRAPS": {
+                        "title": "CHANG'S VEGETARIAN LETTUCE WRAPS",
+                        "description": "A vegetarian version of our signature appetizer made with tofu",
+        "price":  "7.50",
+        "spiciness": 0,
+                        "serves": 1,
+        "vegetarian": false,
+        "gluten free": false,
+                        "nutrition": {
+                                    "calories": 610,
+                                    "fat": 36,
+                                    "saturated fat": 4.5,
+            "sodium": 2300, 
+                                    "carbohydrates": 39,
+            "fiber": 7,
+            "protein": 25
+                        },
+                        "thumbnail": "images/thumbnails/starters/vegetarianlettucewraps.jpg",
+                        "photo": ""
+            },
+"EGG ROLLS": {
+                        "title": " EGG ROLLS",
+                        "description": "Hand-rolled with marinated pork and vegetables, and served with a sweet & sour mustard sauce.",
+        "price":  "4.50",
+        "spiciness": 1,
+                        "serves": 1,
+                        "nutrition": {
+                                    "calories": 560,
+                                    "fat": 20,
+                                    "saturated fat": 4,
+            "sodium": 2420, 
+                                    "carbohydrates": 75,
+            "fiber": 7,
+            "protein": 18
+                        },
+                        "thumbnail": "images/thumbnails/starters/eggrolls.jpg",
+                        "photo": "images/photos/eggrolls.jpg"
+            },
+"FLAMING RED WONTONS": {
+                        "title": "FLAMING RED WONTONS",
+                        "description": "Pork wontons in a spicy garlic and sesame soy sauce finished with scallions.",
+        "price":  "4.95",
+        "spiciness": 3,
+                        "serves": 5,
+        "vegetarian": false,
+        "gluten free": false,
+                        "nutrition": {
+                                    "calories": 520,
+                                    "fat": 31,
+                                    "saturated fat": 7,
+            "sodium": 1390, 
+                                    "carbohydrates": 38,
+            "fiber": 5,
+            "protein": 24
+                        },
+                        "thumbnail": "images/thumbnails/starters/flamingredwontons.jpg",
+                        "photo": "images/photos/flamingredwontons.jpg"
+            },
+"TUNA TATAKI": {
+                        "title": "TUNA TATAKI",
+                        "description": "Slices of seared Ahi topped with a garlic chip, micro greens, jalapeno and ponzu sauce. Served with a chilled seaweed salad.",
+        "price":  "8.95",
+        "spiciness": 1,
+                        "serves": 3,
+        "vegetarian": false,
+        "gluten free": false,
+                        "nutrition": {
+                                    "calories": 180,
+                                    "fat": 7,
+                                    "saturated fat": 1,
+            "sodium": 720, 
+                                    "carbohydrates": 9,
+            "fiber": 4,
+            "protein": 19
+                        },
+                        "thumbnail": "images/thumbnails/starters/tunatataki.jpg",
+                        "photo": "images/photos/tunatataki.jpg"
+            },
+"CHANG'S SPARE RIBS": {
+                        "title": "CHANG'S SPARE RIBS",
+                        "description": "Wok-seared with an Asian barbecue sauce.",
+        "price":  "8.75",
+        "spiciness": 2,
+                        "serves": 1,
+        "vegetarian": false,
+        "gluten free": false,
+                        "nutrition": {
+                                    "calories": 1230,
+                                    "fat": 64,
+                                    "saturated fat": 18,
+            "sodium": 3750, 
+                                    "carbohydrates": 67,
+            "fiber": 3,
+            "protein": 98
+                        },
+                        "thumbnail": "images/thumbnails/starters/spareribs.jpg",
+                        "photo": "images/photos/spareribs.jpg"
+            },
+"CRAB WONTONS": {
+                        "title": "CRAB WONTONS",
+                        "description": "Crispy wontons filled with a creamy mixture of crab meat, bell peppers and green onions, served with a spicy plum sauce",
+        "price":  "6.95",
+        "spiciness": 0,
+                        "serves": 1,
+        "vegetarian": false,
+        "gluten free": false,
+                        "nutrition": {
+                                    "calories": 475,
+                                    "fat": 29,
+                                    "saturated fat": 7,
+            "sodium": 780, 
+                                    "carbohydrates": 40,
+            "fiber": 1,
+            "protein": 15
+                        },
+                        "thumbnail": "images/thumbnails/starters/crabwontons.jpg",
+                        "photo": "images/photos/crabwontons.jpg"
+            },
+"CRISPY GREEN BEANS": {
+                        "title": "CRISPY GREEN BEANS",
+                        "description": "Tempura-battered with our signature spicy dipping sauce.",
+        "price":  "5.95",
+        "spiciness": 0,
+                        "serves": 1,
+        "vegetarian": false,
+        "gluten free": false,
+                        "nutrition": {
+                                    "calories": 760,
+                                    "fat": 55,
+                                    "saturated fat": 8,
+            "sodium": 520, 
+                                    "carbohydrates": 63,
+            "fiber": 7,
+            "protein": 7
+                        },
+                        "thumbnail": "images/thumbnails/starters/crispygreenbeans.jpg",
+                        "photo": "images/photos/crispygreenbeans.jpg"
+            },
+"SPRING ROLLS": {
+                        "title": "SPRING ROLLS",
+                        "description": "Crispy spring rolls filled with fresh vegetables and served with a sweet & sour dipping sauce.",
+        "price":  "",
+        "spiciness": 0,
+                        "serves": 1,
+        "vegetarian": true,
+        "gluten free": false,
+                        "nutrition": {
+                                    "calories": 230,
+                                    "fat": 10,
+                                    "saturated fat": 1.5,
+            "sodium": 460, 
+                                    "carbohydrates": 25,
+            "fiber": 1,
+            "protein": 5
+                        },
+                        "thumbnail": "images/thumbnails/starters/springrolls.jpg",
+                        "photo": "images/photos/springrolls.jpg"
+            },
+"DYNAMITE SHRIMP": {
+                        "title": "DYNAMITE SHRIMP",
+                        "description": "Crispy shrimp tossed in a zesty sauce.",
+        "price":  "8.95",
+        "spiciness": 3,
+                        "serves": 1,
+        "vegetarian": false,
+        "gluten free": false,
+                        "nutrition": {
+                                    "calories": 370,
+                                    "fat": 30,
+                                    "saturated fat": 4,
+            "sodium": 710, 
+                                    "carbohydrates": 19,
+            "fiber": 1,
+            "protein": 5
+                        },
+                        "thumbnail": "images/thumbnails/starters/dynamiteshrimp.jpg",
+                        "photo": "images/photos/dynamiteshrimp.jpg"
+            },
+"EDAMAME": {
+                        "title": "EDAMAME",
+                        "description": "Steamed to order and served with a light sprinkling of Kosher salt.",
+        "price":  "4.50",
+        "spiciness": 0,
+                        "serves": 1,
+        "vegetarian": true,
+        "gluten free": false,
+                        "nutrition": {
+                                    "calories": 380,
+                                    "fat": 11,
+                                    "saturated fat": 0,
+            "sodium": 2030, 
+                                    "carbohydrates": 34,
+            "fiber": 15,
+            "protein": 30
+                        },
+                        "thumbnail": "images/thumbnails/starters/edamame",
+                        "photo": "images/photos/edamame"
+            },
+"EGG DROP SOUP ": {
+                        "title": "EGG DROP SOUP",
+                        "description": "Velvety broth with julienne carrots and green onions. (Cup $2.95)",
+        "price":  "5.95",
+        "spiciness": 0,
+                        "serves": 1,
+                        "vegetarian": false,
+        "gluten free": false,
+"nutrition": {
+                                    "calories": 180,
+                                    "fat": "2mg",
+                                    "saturated fat": ".5mg",
+                                    "carbohydrates": "5g"
+                        },
+                        "thumbnail": "images/thumbnails/soups/eggdropsoup.jpg",
+                        "photo": "images/photos/eggdropsoup.jpg"
+            },
+"HOT & SOUR SOUP": {
+                        "title": "HOT & SOUR SOUP",
+                        "description": "Rich and tangy broth with chicken, silken tofu, bamboo shoots, mushrooms and egg. (Cup $2.95)",
+        "price":  "5.95",
+        "spiciness": 3,
+                        "serves": 1,
+                        "vegetarian": false,
+        "gluten free": false,
+"nutrition": {
+                                    "calories": 180,
+                                    "fat": "2mg",
+                                    "saturated fat": ".5mg",
+                                    "carbohydrates": "5g"
+                        },
+                        "thumbnail": "images/thumbnails/soups/hotsoursoup.jpg",
+                        "photo": "images/photos/hotsoursoup.jpg"
+            },
+"WONTON SOUP": {
+                        "title": "WONTON SOUP",
+                        "description": "Savory broth with hand-folded pork wontons, chicken, shrimp, mushrooms, fresh spinach and water chestnuts. Made to order. Served in Bowl.",
+        "price":  "6.95",
+        "spiciness": 0,
+                        "serves": 1,
+"vegetarian": false,
+        "gluten free": false,
+                        "nutrition": {
+                                    "calories": 180,
+                                    "fat": "2mg",
+                                    "saturated fat": ".5mg",
+                                    "carbohydrates": "5g"
+                        },
+                        "thumbnail": "images/thumbnails/soups/wontonsoup.jpg",
+                        "photo": "images/photos/wontonsoup.jpg"
+            },
+"CHANG'S CHICKEN NOODLE SOUP": {
+                        "title": "CHANG'S CHICKEN NOODLE SOUP",
+                        "description": "Spicy broth with shiitake mushrooms, grape tomatoes, pin rice noodles, and cilantro. Made fresh to order.",
+        "price":  "7.25",
+        "spiciness": 3,
+                        "serves": 1,
+        "vegetarian": false,
+        "gluten free": false,
+                        "nutrition": {
+                                    "calories": 180,
+                                    "fat": "2mg",
+                                    "saturated fat": ".5mg",
+                                    "carbohydrates": "5g"
+                        },
+                        "thumbnail": "images/thumbnails/soups/chickennoodlesoup.jpg",
+                        "photo": "images/photos/chickennoodlesoup.jpg"
+            },
+"PF CHANG'S FRIED RICE": {
+                        "title": "P.F. CHANG'S FRIED RICE",
+                        "description": "Tossed in savory soy sauce with egg, julienne carrots, bean sprouts and scallions. Choices of vegetable, beef, pork, chicken, or shrimp. Combo (+2,00)",
+        "price":  "7.50",
+        "spiciness": 0,
+                        "serves": 1,
+        "vegetarian": false,
+        "gluten free": true,
+                        "nutrition": {
+                                    "calories": 180,
+                                    "fat": "2mg",
+                                    "saturated fat": ".5mg",
+                                    "carbohydrates": "5g"
+                        },
+                        "thumbnail": "images/thumbnails/noodlesrice/friedrice.jpg",
+                        "photo": "images/photos/friedrice.jpg"
+            },
+"CRAB FRIED RICE": {
+                        "title": "CRAB FRIED RICE",
+                        "description": "Wok-fried rice with lump crab meat, shiitake mushrooms, asparagus, egg, smoky bacon, zesty lemon and Sriracha.",
+        "price":  "10.25",
+        "spiciness": 0,
+                        "serves": 1,
+"vegetarian": false,
+        "gluten free": true,
+                        "nutrition": {
+                                    "calories": 180,
+                                    "fat": "2mg",
+                                    "saturated fat": ".5mg",
+                                    "carbohydrates": "5g"
+                        },
+                        "thumbnail": "images/thumbnails/noodlesrice/crabfriedrice.jpg",
+                        "photo": "images/photos/crabfriedrice.jpg"
+            },
+"LO MEIN": {
+                        "title": "LO MEIN",
+                        "description": "Savory soy sauce tossed with wok-seared egg noodles and fresh vegetables. Choice of beef, pork, chicken, or shrimp. Combo (+$2.00)",
+        "price":  "8.95",
+        "spiciness": 0,
+                        "serves": 1,
+                     "vegetarian": false,
+        "gluten free": false,   
+"nutrition": {
+                                    "calories": 180,
+                                    "fat": "2mg",
+                                    "saturated fat": ".5mg",
+                                    "carbohydrates": "5g"
+                        },
+                        "thumbnail": "images/thumbnails/noodlesrice/lomein.jpg",
+                        "photo": "images/photos/lomein.jpg"
+            },
+"SINGAPORE STREET NOODLES": {
+                        "title": "SINGAPORE STREET NOODLES",
+                        "description": "Light curry sauce with thin rice noodles, sliced chicken breast, shrimp and fresh vegetables.",
+        "price":  "9.75",
+        "spiciness": 0,
+                        "serves": 1,
+"vegetarian": false,
+        "gluten free": false,   
+                        "nutrition": {
+                                    "calories": 180,
+                                    "fat": "2mg",
+                                    "saturated fat": ".5mg",
+                                    "carbohydrates": "5g"
+                        },
+                        "thumbnail": "images/thumbnails/noodlesrice/streetnoodles.jpg",
+                        "photo": "images/photos/streetnoodles.jpg"
+            },
+"PAD THAI": {
+                        "title": "PAD THAI",
+                        "description": "Bold Thai spices wok-tossed with rice noodles, egg, tofu, bean sprouts, crushed peanuts, crispy shallots and cilantro.",
+        "price":  "9.25",
+        "spiciness": 0,
+                        "serves": 2,
+                        "vegetarian": false,
+        "gluten free": false,   
+"nutrition": {
+                                    "calories": 180,
+                                    "fat": "2mg",
+                                    "saturated fat": ".5mg",
+                                    "carbohydrates": "5g"
+                        },
+                        "thumbnail": "images/thumbnails/noodlesrice/padthai.jpg",
+                        "photo": "images/photos/padthai.jpg"
+            },
+"DAN DAN NOODLES": {
+                        "title": "DAN DAN NOODLES",
+                        "description": "Scallions, garlic and chili peppers stir-fried with ground chicken and served over hot egg noodles.",
+        "price":  "9.95",
+        "spiciness": 0,
+                        "serves": 2,
+        "vegetarian": false,
+        "gluten free": false,   
+                        "nutrition": {
+                                    "calories": 180,
+                                    "fat": "2mg",
+                                    "saturated fat": ".5mg",
+                                    "carbohydrates": "5g"
+                        },
+                        "thumbnail": "images/thumbnails/noodlesrice/dandannoodles.jpg",
+                        "photo": "images/photos/dandannoodles.jpg"
+            },
+"GARLIC NOODLES": {
+                        "title": "GARLIC NOODLES",
+                        "description": "Egg noodles tossed with garlic and chili pepper flakes.",
+        "price":  "5.95",
+        "spiciness": 3,
+                        "serves": 1,
+"vegetarian": true,
+        "gluten free": false,   
+                        "nutrition": {
+                                    "calories": 180,
+                                    "fat": "2mg",
+                                    "saturated fat": ".5mg",
+                                    "carbohydrates": "5g"
+                        },
+                        "thumbnail": "images/thumbnails/noodlesrice/garlicnoodles.jpg",
+                        "photo": "images/photos/garlicnoodes.jpg"
+            }
 }

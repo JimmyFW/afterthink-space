@@ -2,52 +2,91 @@ var directives = angular.module('afterthink.directives', []);
 
 directives.directive('draggable', function($document) {
 
-  return function(scope, element, attr) {
-    var startX = 0, startY = 0, x = 0, y = 0;
-    element.css({
-     position: 'relative',
-     border: '1px solid red',
-     backgroundColor: 'lightgrey',
-     cursor: 'pointer'
+  function drag(scope, element, attr) {
+
+  }
+
+  function postLink(scope, element, iAttrs, ctrl) {
+
+    element.on('mousedown', function(event) {
+      event.preventDefault();
     });
+
+    element.draggable({
+        start: function() {
+          var position = element.offset();
+          console.log('start pos: ' + position.left + ' and ' + position.top);
+        },
+        drag: function() {
+          scope.$watch(function () {
+            scope.dish.xpos = element.css('left');
+            scope.dish.ypos = element.css('top');
+          })
+        },
+        stop: function() {
+          var position = element.offset();
+          console.log('stop pos: ' + position.left + ' and ' + position.top);
+        }
+      });
+  }
+
+  //return drag;
+  return {
+    restrict: 'E',
+    transclude: true,
+    templateUrl: 'templates/candidate.html',
+    /*scope: {
+      dish: '&uniqueDish'
+    },*/
+    link: postLink
+  }
+});
+
+
+/*
+
+    var startX = 0, startY = 0, x = 0, y = 0;
+
     element.on('mousedown', function(event) {
       // Prevent default dragging of selected content
       event.preventDefault();
       startX = event.screenX - x;
       startY = event.screenY - y;
+      //startX = event.screenX - scope.dish.xpos;
+      //startY = event.screenY - scope.dish.ypos;
       $document.on('mousemove', mousemove);
       $document.on('mouseup', mouseup);
+
+
     });
 
     function mousemove(event) {
-      y = event.screenY - startY;
-      x = event.screenX - startX;
+      var y = event.screenY - startY;
+      var x = event.screenX - startX;
+
+      var position = element.offset();
+      console.log("original pos x:" + position.left + " y: " + position.top);
+      console.log("new pos x:" + x + " y: " + y);
+
+      // update element position
       element.css({
-        top: y + 'px',
-        left:  x + 'px'
+        left:  x + 'px',
+        top: y + 'px'
       });
+
+      // update scope variable
+      
+      scope.$apply(function () {
+        scope.dish.xpos = x;
+        scope.dish.ypos = y;
+      });
+
     }
 
     function mouseup() {
+      console.log("mouseup!");
       $document.unbind('mousemove', mousemove);
       $document.unbind('mouseup', mouseup);
     }
-  }
-});
 
-directives.directive('modifyItems', function () {
-    return function (scope, element, attrs) {
-        element.bind("keydown keypress", function (event) {
-            if(event.which === 13) {
-                scope.$apply(function () {
-                  console.log("down!!");
-                  if(e.keyCode != 13) return;
-                  $scope.items.push($scope.nextItem);
-                  $scope.nextItem = "";
-                });
-
-                event.preventDefault();
-            }
-        });
-    };
-});
+    */
