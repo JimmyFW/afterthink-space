@@ -68,7 +68,9 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
 
     }
 
-    $scope.deleteDish = function (dishId) {
+    $scope.deleteDish = function (dishId, event) {
+
+      event.preventDefault();
 
       var removed = $scope.dishes[dishId];
       delete $scope.dishes[dishId];
@@ -76,6 +78,23 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
       console.log("removed dish: " + dishId);
       
     }
+
+    $scope.acceptDish = function (dishId, event) {
+      event.preventDefault();
+
+      $scope.dishes[dishId].state = "accepted";
+      console.log("accepted dish: " + dishId);
+      
+    }
+
+    $scope.maybeDish = function (dishId, event) {
+      event.preventDefault();
+
+      $scope.dishes[dishId].state = "maybe";
+      console.log("maybed dish: " + dishId);
+      
+    }
+
 
   }
 ]);

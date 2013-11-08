@@ -1,8 +1,8 @@
-<div class="dish" ng-style="{ top: dish.ypos, left: dish.xpos }">
-<div class="closeButton" ng-click='deleteDish("{{ dish.id }}")'>x</div>
+<div class="closeButton" ng-click='deleteDish("{{ dish.id }}", $event)'>x</div>
+<div class="acceptButton" ng-click='acceptDish("{{ dish.id }}", $event)'>accept</div>
+<div class="maybeButton" ng-click='maybeDish("{{ dish.id }}", $event)'>maybe</div>
 <div class="infoBox">
 <p><img ng-src="/{{ dish.photo }}" width="{{ photoWidth }}" height="{{ photoHeight }}" ></p>
 <p>{{ dish.title }}</p>
 <p>{{ dish.state }}</p>
-</div>
 </div>

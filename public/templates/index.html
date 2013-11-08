@@ -3,8 +3,10 @@
   {{ nextItem }}
 
   <h1>Prototype</h1>
+
+
   <div class="sharedspace">
-      <draggable ng-repeat="dish in dishes" uniqueDish="dish"></draggable>
+      <draggable class="dish" ng-repeat="dish in dishes" uniqueDish="{{ dish.id }}" ng-style="{ top: dish.ypos, left: dish.xpos }"></draggable>
   </div>
 
   <div ng-repeat="(dishKey, dish) in menu" ng-click='addDish("{{ dishKey }}")' class="menuItem">
