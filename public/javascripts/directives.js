@@ -2,14 +2,12 @@ var directives = angular.module('afterthink.directives', []);
 
 directives.directive('draggable', function($document) {
 
+  function nodrag(scope, element, attr) {
+  }
+
   function drag(scope, element, attr) {
-    /*
     var startX = 0, startY = 0, x = scope.dish.xpos, y = scope.dish.ypos;
       // update scope variable
-      scope.$watch('dish', function () {
-      scope.dish.xpos = x;
-      scope.dish.ypos = y;
-      }, true);
 
     element.on('mousedown', function(event) {
       // Prevent default dragging of selected content
@@ -19,9 +17,6 @@ directives.directive('draggable', function($document) {
       $document.on('mousemove', mousemove);
       $document.on('mouseup', mouseup);
     });
-
-    //element.on('mousemove', mousemove);
-    //element.on('mouseup', mouseup);
 
     function mousemove(event) {
       event.preventDefault();
@@ -33,15 +28,27 @@ directives.directive('draggable', function($document) {
       console.log("original pos x:" + position.left + " y: " + position.top);
       console.log("new pos x:" + x + " y: " + y);
 
+            scope.dish.xpos = x;
+            scope.dish.ypos = y;
+/*
+          scope.$apply(function () {
+            scope.dish.xpos = x;
+            scope.dish.ypos = y;
+          });
+*/
+
       // update element position
-      
+      /*
       element.css({
-        left:  x + 'px',
+        left: x + 'px',
         top: y + 'px'
       });
-      
 
-
+      scope.$watch(function () {
+        scope.dish.xpos = element.css('left');
+        scope.dish.ypos = element.css('top');
+      });
+      */
     }
 
     function mouseup() {
@@ -49,7 +56,6 @@ directives.directive('draggable', function($document) {
       $document.unbind('mousemove', mousemove);
       $document.unbind('mouseup', mouseup);
     }
-*/
   }
 
   function postLink(scope, element, iAttrs, ctrl) {
@@ -95,16 +101,6 @@ directives.directive('draggable', function($document) {
     restrict: 'E',
     transclude: true,
     templateUrl: 'templates/candidate.html',
-    /*scope: {
-      dish: '&uniqueDish'
-    },*/
-    link: postLink
+    link: drag
   }
 });
-
-
-/*
-
-
-
-    */

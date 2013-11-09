@@ -7,6 +7,9 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     var items = new Firebase('https://groupthought.firebaseio.com/gamestate');
     angularFire(items, $scope, "items");
 
+    var users = new Firebase('https://groupthought.firebaseio.com/users');
+    angularFire(users, $scope, "users");
+
     var dishes = new Firebase('https://groupthought.firebaseio.com/sharedspace/dishes');
     angularFire(dishes, $scope, "dishes");
 
@@ -24,6 +27,23 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     $scope.currentSection = 0;
     $scope.photoWidth = 150;
     $scope.photoHeight = 100;
+
+    $scope.assignKey = function () {
+      var uuid = guid();
+      $scope.myKey = uuid;
+      $scope.users.push($scope.myKey);
+
+      function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000)
+                   .toString(16)
+                   .substring(1);
+      };
+
+      function guid() {
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+               s4() + '-' + s4() + s4() + s4();
+      };
+    }
 
     $scope.addItem = function (e) {
       if(e.keyCode != 13) return;
@@ -53,7 +73,7 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
       dish["ypos"] = 110;
       dish["startX"] = -1;
       dish["startY"] = -1;
-      dish["location"] = 0;
+      dish["author"] = $scope.myKey;
       $scope.dishes[uuid] = dish;
 
       function s4() {
@@ -147,22 +167,17 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
 
     $scope.updatePos = function (dishId) {
       console.log("dish id: " + dishId);
-      //console.log($scope.dishes[dishId].startX + ' ' + $scope.dishes[dishId].startY);
-      return {
+      var positionStyle = {
         'left': $scope.dishes[dishId].xpos + 'px',
         'top': $scope.dishes[dishId].ypos + 'px'
       };
+      console.log(positionStyle);
+      //console.log($scope.dishes[dishId].startX + ' ' + $scope.dishes[dishId].startY);
+      return positionStyle;
     }
 
   }
 ]);
-
-/*
-controllers.controller('dishController', ['$scope'], function($scope) {
-  $scope.
-}
-
-*/
 
 controllers.controller('HomeController', ['$scope', function ($scope) {
   $scope.model = {
