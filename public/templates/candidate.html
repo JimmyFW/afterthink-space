@@ -1,7 +1,8 @@
 <style>
 	.food-icon {
-		width:250px;
-		display:block;
+		width:170px;
+		display:inline-block;
+		vertical-align: top;
 	}
 	.food-icon div.infoBox{
 		display: inline-block;
@@ -13,6 +14,7 @@
 		height: 100px;
 		border-radius: 50px;
 		border: #000 1px solid;
+		margin-left: 4px;
 	}
 	.food-icon ul {
 		display: inline-block;
@@ -23,7 +25,7 @@
 	.food-icon ul li{
 		list-style-type: none;
 		margin-top:0;
-		margin-left: 3px;
+		margin-left: 14px;
 		margin-bottom: 6px;
 	}
 	.food-icon ul li img {
@@ -40,7 +42,7 @@
 
 <div class="food-icon">
 	<div class="infoBox">
-		<img ng-src="/{{ dish.photo }}" width="{{ photoWidth }}" height="{{ photoHeight }}" />
+		<img ng-src="/{{ dish.photo }}" ng-style="returnColor(dish.state)" width="{{ photoWidth }}" height="{{ photoHeight }}" />
 	</div>
 	<ul>
 		<li class="closeButton" ng-click='deleteDish("{{ dish.id }}", $event)'><img src="../images/remove.png"/></li>
@@ -48,5 +50,4 @@
 		<li class="acceptButton" ng-click='acceptDish("{{ dish.id }}", $event)'><img src="../images/accept.png"/></li>
 	</ul>
 	<h4 class="dish-title">{{ dish.title }}</h4>
-	<h4 class="dish-title">{{ dish.state }}</h4>
 </div>

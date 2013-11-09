@@ -1,16 +1,11 @@
 <div id="wrapper">
   <h1>Prototype. You are: {{ myKey }}</h1>
   <!--<input type="button" ng-click="assignKey()" ng-model="myKey" value="Join the table" /><br />-->
-  <input type="string" ng-model="myKey" />
-  <input type="button" ng-click="addUser()" value="Join Table" /><br />
-
-  <input type='string' size='4' max='9999' ng-model='search_state'/>
-  <div ng-repeat="dish in (dishes | toArray) | filter: {state: search_state}">{{ dish.id }}</div>
 
   <div class="sharedspace">
     <div ng-repeat="user in users" class="user">
       {{ user }}
-      <div ng-click="deleteUser(user)">x</div>
+      <span ng-click="deleteUser(user)">x</span>
       <draggable ng-repeat="dish in (dishes | toArray) | filter: {author: user}" uniqueDish="{{ dish.id }}" ng-style="updatePos(dish.id)"></draggable>
     </div>
       
@@ -21,24 +16,32 @@
         <div>Insert section_nav here</div>
         <h2 class="section-title">~ Section Title ~</h2>
         <div class="all-items">
-	         <div ng-repeat="(dishKey, dish) in menu" ng-click='addDish("{{ dishKey }}")' class="menuItem">
+	         <div ng-repeat="(dishKey, dish) in menu" ng-click='displayDetail("{{ dishKey }}")' class="menuItem">
 	            <div class="menuItem-main">
 	            	<h2 class="title">{{ dish.title }}</h2>
 		            <p class="price">${{ dish.price }}</p>
 		            <p class="description">{{ dish.description }}</p>
 		            <!--<p>{{ dishKey }}{{ dish }}</p>-->
 	            </div>
-	            <div class="menuItem-add"><img src="../images/add.png"/></div>
+	            <div class="menuItem-add" ng-click='addDish("{{ dishKey }}")'><img src="../images/add.png"/></div>
 	        </div>
 	    </div>
         <div class="menuNav">
         </div>
       </div>
 
-      <div class="menuRight">
+      <!--<detailView class="menuRight"></detailView>-->
+
+      <div class="menuRight" detail-view>
           Insert detailed_view here
       </div>
 
   </div>
+
+  <input type="string" ng-model="myKey" />
+  <input type="button" ng-click="addUser()" value="Join Table" /><br />
+
+  <input type='string' size='4' max='9999' ng-model='search_state'/>
+  <div ng-repeat="dish in (dishes | toArray) | filter: {state: search_state}">{{ dish.id }}</div>
 
 </div>

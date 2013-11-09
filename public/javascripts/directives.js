@@ -1,5 +1,13 @@
 var directives = angular.module('afterthink.directives', []);
 
+directives.directive('detailView', function($document) {
+  return {
+    restrict: 'A',
+    transclude: true,
+    templateUrl: 'templates/detail_view.html'
+  }
+});
+
 directives.directive('draggable', function($document) {
 
   function nodrag(scope, element, attr) {

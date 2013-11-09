@@ -1,0 +1,151 @@
+<style>
+#container {
+    height:300px;
+    width: 500px;
+    border: 1px solid black;
+    font-family: helvetica;
+}
+
+#name, #price{
+	font-weight: bold;
+	font-size:22px;
+	padding: 5px;
+	padding-bottom: 0px;
+	display: inline-block;
+}
+
+#price {
+	float:right;
+}
+
+#picture {
+	border: 1px solid black;
+	height: 156px;
+	width: 316px;
+	margin-left: 5px;
+}
+
+#description {
+	font-size: 15px;
+	margin-right: 5px;
+	margin-left: 5px;
+	text-align: center;
+	
+}
+
+#nutrition{
+    width: 150px;
+    border: 1px solid black;
+    float: right;
+    padding-left: 5px;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+#nutritionfacts{
+	font-weight: bolder;
+	font-size: 20px;
+}
+
+#thickline {
+	background: black;
+	height: 5px;
+	margin-right: 5px;
+}
+
+#thinline {
+	background: black;
+	height: 2px;
+	margin-right: 5px;
+}
+
+#thinestline {
+	background: black;
+	height: 1px;
+	margin-right: 5px;
+}
+    
+.value {
+	float:right; 
+	margin-right:5px;
+}
+
+#spiciness, #vegetarian, #glutenfree {
+	text-align: center;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+#description_cell {
+	height:95px;
+}
+
+.fade {
+	opacity: .2;
+}
+
+</style>
+
+
+<table>
+	<tr>
+		<div class="name">{{ dishDetail.title }}</div>
+		<div id="price">{{ dishDetail.price }}</div>
+	</tr>
+	<tr>
+		<td id="description_cell"> <div id="description">{{ dishDetail.description }}</div>	</td>
+		<td>
+			
+			<div id="spiciness">
+				<span ng-repeat="dishDetail.spiciness" class="fade">
+					<img ng-src="/images/pepper.png">
+				</span>
+			</div>
+			<div id="vegetarian" ng-style="vegetarian(dishDetail.id)">
+				{{ dishDetail.vegetarian }}
+			</div>
+			<div id="glutenfree" class="fade">
+				GF
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td style="vertical-align:top"> <div id="picture"><img ng-src="/{{dishDetail.photo}}" width="300" height="200" /></div> </td>
+
+		<td>
+			<div id="nutrition">
+				<div id="nutritionfacts">
+					Nutrition Facts
+				</div>
+				<div id="thickline"></div>
+				<div>
+					<span> Calories </span> <span class="value" id="calories"> 530 </span>
+				</div>
+				<div id="thinline"></div>
+				<div>
+					<span> Fat </span> <span class="value" id="fat"> 24 </span>
+				</div>
+				<div id="thinestline"></div>
+				<div>
+					<span> Saturated Fat </span> <span class="value" id="sfat"> 6 </span>
+				</div>
+				<div id="thinestline"></div>
+				<div>
+					<span> Sodium </span> <span class="value" id="sodium">2090 </span>
+				</div>
+				<div id="thinestline"></div>
+				<div>
+					<span> Carohydrates </span> <span class="value" id="carbs"> 47 </span>
+				</div>
+				<div id="thinestline"></div>
+				<div>
+					<span> Fiber </span> <span class="value" id="fiber"> 8 </span>
+				</div>
+				<div id="thinestline"></div>
+				<div>
+					<span> Protein </span> <span class="value" id="protein"> 32 </span>
+				</div>
+		    </div>
+		</td>
+	</tr>
+</table>

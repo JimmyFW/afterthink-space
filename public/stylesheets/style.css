@@ -1,5 +1,6 @@
 body {
   padding: 50px;
+  padding-top: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -7,10 +8,14 @@ a {
   color: #00B7FF;
 }
 
+.wrapper {
+  margin: 0px;
+}
+
 .dish {
 	border: 1px dotted #CCCCCC;
 	margin: 0px;
-	width: 150px;
+	width: 130px;
 	height: 150px;
 	position: absolute;
 	-moz-border-radius: 100px;
@@ -58,8 +63,8 @@ a {
 
 .sharedspace {
   display: block;
-	width: 800px;
-	height: 400px;
+	width: 900px;
+	height: 500px;
   margin-left: auto;
   margin-right: auto;
 	border: 1px #CCCCCC dotted;

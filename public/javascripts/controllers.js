@@ -39,6 +39,24 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
       $scope.users.splice(index, 1);
     }
 
+    $scope.returnColor = function (state) {
+      if(state=="accepted") {
+        return {
+          "border": "4px #00FF00 solid"
+        }
+      }
+      else if(state=="proposed") {
+        return {
+          "border": "4px #CCCCCC solid"
+        }
+      }
+      else if(state=="maybe") {
+        return {
+          "border": "4px #0000FF solid"
+        }
+      }
+    }
+
     $scope.assignKey = function () {
       var uuid = guid();
       $scope.myKey = uuid;
@@ -73,6 +91,23 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
       // splice returns the elements removed and modifies the array in place
       $scope.items.splice(index, 1); // remove one item after the index
       console.log("removed item: " + index);
+    }
+
+    $scope.displayDetail = function (dishKey) {
+      $scope.dishDetail = jQuery.extend(true, {}, $scope.menu[dishKey]); // deep copy
+    }
+
+    $scope.vegetarian = function (dishId) {
+      if($scope.dishes[dishId].vegetarian) {
+        return {
+          "opacity": 1
+        };
+      }
+      else {
+        return {
+          "opacity": .5
+        };
+      }
     }
 
     $scope.addDish = function (dishKey) {
