@@ -53,6 +53,7 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
       dish["ypos"] = 110;
       dish["startX"] = -1;
       dish["startY"] = -1;
+      dish["location"] = 0;
       $scope.dishes[uuid] = dish;
 
       function s4() {
@@ -96,26 +97,31 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     }
 
     $scope.moveDish = function (dishId, event) {
-      console.log(dishId);
-      console.log($scope.dishes[dishId]);
-      //if($scope.dishes[dishId].startX == -1) return;
-      //if($scope.dishes[dishId].startY == -1) return;
-      console.log(event);
-      console.log($scope.dishes[dishId]);
+      if($scope.dishes[dishId].startX == -1) {
+        return;
+      }
+      else {
+        //console.log($scope.dishes[dishId].startX)
+      }
+      if($scope.dishes[dishId].startY == -1) return;
+      //console.log(event);
       event.preventDefault();
+      //console.log($scope.dishes[dishId]);
 
-      //var y = event.screenY - $scope.dishes[dishId].startY;
-      //var x = event.screenX - $scope.dishes[dishId].startX;
+      var y = event.screenY - $scope.dishes[dishId].startY;
+      var x = event.screenX - $scope.dishes[dishId].startX;
+      console.log(x);
+      console.log(y);
 
       // update scope variable
       //$scope.dishes[dishId].xpos = $scope.dishes[dishId].xpos + 1;
       //$scope.dishes[dishId].ypos = $scope.dishes[dishId].ypos + 1;
-      //$scope.dishes[dishId].xpos = x;
-      //$scope.dishes[dishId].ypos = y;
+      $scope.dishes[dishId].xpos = x;
+      $scope.dishes[dishId].ypos = y;
     }
 
     $scope.grabDish = function (dishId, event) {
-      console.log(event);
+      //console.log(event);
       event.preventDefault();
 
       $scope.dishes[dishId].startX = event.screenX - $scope.dishes[dishId].xpos;
@@ -132,11 +138,20 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     }
 
     $scope.releaseDish = function (dishId, event) {
-      console.log(event);
+      //console.log(event);
       event.preventDefault();
 
       $scope.dishes[dishId].startX = -1;
       $scope.dishes[dishId].startY = -1;
+    }
+
+    $scope.updatePos = function (dishId) {
+      console.log("dish id: " + dishId);
+      //console.log($scope.dishes[dishId].startX + ' ' + $scope.dishes[dishId].startY);
+      return {
+        'left': $scope.dishes[dishId].xpos + 'px',
+        'top': $scope.dishes[dishId].ypos + 'px'
+      };
     }
 
   }

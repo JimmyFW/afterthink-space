@@ -28,7 +28,7 @@
 </style>
 
 <div class="food-icon">
-	<div class="infoBox">
+	<div class="infoBox"><!-- ng-mousedown='grabDish(dish.id, $event)' ng-mousemove='moveDish(dish.id, $event)' ng-mouseup='releaseDish(dish.id, $event)'>-->
 		<p><img ng-src="/{{ dish.photo }}" width="{{ photoWidth }}" height="{{ photoHeight }}" ></p>
 		<p>{{ dish.title }}</p>
 		<p>{{ dish.state }}</p>
@@ -37,5 +37,5 @@
 		<li class="closeButton" ng-click='deleteDish("{{ dish.id }}", $event)'>x</li>
 		<li class="maybeButton" ng-click='maybeDish("{{ dish.id }}", $event)'>?</li>
 		<li class="acceptButton" ng-click='acceptDish("{{ dish.id }}", $event)'>v/</li>
-	<ul>
+	</ul>
 </div>

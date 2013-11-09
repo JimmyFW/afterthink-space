@@ -72,7 +72,21 @@ directives.directive('draggable', function($document) {
         stop: function() {
           var position = element.offset();
           console.log('stop pos: ' + position.left + ' and ' + position.top);
+
         }
+      });
+  }
+
+  function lvlDraggable (scope, el, attrs, controller) {
+      angular.element(el).attr("draggable", "true");
+       
+      el.bind("dragstart", function(e) {
+          e.dataTransfer.setData('text', id);
+          $rootScope.$emit("LVL-DRAG-START");
+      });
+       
+      el.bind("dragend", function(e) {
+          $rootScope.$emit("LVL-DRAG-END");
       });
   }
 
@@ -84,7 +98,7 @@ directives.directive('draggable', function($document) {
     /*scope: {
       dish: '&uniqueDish'
     },*/
-    link: drag
+    link: postLink
   }
 });
 
