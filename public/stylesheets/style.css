@@ -79,7 +79,6 @@ a {
 
 
 
-
   #menuMain {
     display: block;
     margin-left: auto;
@@ -91,7 +90,6 @@ a {
     border-right: 5px #000 solid;
     font-family: Helvetica, Arial;
     max-height: 500px;
-    overflow-y: scroll;
 }
 
  .menuLeft {
@@ -101,6 +99,11 @@ a {
     padding: 10px;
     border-right: 5px #000 solid;
  }
+ 
+ 	.menuLeft .all-items {
+ 		max-height: 300px;
+    	overflow-y: scroll;
+ 	}
 
   .menuLeft div.menuItem {
     background: #F0F0F0;
@@ -113,6 +116,14 @@ a {
     text-align: center;
   }
 
+  .menuLeft div.menuItem-main {
+	display: inline-block;
+	vertical-align: top;
+	width: 370px;
+	padding-right: 5px;
+	border-right: 1px #ccc solid;
+  	
+  }
   .menuLeft div.menuItem h2.title {
     display: inline-block;
     opacity: 0.7;
@@ -131,8 +142,19 @@ a {
     margin: 10px;
     padding: 0;
   }
-  .menuLeft div.menuItem:active {
+  .menuLeft div.menuItem-main:active, .menuLeft div.menuItem-add:active {
     background: #FDFDFD;
+  }
+  
+  .menuLeft div.menuItem-add {
+  	display: inline-block;
+	vertical-align: top;
+	width: 60px;
+  }
+  .menuLeft div.menuItem-add img{
+  	width: 30px;
+	height: 30px;
+	margin: 20px;
   }
 
  .menuRight {
@@ -140,6 +162,6 @@ a {
     vertical-align: top;
     width: 470px;
     padding: 10px;
+    max-height: 500px;
+    overflow-y: scroll;
  }
-
-
