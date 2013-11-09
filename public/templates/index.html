@@ -1,6 +1,8 @@
 <div id="wrapper">
   <h1>Prototype. You are: {{ myKey }}</h1>
-  <input type="button" ng-click="assignKey()" ng-model="myKey" value="Join the table" /><br />
+  <!--<input type="button" ng-click="assignKey()" ng-model="myKey" value="Join the table" /><br />-->
+  <input type="string" ng-model="myKey" />
+  <input type="button" ng-click="addUser()" value="Join Table" /><br />
 
   <input type='string' size='4' max='9999' ng-model='search_state'/>
   <div ng-repeat="dish in (dishes | toArray) | filter: {state: search_state}">{{ dish.id }}</div>
@@ -8,6 +10,7 @@
   <div class="sharedspace">
     <div ng-repeat="user in users" class="user">
       {{ user }}
+      <div ng-click="deleteUser(user)">x</div>
       <draggable ng-repeat="dish in (dishes | toArray) | filter: {author: user}" uniqueDish="{{ dish.id }}" ng-style="updatePos(dish.id)"></draggable>
     </div>
       

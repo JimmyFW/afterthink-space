@@ -101,6 +101,6 @@ directives.directive('draggable', function($document) {
     restrict: 'E',
     transclude: true,
     templateUrl: 'templates/candidate.html',
-    link: drag
+    link: nodrag
   }
 });

@@ -28,6 +28,17 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     $scope.photoWidth = 150;
     $scope.photoHeight = 100;
 
+    $scope.addUser = function () {
+      if($.inArray($scope.myKey), $scope.users) {
+        $scope.users.push($scope.myKey);
+      }
+    }
+
+    $scope.deleteUser = function (item) {
+      var index = $scope.users.indexOf(item);
+      $scope.users.splice(index, 1);
+    }
+
     $scope.assignKey = function () {
       var uuid = guid();
       $scope.myKey = uuid;
@@ -43,6 +54,9 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
         return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
                s4() + '-' + s4() + s4() + s4();
       };
+    }
+
+    $scope.deleteKey = function ($index) {
     }
 
     $scope.addItem = function (e) {
