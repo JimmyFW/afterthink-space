@@ -1,13 +1,16 @@
 <div id="wrapper">
-  {{ debugIndex }}
-  {{ nextItem }}
+  <h1>Prototype. You are: {{ myKey }}</h1>
+  <input type="button" ng-click="assignKey()" ng-model="myKey" value="Join the table" /><br />
 
-  <h1>Prototype</h1>
-
-
+  <input type='string' size='4' max='9999' ng-model='search_state'/>
+  <div ng-repeat="dish in (dishes | toArray) | filter: {state: search_state}">{{ dish.id }}</div>
 
   <div class="sharedspace">
-      <draggable class="dish" ng-repeat="dish in dishes" uniqueDish="{{ dish.id }}" ng-style="{ top: dish.ypos, left: dish.xpos }" ng-mousemove='moveDish("{{ dishKey }}", $event)'></draggable>
+    <div ng-repeat="user in users" class="user">
+      {{ user }}
+      <draggable ng-repeat="dish in (dishes | toArray) | filter: {author: user}" uniqueDish="{{ dish.id }}" ng-style="updatePos(dish.id)"></draggable>
+    </div>
+      
   </div>
 
   <div id="menuMain">
@@ -26,7 +29,6 @@
 	        </div>
 	    </div>
         <div class="menuNav">
-
         </div>
       </div>
 
