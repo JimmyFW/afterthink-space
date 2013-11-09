@@ -14,12 +14,17 @@
       <div class="menuLeft">
         <div>Insert section_nav here</div>
         <h2 class="section-title">~ Section Title ~</h2>
-         <div ng-repeat="(dishKey, dish) in menu" ng-click='addDish("{{ dishKey }}")' class="menuItem">
-            <h2 class="title">{{ dish.title }}</h2>
-            <p class="price">${{ dish.price }}</p>
-            <p class="description">{{ dish.description }}</p>
-            <!--<p>{{ dishKey }}{{ dish }}</p>-->
-        </div>
+        <div class="all-items">
+	         <div ng-repeat="(dishKey, dish) in menu" ng-click='addDish("{{ dishKey }}")' class="menuItem">
+	            <div class="menuItem-main">
+	            	<h2 class="title">{{ dish.title }}</h2>
+		            <p class="price">${{ dish.price }}</p>
+		            <p class="description">{{ dish.description }}</p>
+		            <!--<p>{{ dishKey }}{{ dish }}</p>-->
+	            </div>
+	            <div class="menuItem-add"><img src="../images/add.png"/></div>
+	        </div>
+	    </div>
         <div class="menuNav">
 
         </div>
