@@ -1,6 +1,7 @@
 <style>
 	.food-icon {
-		display: block;
+		width:250px;
+		display:block;
 	}
 	.food-icon div.infoBox{
 		display: inline-block;
@@ -15,28 +16,36 @@
 	}
 	.food-icon ul {
 		display: inline-block;
-		margin-left: -10px;
+		padding:0;
+		margin: 0;
 		vertical-align: top;
 	}
 	.food-icon ul li{
 		list-style-type: none;
-		margin-bottom: 5px;
+		margin-top:0;
+		margin-left: 3px;
+		margin-bottom: 6px;
 	}
 	.food-icon ul li img {
 		width: auto;
 		height: 25px;
 	}
+	.food-icon h4 {
+		display:block;
+		margin: 5px;
+		width: 100px;
+		text-align: center;
+	}
 </style>
 
 <div class="food-icon">
 	<div class="infoBox">
-		<p><img ng-src="/{{ dish.photo }}" width="{{ photoWidth }}" height="{{ photoHeight }}" ></p>
-		<p>{{ dish.title }}</p>
-		<p>{{ dish.state }}</p>
+		<img ng-src="/{{ dish.photo }}" width="{{ photoWidth }}" height="{{ photoHeight }}" />
 	</div>
 	<ul>
 		<li class="closeButton" ng-click='deleteDish("{{ dish.id }}", $event)'><img src="../images/remove.png"/></li>
 		<li class="maybeButton" ng-click='maybeDish("{{ dish.id }}", $event)'><img src="../images/maybe.png"/></li>
 		<li class="acceptButton" ng-click='acceptDish("{{ dish.id }}", $event)'><img src="../images/accept.png"/></li>
-	<ul>
+	</ul>
+	<h4 class="dish-title">{{ dish.title }}</h4>
 </div>
