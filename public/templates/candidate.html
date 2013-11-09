@@ -20,10 +20,11 @@
 	}
 	.food-icon ul li{
 		list-style-type: none;
-		padding: 8px;
-		border: #000 1px solid;
-		margin-bottom: 15px;
-		border-radius: 25px;
+		margin-bottom: 5px;
+	}
+	.food-icon ul li img {
+		width: auto;
+		height: 25px;
 	}
 </style>
 
@@ -34,8 +35,8 @@
 		<p>{{ dish.state }}</p>
 	</div>
 	<ul>
-		<li class="closeButton" ng-click='deleteDish("{{ dish.id }}", $event)'>x</li>
-		<li class="maybeButton" ng-click='maybeDish("{{ dish.id }}", $event)'>?</li>
-		<li class="acceptButton" ng-click='acceptDish("{{ dish.id }}", $event)'>v/</li>
+		<li class="closeButton" ng-click='deleteDish("{{ dish.id }}", $event)'><img src="../images/remove.png"/></li>
+		<li class="maybeButton" ng-click='maybeDish("{{ dish.id }}", $event)'><img src="../images/maybe.png"/></li>
+		<li class="acceptButton" ng-click='acceptDish("{{ dish.id }}", $event)'><img src="../images/accept.png"/></li>
 	<ul>
 </div>
