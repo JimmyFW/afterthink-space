@@ -20,7 +20,7 @@
 
 #picture {
 	border: 1px solid black;
-	height: 156px;
+	height: auto;
 	width: 316px;
 	margin-left: 5px;
 }
@@ -45,6 +45,7 @@
 #nutritionfacts{
 	font-weight: bolder;
 	font-size: 20px;
+	vertical-align: top;
 }
 
 #thickline {
@@ -76,8 +77,15 @@
 	padding-bottom: 5px;
 }
 
+#spiciness span img {
+	width: 20;
+	height: auto;
+}
+
 #description_cell {
 	height:95px;
+	min-width: 350px;
+	max-width: 350px;
 }
 
 .fade {
@@ -89,61 +97,77 @@
 
 <table>
 	<tr>
+		<td>
 		<div class="name">{{ dishDetail.title }}</div>
-		<div id="price">{{ dishDetail.price }}</div>
+		</td>
+		<td>
+		<div id="price">${{ dishDetail.price }}</div>
+		</td>
 	</tr>
 	<tr>
 		<td id="description_cell"> <div id="description">{{ dishDetail.description }}</div>	</td>
 		<td>
-			
+			<div id="spiciness">
+				<span id="spiciness1" class="fade" ng-style="fadePeppers1(dishDetail.spiciness)">
+					<img ng-src="/images/pepper.png">
+				</span>
+				<span id="spiciness2" class="fade" ng-style="fadePeppers2(dishDetail.spiciness)">
+					<img ng-src="/images/pepper.png">
+				</span>
+				<span id="spiciness3" class="fade" ng-style="fadePeppers3(dishDetail.spiciness)">
+					<img ng-src="/images/pepper.png">
+				</span>
+			</div>
+			<!--
 			<div id="spiciness">
 				<span ng-repeat="dishDetail.spiciness" class="fade">
 					<img ng-src="/images/pepper.png">
 				</span>
 			</div>
-			<div id="vegetarian" ng-style="vegetarian(dishDetail.id)">
-				{{ dishDetail.vegetarian }}
+			-->
+			<div id="vegetarian" ng-style="vegetarian(dishDetail.title)">
+				Vegetarian
 			</div>
-			<div id="glutenfree" class="fade">
-				GF
+			<div id="glutenfree" ng-style="glutenfree(dishDetail.title)">
+				Gluten Free
 			</div>
 		</td>
 	</tr>
 	<tr>
-		<td style="vertical-align:top"> <div id="picture"><img ng-src="/{{dishDetail.photo}}" width="300" height="200" /></div> </td>
+		<td style="vertical-align:top"> <div id="picture"><img ng-src="/{{dishDetail.photo}}" width="316" /></div> </td>
 
-		<td>
+		<td style="vertical-align:top">
 			<div id="nutrition">
 				<div id="nutritionfacts">
 					Nutrition Facts
 				</div>
 				<div id="thickline"></div>
 				<div>
-					<span> Calories </span> <span class="value" id="calories"> 530 </span>
+					<span> Calories </span> <span class="value" id="calories"> {{ dishDetail.nutrition.calories }} </span>
 				</div>
 				<div id="thinline"></div>
 				<div>
-					<span> Fat </span> <span class="value" id="fat"> 24 </span>
+					<span> Fat </span> <span class="value" id="fat"> {{ dishDetail.nutrition.fat }} g</span>
 				</div>
 				<div id="thinestline"></div>
 				<div>
-					<span> Saturated Fat </span> <span class="value" id="sfat"> 6 </span>
+					<span> Saturated Fat </span> <span class="value" id="sfat"> {{ dishDetail.nutrition["saturated fat"] }} g</span>
 				</div>
 				<div id="thinestline"></div>
 				<div>
-					<span> Sodium </span> <span class="value" id="sodium">2090 </span>
+					<span> Sodium </span> <span class="value" id="sodium"> {{ dishDetail.nutrition.sodium }} mg</span>
 				</div>
 				<div id="thinestline"></div>
 				<div>
-					<span> Carohydrates </span> <span class="value" id="carbs"> 47 </span>
+					<span> Carohydrates </span> <span class="value" id="carbs"> {{ dishDetail.nutrition.carbohydrates }} g</span>
 				</div>
 				<div id="thinestline"></div>
 				<div>
-					<span> Fiber </span> <span class="value" id="fiber"> 8 </span>
+					<span> Fiber </span> <span class="value" id="fiber"> {{ dishDetail.nutrition.fiber }} g</span>
 				</div>
 				<div id="thinestline"></div>
 				<div>
-					<span> Protein </span> <span class="value" id="protein"> 32 </span>
+					<span> Protein </span> <span class="value" id="protein"> {{ dishDetail.nutrition.protein }} g</span>
 				</div>
 		    </div>
 		</td>

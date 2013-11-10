@@ -15,6 +15,7 @@
 		border-radius: 50px;
 		border: #000 1px solid;
 		margin-left: 4px;
+		cursor: pointer;
 	}
 	.food-icon ul {
 		display: inline-block;
@@ -23,6 +24,7 @@
 		vertical-align: top;
 	}
 	.food-icon ul li{
+		cursor: pointer;
 		list-style-type: none;
 		margin-top:0;
 		margin-left: 14px;
@@ -42,9 +44,9 @@
 
 <div class="food-icon">
 	<div class="infoBox">
-		<img ng-src="/{{ dish.photo }}" ng-style="returnColor(dish.state)" width="{{ photoWidth }}" height="{{ photoHeight }}" />
+		<img ng-src="/{{ dish.photo }}" ng-style="returnColor(dish.state)" width="{{ photoWidth }}" height="{{ photoHeight }}" ng-click="revertButtons(dish.state, dish.id)" />
 	</div>
-	<ul>
+	<ul ng-style="returnButtons(dish.state)">
 		<li class="closeButton" ng-click='deleteDish("{{ dish.id }}", $event)'><img src="../images/remove.png"/></li>
 		<li class="maybeButton" ng-click='maybeDish("{{ dish.id }}", $event)'><img src="../images/maybe.png"/></li>
 		<li class="acceptButton" ng-click='acceptDish("{{ dish.id }}", $event)'><img src="../images/accept.png"/></li>

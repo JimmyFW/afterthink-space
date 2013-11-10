@@ -13,18 +13,29 @@
 
   <div id="menuMain">
       <div class="menuLeft">
-        <div>Insert section_nav here</div>
-        <h2 class="section-title">~ Section Title ~</h2>
+        <h2 class="section-title">~ MENU ~</h2>
+        
         <div class="all-items">
+          <!--
+           <div ng-repeat="dish in (menu | toArray)" ng-click='displayDetail("dish.title")' class="menuItem">
+              <div class="menuItem-main">
+                <h2 class="title">{{ dish.title }}</h2>
+                <p class="price">${{ dish.price }}</p>
+                <p class="description">{{ dish.description }}</p>
+              </div>
+              <div class="menuItem-add" ng-click='addDish("dish.title")'><img src="../images/add.png"/></div>
+          </div>
+          -->
+          
 	         <div ng-repeat="(dishKey, dish) in menu" ng-click='displayDetail("{{ dishKey }}")' class="menuItem">
 	            <div class="menuItem-main">
 	            	<h2 class="title">{{ dish.title }}</h2>
 		            <p class="price">${{ dish.price }}</p>
 		            <p class="description">{{ dish.description }}</p>
-		            <!--<p>{{ dishKey }}{{ dish }}</p>-->
 	            </div>
 	            <div class="menuItem-add" ng-click='addDish("{{ dishKey }}")'><img src="../images/add.png"/></div>
 	        </div>
+          
 	    </div>
         <div class="menuNav">
         </div>
@@ -32,8 +43,7 @@
 
       <!--<detailView class="menuRight"></detailView>-->
 
-      <div class="menuRight" detail-view>
-          Insert detailed_view here
+      <div class="menuRight" ng-style="detailVisible()" detail-view>
       </div>
 
   </div>

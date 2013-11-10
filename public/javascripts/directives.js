@@ -1,6 +1,7 @@
 var directives = angular.module('afterthink.directives', []);
 
 directives.directive('detailView', function($document) {
+
   return {
     restrict: 'A',
     transclude: true,

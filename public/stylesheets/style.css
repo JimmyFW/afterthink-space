@@ -63,8 +63,8 @@ a {
 
 .sharedspace {
   display: block;
-	width: 900px;
-	height: 500px;
+	width: 1000px;
+	height: 600px;
   margin-left: auto;
   margin-right: auto;
 	border: 1px #CCCCCC dotted;
@@ -88,8 +88,9 @@ a {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 1000px;
-    height: 400px;
+    margin-top: 10px;
+    width: 1150px;
+    height: 500px;
     border-top: 5px #000 solid;
     border-left: 5px #000 solid;
     border-right: 5px #000 solid;
@@ -100,13 +101,13 @@ a {
  .menuLeft {
     display: inline-block;
     vertical-align: top;
-    width: 480px;
+    width: 550px;
     padding: 10px;
     border-right: 5px #000 solid;
  }
  
  	.menuLeft .all-items {
- 		max-height: 300px;
+ 		max-height: 400px;
     	overflow-y: scroll;
  	}
 
@@ -124,7 +125,7 @@ a {
   .menuLeft div.menuItem-main {
 	display: inline-block;
 	vertical-align: top;
-	width: 370px;
+	width: 440px;
 	padding-right: 5px;
 	border-right: 1px #ccc solid;
   	
@@ -147,10 +148,13 @@ a {
     margin: 10px;
     padding: 0;
   }
-  .menuLeft div.menuItem-main:active, .menuLeft div.menuItem-add:active {
+  .menuLeft div.menuItem-main:active {
     background: #FDFDFD;
   }
-  
+   .menuLeft div.menuItem-add:hover, .menuLeft div.menuItem-main:hover {
+      cursor: pointer;
+   }
+
   .menuLeft div.menuItem-add {
   	display: inline-block;
 	vertical-align: top;
@@ -165,8 +169,8 @@ a {
  .menuRight {
     display: inline-block;
     vertical-align: top;
-    width: 470px;
+    width: 550px;
     padding: 10px;
-    max-height: 500px;
-    overflow-y: scroll;
+    /*max-height: 600px;*/
+    /*overflow-y: scroll;*/
  }

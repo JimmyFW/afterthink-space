@@ -310,8 +310,8 @@
             "fiber": 15,
             "protein": 30
                         },
-                        "thumbnail": "images/thumbnails/edamame",
-                        "photo": "images/photos/edamame"
+                        "thumbnail": "images/thumbnails/edamame.jpg",
+                        "photo": "images/photos/edamame.jpg"
             },
 "EGG DROP SOUP CUP": {
                         "title": "EGG DROP SOUP CUP",
@@ -794,6 +794,6 @@
                 "protein": 23
                         },
                         "thumbnail": "images/thumbnails/garlicnoodles.jpg",
-                        "photo": "images/photos/garlicnoodes.jpg"
+                        "photo": "images/photos/garlicnoodles.jpg"
             }
 }

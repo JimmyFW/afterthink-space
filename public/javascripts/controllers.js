@@ -29,7 +29,10 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     $scope.photoHeight = 100;
 
     $scope.addUser = function () {
-      if($.inArray($scope.myKey), $scope.users) {
+      if($.inArray($scope.myKey, $scope.users)) {
+        console.log("User already exists");
+      }
+      else {
         $scope.users.push($scope.myKey);
       }
     }
@@ -56,6 +59,77 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
         }
       }
     }
+
+    $scope.revertButtons = function (state, dishId) {
+      $scope.dishes[dishId].state = "maybe";
+    }
+
+    $scope.returnButtons = function (state) {
+      if(state=="accepted") {
+        return {
+          "display": "none"
+        }
+      }
+      else {
+        return {
+          "display": "inline-block"
+        }
+      }
+    }
+
+    $scope.detailVisible = function () {
+      if(!$scope.dishDetail) {
+        return {
+          "display": "none"
+        };
+      }
+      else {
+        return {
+          "display": "inline-block"
+        };
+      }
+    }
+
+
+    $scope.fadePeppers1 = function (spiciness) {
+      if(spiciness > 0) {
+        return {
+          "opacity": 1
+        };
+      }
+      else {
+        return {
+          "opacity": .2
+        };
+      }
+    }
+
+    $scope.fadePeppers2 = function (spiciness) {
+      if(spiciness > 1) {
+        return {
+          "opacity": 1
+        };
+      }
+      else {
+        return {
+          "opacity": .2
+        };
+      }
+    }
+
+    $scope.fadePeppers2 = function (spiciness) {
+      if(spiciness > 2) {
+        return {
+          "opacity": 1
+        };
+      }
+      else {
+        return {
+          "opacity": .2
+        };
+      }
+    }
+
 
     $scope.assignKey = function () {
       var uuid = guid();
@@ -98,14 +172,31 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     }
 
     $scope.vegetarian = function (dishId) {
-      if($scope.dishes[dishId].vegetarian) {
+      console.log(dishId);
+      console.log("vegetarian? " + $scope.menu[dishId]["vegetarian"]);
+      if($scope.menu[dishId].vegetarian) {
         return {
           "opacity": 1
         };
       }
       else {
         return {
-          "opacity": .5
+          "opacity": .2
+        };
+      }
+    }
+
+    $scope.glutenfree = function (dishId) {
+      console.log(dishId);
+      console.log("gluten free? " + $scope.menu[dishId]["gluten-free"]);
+      if($scope.menu[dishId]["gluten-free"]) {
+        return {
+          opacity: 1
+        };
+      }
+      else {
+        return {
+          opacity: .2
         };
       }
     }
