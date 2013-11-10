@@ -29,11 +29,15 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     $scope.photoHeight = 100;
 
     $scope.addUser = function () {
-      if($.inArray($scope.myKey, $scope.users)) {
-        console.log("User already exists");
+      var index = $scope.users.indexOf($scope.myKey);
+      console.log("index of mykey: " + index);
+      if(index == -1) {
+        console.log("Adding user: " + $scope.myKey);
+        $scope.users.push($scope.myKey);
       }
       else {
-        $scope.users.push($scope.myKey);
+        console.log("User already exists");
+        console.log($scope.users);
       }
     }
 
@@ -168,12 +172,11 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     }
 
     $scope.displayDetail = function (dishKey) {
+      console.log("trying to display: " + dishKey);
       $scope.dishDetail = jQuery.extend(true, {}, $scope.menu[dishKey]); // deep copy
     }
 
     $scope.vegetarian = function (dishId) {
-      console.log(dishId);
-      console.log("vegetarian? " + $scope.menu[dishId]["vegetarian"]);
       if($scope.menu[dishId].vegetarian) {
         return {
           "opacity": 1
@@ -187,8 +190,6 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     }
 
     $scope.glutenfree = function (dishId) {
-      console.log(dishId);
-      console.log("gluten free? " + $scope.menu[dishId]["gluten-free"]);
       if($scope.menu[dishId]["gluten-free"]) {
         return {
           opacity: 1

@@ -16,7 +16,7 @@
             "fiber": 8,
             "protein": 32
                         },
-                        "thumbnail": "images/thumbnails/starters/chickenlettucewraps.jpg",
+                        "thumbnail": "images/thumbnails/chickenlettucewraps.jpg",
                         "photo": "images/photos/chickenlettucewraps.jpg"
             },
 "DUMPLINGS": {
@@ -36,7 +36,7 @@
             "fiber": 5,
             "protein": 23
                         },
-                        "thumbnail": "images/thumbnails/starters/dumplings.jpg",
+                        "thumbnail": "images/thumbnails/dumplings.jpg",
                         "photo": "images/photos/dumplings.jpg"
             },
 "AHI CRISP": {
@@ -56,7 +56,7 @@
             "fiber": 3,
             "protein": 26
                         },
-                        "thumbnail": "images/thumbnails/starters/ahicrisps.jpg",
+                        "thumbnail": "images/thumbnails/ahicrisps.jpg",
                         "photo": "images/photos/ahicrisps.jpg"
             },
 "SALT & PEPPER CALAMARI": {
@@ -76,7 +76,7 @@
             "fiber": 1,
             "protein": 26
                         },
-                        "thumbnail": "images/thumbnails/starters/saltpeppercalamari.jpg",
+                        "thumbnail": "images/thumbnails/saltpeppercalamari.jpg",
                         "photo": "images/photos/saltpeppercalamari.jpg"
             },
 "NORTHERN-STYLE SPARE RIBS": {
@@ -96,7 +96,7 @@
             "fiber": 2,
             "protein": 97
                         },
-                        "thumbnail": "images/thumbnails/starters/northernstylespareribs.jpg",
+                        "thumbnail": "images/thumbnails/northernstylespareribs.jpg",
                         "photo": "images/photos/northernstylespareribs.jpg"
             },
 
@@ -117,8 +117,8 @@
             "fiber": 7,
             "protein": 25
                         },
-                        "thumbnail": "images/thumbnails/starters/vegetarianlettucewraps.jpg",
-                        "photo": ""
+                        "thumbnail": "images/thumbnails/vegetarianlettucewraps.jpg",
+                        "photo": "images/photos/vegetarianlettucewraps.jpg"
             },
 "EGG ROLLS": {
                         "title": " EGG ROLLS",
@@ -135,7 +135,7 @@
             "fiber": 7,
             "protein": 18
                         },
-                        "thumbnail": "images/thumbnails/starters/eggrolls.jpg",
+                        "thumbnail": "images/thumbnails/eggrolls.jpg",
                         "photo": "images/photos/eggrolls.jpg"
             },
 "FLAMING RED WONTONS": {
@@ -155,7 +155,7 @@
             "fiber": 5,
             "protein": 24
                         },
-                        "thumbnail": "images/thumbnails/starters/flamingredwontons.jpg",
+                        "thumbnail": "images/thumbnails/flamingredwontons.jpg",
                         "photo": "images/photos/flamingredwontons.jpg"
             },
 "TUNA TATAKI": {
@@ -175,7 +175,7 @@
             "fiber": 4,
             "protein": 19
                         },
-                        "thumbnail": "images/thumbnails/starters/tunatataki.jpg",
+                        "thumbnail": "images/thumbnails/tunatataki.jpg",
                         "photo": "images/photos/tunatataki.jpg"
             },
 "CHANG'S SPARE RIBS": {
@@ -195,7 +195,7 @@
             "fiber": 3,
             "protein": 98
                         },
-                        "thumbnail": "images/thumbnails/starters/spareribs.jpg",
+                        "thumbnail": "images/thumbnails/spareribs.jpg",
                         "photo": "images/photos/spareribs.jpg"
             },
 "CRAB WONTONS": {
@@ -215,7 +215,7 @@
             "fiber": 1,
             "protein": 15
                         },
-                        "thumbnail": "images/thumbnails/starters/crabwontons.jpg",
+                        "thumbnail": "images/thumbnails/crabwontons.jpg",
                         "photo": "images/photos/crabwontons.jpg"
             },
 "CRISPY GREEN BEANS": {
@@ -235,7 +235,7 @@
             "fiber": 7,
             "protein": 7
                         },
-                        "thumbnail": "images/thumbnails/starters/crispygreenbeans.jpg",
+                        "thumbnail": "images/thumbnails/crispygreenbeans.jpg",
                         "photo": "images/photos/crispygreenbeans.jpg"
             },
 "SPRING ROLLS": {
@@ -255,7 +255,7 @@
             "fiber": 1,
             "protein": 5
                         },
-                        "thumbnail": "images/thumbnails/starters/springrolls.jpg",
+                        "thumbnail": "images/thumbnails/springrolls.jpg",
                         "photo": "images/photos/springrolls.jpg"
             },
 "DYNAMITE SHRIMP": {
@@ -275,7 +275,7 @@
             "fiber": 1,
             "protein": 5
                         },
-                        "thumbnail": "images/thumbnails/starters/dynamiteshrimp.jpg",
+                        "thumbnail": "images/thumbnails/dynamiteshrimp.jpg",
                         "photo": "images/photos/dynamiteshrimp.jpg"
             },
 "EDAMAME": {
@@ -295,7 +295,7 @@
             "fiber": 15,
             "protein": 30
                         },
-                        "thumbnail": "images/thumbnails/starters/edamame",
+                        "thumbnail": "images/thumbnails/edamame",
                         "photo": "images/photos/edamame"
             },
 "EGG DROP SOUP ": {
