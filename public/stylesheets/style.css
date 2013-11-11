@@ -24,6 +24,12 @@ a {
 	cursor: pointer;
 	overflow: visible;
 }
+
+.bell {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
 /*
 .closeButton {
 	float: right;
@@ -68,28 +74,39 @@ a {
   margin-left: auto;
   margin-right: auto;
 	border: 1px #CCCCCC dotted;
+  background: #FFFFFF;
 }
 
 .others {
-  max-height: 540px;
+  max-height: 520px;
   overflow-y: auto;
 }
 
 .yours {
   position: absolute;
-  bottom: 120px;
-  width: 1400px;
+  bottom: 110px;
+  width: 1375px;
   text-align: center;
   overflow-x: auto;
   overflow-y: hidden;
+  min-height: 150px;
   max-height: 170px;
   white-space: nowrap;
 
+  background: #EEEEEE;
+  border: 1px dotted #CCCCCC;
+  padding-top: 10px;
+  margin: 10px;
+
+
+  -moz-border-radius: 20px;
+  border-radius: 20px;
 }
 
 .draggable {
   width: 170px;
   overflow: hidden;
+  white-space: nowrap;
 }
 
 .user {
@@ -134,6 +151,7 @@ a {
     width: 550px;
     padding: 10px;
     border-right: 5px #000 solid;
+    position: relative;
  }
  
  	.menuLeft .all-items {
@@ -158,6 +176,7 @@ a {
 	width: 440px;
 	padding-right: 5px;
 	border-right: 1px #ccc solid;
+  height: 100px;
   	
   }
   .menuLeft div.menuItem h2.title {
@@ -183,12 +202,17 @@ a {
   }
    .menuLeft div.menuItem-add:hover, .menuLeft div.menuItem-main:hover {
       cursor: pointer;
+    background: #DDDDDD;
+
    }
 
   .menuLeft div.menuItem-add {
+    /*background: #BBBBBB;*/
   	display: inline-block;
-	vertical-align: top;
-	width: 60px;
+    vertical-align: top;
+    /*width: 60px;*/
+    width: 70px;
+    height: 100px;
   }
   .menuLeft div.menuItem-add img{
   	width: 30px;

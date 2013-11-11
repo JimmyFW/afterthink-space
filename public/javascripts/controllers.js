@@ -4,13 +4,10 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
   function($scope, angularFire) {
     console.log("LOAD MyCtrl");
 
-    var items = new Firebase('https://groupthought.firebaseio.com/gamestate');
-    angularFire(items, $scope, "items");
-
     var users = new Firebase('https://groupthought.firebaseio.com/users');
     angularFire(users, $scope, "users");
 
-    var dishes = new Firebase('https://groupthought.firebaseio.com/sharedspace/dishes');
+    var dishes = new Firebase('https://groupthought.firebaseio.com/dishes');
     angularFire(dishes, $scope, "dishes");
 
     var menu = new Firebase('https://groupthought.firebaseio.com/menu');
@@ -44,9 +41,23 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
       }
     }
 
-    $scope.deleteUser = function (item) {
-      var index = $scope.users.indexOf(item);
+    $scope.deleteUser = function (user) {
+      console.log("Hello");
+
+      for (var key in $scope.dishes) {
+        var value = $scope.dishes[key];
+        console.log(value.author + ' ' + user);
+        if(value.author == user) {
+          var removed = $scope.dishes[value.id];
+          delete $scope.dishes[value.id];
+          console.log("deleting a dish! " + removed);
+          console.log("removed dish: " + value.id);
+        }
+      }
+
+      var index = $scope.users.indexOf(user);
       $scope.users.splice(index, 1);
+
     }
 
     $scope.switchUser = function (user) {
@@ -147,11 +158,14 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     }
 
     $scope.revertButtons = function (state, dishId) {
-      if($scope.dishes[dishId].state == "accepted") {
-        $scope.dishes[dishId].state = "proposed";
-      }
-      else if($scope.dishes[dishId].state == "maybe") {
-        $scope.dishes[dishId].state = "proposed";
+      var author = $scope.dishes[dishId].author;
+      if(author == $scope.myKey) {
+        if($scope.dishes[dishId].state == "accepted") {
+          $scope.dishes[dishId].state = "proposed";
+        }
+        else if($scope.dishes[dishId].state == "maybe") {
+          $scope.dishes[dishId].state = "proposed";
+        }
       }
       
     }
@@ -227,9 +241,6 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
       };
     }
 
-    $scope.deleteKey = function ($index) {
-    }
-
     $scope.addItem = function (e) {
       if(e.keyCode != 13) return;
       $scope.items.push($scope.nextItem);
@@ -244,6 +255,11 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
       // splice returns the elements removed and modifies the array in place
       $scope.items.splice(index, 1); // remove one item after the index
       console.log("removed item: " + index);
+    }
+
+    $scope.clearAll = function () {
+      $scope.dishes = {};
+      $scope.users = [];
     }
 
     $scope.displayDetail = function (dishKey) {
@@ -284,57 +300,79 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
 
     $scope.addDish = function (dishKey) {
 
-      console.log("adding dish: " + $scope.dishes);
+      var index = $scope.users.indexOf($scope.myKey);
 
-      var dish = jQuery.extend(true, {}, $scope.menu[dishKey]); // deep copy
-      var uuid = guid();
-      dish["id"] = uuid;
-      dish["state"] = "proposed";
-      dish["xpos"] = 110;
-      dish["ypos"] = 110;
-      dish["startX"] = -1;
-      dish["startY"] = -1;
-      dish["author"] = $scope.myKey;
-      $scope.dishes[uuid] = dish;
+      if(index > -1) {
 
-      function s4() {
-        return Math.floor((1 + Math.random()) * 0x10000)
-                   .toString(16)
-                   .substring(1);
-      };
+        console.log("adding dish: " + $scope.dishes);
 
-      function guid() {
-        return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-               s4() + '-' + s4() + s4() + s4();
-      };
+        var dish = jQuery.extend(true, {}, $scope.menu[dishKey]); // deep copy
+        var uuid = guid();
+        dish["id"] = uuid;
+        dish["state"] = "proposed";
+        dish["xpos"] = 110;
+        dish["ypos"] = 110;
+        dish["startX"] = -1;
+        dish["startY"] = -1;
+        dish["author"] = $scope.myKey;
+        $scope.dishes[uuid] = dish;
+
+        function s4() {
+          return Math.floor((1 + Math.random()) * 0x10000)
+                     .toString(16)
+                     .substring(1);
+        };
+
+        function guid() {
+          return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+                 s4() + '-' + s4() + s4() + s4();
+        };
+      }
 
     }
 
-    $scope.deleteDish = function (dishId, event) {
+    $scope.deleteDish = function (dishId) {
 
-      event.preventDefault();
+      //event.preventDefault();
+
+      var author = $scope.dishes[dishId].author;
+      if(author == $scope.myKey) {
 
       var removed = $scope.dishes[dishId];
       delete $scope.dishes[dishId];
       console.log("deleting a dish! " + removed);
       console.log("removed dish: " + dishId);
+      }
       
     }
 
     $scope.acceptDish = function (dishId, event) {
       event.preventDefault();
 
+      var author = $scope.dishes[dishId].author;
+      if(author == $scope.myKey) {
+
       $scope.dishes[dishId].state = "accepted";
       console.log("accepted dish: " + dishId);
+
+      }
       
     }
 
     $scope.maybeDish = function (dishId, event) {
       event.preventDefault();
 
+      var author = $scope.dishes[dishId].author;
+      if(author == $scope.myKey) {
+
       $scope.dishes[dishId].state = "maybe";
       console.log("maybed dish: " + dishId);
+      }
       
+    }
+
+    $scope.callWaiter = function () {
+      alert("Sup");
     }
 
     $scope.moveDish = function (dishId, event) {
