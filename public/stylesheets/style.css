@@ -27,8 +27,9 @@ a {
 
 .bell {
   position: absolute;
-  top: 10px;
+  top: 6px;
   right: 10px;
+  z-index: 10;
   /*background: #000000;*/
 }
 

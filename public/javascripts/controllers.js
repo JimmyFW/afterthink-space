@@ -326,10 +326,6 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
         var uuid = guid();
         dish["id"] = uuid;
         dish["state"] = "proposed";
-        dish["xpos"] = 110;
-        dish["ypos"] = 110;
-        dish["startX"] = -1;
-        dish["startY"] = -1;
         dish["author"] = $scope.myKey;
         $scope.dishes[uuid] = dish;
 
