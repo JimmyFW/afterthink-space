@@ -19,6 +19,9 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     var done = new Firebase('https://groupthought.firebaseio.com/done');
     angularFire(done, $scope, "done");
 
+    var debug = new Firebase('https://groupthought.firebaseio.com/debug');
+    angularFire(debug, $scope, "debug");
+
     dishes.on('child_added', function (snapshot) {
       console.log(snapshot.name());
     });
@@ -75,6 +78,20 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
         console.log(user);
         return user !== $scope.myKey;
       }
+    }
+
+    $scope.returnDebugStyle = function () {
+      if($scope.debug == true) {
+        return {
+          "display": "block"
+        }
+      }
+      else {
+        return {
+          "display": "none"
+        }
+      }
+      
     }
 
     $scope.returnFinalOrderStyle = function () {

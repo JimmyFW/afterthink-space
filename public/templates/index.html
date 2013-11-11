@@ -84,9 +84,12 @@
 
   </div>
 
-<!--
-  <div ng-repeat="dish in (dishes | toArray) | filter: {state: search_state}">{{ dish.id }}</div>
--->
+  <div id="debug" ng-style="returnDebugStyle()">
+    <h1>Debug Panel</h1>
+    <div>{{myKey}}</div>
+    <div ng-repeat="dish in (dishes | toArray) | filter: {state: search_state}">{{ dish.id }}</div>
+  </div>
+
   <!--
   <input type="button" ng-click="clearAll()" value="Clear Table" /><br />
 -->
