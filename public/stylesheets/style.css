@@ -63,22 +63,51 @@ a {
 
 .sharedspace {
   display: block;
-	width: 1000px;
-	height: 600px;
+	width: 1400px;
+	height: 700px;
   margin-left: auto;
   margin-right: auto;
 	border: 1px #CCCCCC dotted;
 }
 
+.others {
+  max-height: 540px;
+  overflow-y: auto;
+}
 
+.yours {
+  position: absolute;
+  bottom: 120px;
+  width: 1400px;
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-height: 170px;
+  white-space: nowrap;
 
+}
+
+.draggable {
+  width: 170px;
+  overflow: hidden;
+}
 
 .user {
-  background: #AAA;
-  border: 1px solid #000;
+  background: #FDFDFD;
+  border: 1px dotted #CCCCCC;
+  padding: 3px;
   margin: 10px;
   display: inline-block;
   vertical-align: top;
+  width: auto;
+  max-width: 1350px;
+  min-width: 180px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-height: 200px;
+  white-space: nowrap;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
 }
 
 
@@ -89,13 +118,14 @@ a {
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
+    margin-bottom: 10px;
     width: 1150px;
-    height: 500px;
     border-top: 5px #000 solid;
     border-left: 5px #000 solid;
     border-right: 5px #000 solid;
+    border-bottom: 5px #000 solid;
     font-family: Helvetica, Arial;
-    max-height: 500px;
+    max-height: 600px;
 }
 
  .menuLeft {
@@ -174,3 +204,30 @@ a {
     /*max-height: 600px;*/
     /*overflow-y: scroll;*/
  }
+
+
+  .section-nav {
+    display: block;
+    height: 30px;
+    font-family: Helvetica, Arial;
+    font-size: 16px;
+    text-transform: capitalize;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+  }
+  .section-nav li {
+    display: inline-block;
+    vertical-align: top;
+    padding-right: 15px;
+    text-decoration: underline;
+  }
+  .section-nav li:hover {
+    cursor: pointer;
+  }
+  .section-nav li:active {
+    text-decoration: none;
+  }
+  .section-title {
+    text-transform: uppercase;
+  }

@@ -16,6 +16,9 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     var menu = new Firebase('https://groupthought.firebaseio.com/menu');
     angularFire(menu, $scope, "menu");
 
+    var sections = new Firebase('https://groupthought.firebaseio.com/sections');
+    angularFire(sections, $scope, "sections");
+
     dishes.on('child_added', function (snapshot) {
       console.log(snapshot.name());
     });
@@ -24,8 +27,8 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
       console.log(snapshot.name());
     });
 
-    $scope.currentSection = 0;
-    $scope.photoWidth = 150;
+    $scope.currentSection = "starters";
+    $scope.photoWidth = 100;
     $scope.photoHeight = 100;
 
     $scope.addUser = function () {
@@ -46,39 +49,111 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
       $scope.users.splice(index, 1);
     }
 
-    $scope.returnColor = function (state) {
-      if(state=="accepted") {
-        return {
-          "border": "4px #00FF00 solid"
-        }
+    $scope.switchUser = function (user) {
+      $scope.myKey = user;
+    }
+
+    $scope.filterNotYou = function(user) {
+      if(!$scope.myKey) {
+        return true;
       }
-      else if(state=="proposed") {
-        return {
-          "border": "4px #CCCCCC solid"
-        }
-      }
-      else if(state=="maybe") {
-        return {
-          "border": "4px #0000FF solid"
-        }
+      else {
+        console.log(user);
+        return user !== $scope.myKey;
       }
     }
 
-    $scope.revertButtons = function (state, dishId) {
-      $scope.dishes[dishId].state = "maybe";
+    $scope.returnMenuItemStyle = function (dishKey) {
+      var styleObj = {};
+      for (var key in $scope.dishes) {
+        //var lookedAt = [];
+        var value = $scope.dishes[key];
+        //lookedAt.push(key);
+        if(dishKey == value.title) {
+          if(value.state=="accepted") {
+            styleObj["border-color"] = "#00FF00";
+          }
+          if(value.state=="maybe") {
+            if(styleObj["border-color"] != "#00FF00") {
+              styleObj["border-color"] = "#0000FF";
+            }
+          }
+          if(value.state=="proposed") {
+            if(styleObj["border-color"] != "#00FF00" && styleObj["border-color"] != "#0000FF") {
+              styleObj["border-color"] = "#CCCCCC";
+            }
+          }
+
+        }
+      }
+      return styleObj;
+    }
+
+    $scope.returnBoxStyle = function (state) {
+      var styleObj = {
+        "display": "inline-block"
+      };
+      if(state=="accepted") {
+        //styleObj["border"] = "4px #00FF00 solid";
+        styleObj["width"] = 100;
+      }
+      else if(state=="proposed") {
+        //styleObj["border"] = "4px #CCCCCC solid";
+        styleObj["width"] = 160;
+        //styleObj["height"] = 100;
+      }
+      else if(state=="maybe") {
+        //styleObj["border"] = "4px #0000FF solid";
+        styleObj["width"] = 100;
+        //styleObj["height"] = 70;
+      }
+      return styleObj;
+    }
+
+    $scope.returnDishStyle = function (state) {
+      var styleObj = {
+        "width": $scope.photoWidth,
+        "height": $scope.photoHeight
+      }
+      if(state=="accepted") {
+        styleObj["border"] = "4px #00FF00 solid";
+      }
+      else if(state=="proposed") {
+        styleObj["border"] = "4px #CCCCCC solid";
+      }
+      else if(state=="maybe") {
+        styleObj["border"] = "4px #0000FF solid";
+        styleObj["width"] = 50;
+        styleObj["height"] = 50;
+      }
+      return styleObj;
     }
 
     $scope.returnButtons = function (state) {
+      var styleObj = {
+        "width": $scope.photoWidth,
+        "height": $scope.photoHeight
+      }
       if(state=="accepted") {
-        return {
-          "display": "none"
-        }
+        styleObj["display"] = "none";
       }
-      else {
-        return {
-          "display": "inline-block"
-        }
+      else if(state=="proposed") {
+        styleObj["display"] = "inline-block";
       }
+      else if(state=="maybe") {
+        styleObj["display"] = "none";
+      }
+      return styleObj;
+    }
+
+    $scope.revertButtons = function (state, dishId) {
+      if($scope.dishes[dishId].state == "accepted") {
+        $scope.dishes[dishId].state = "proposed";
+      }
+      else if($scope.dishes[dishId].state == "maybe") {
+        $scope.dishes[dishId].state = "proposed";
+      }
+      
     }
 
     $scope.detailVisible = function () {
@@ -174,6 +249,11 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     $scope.displayDetail = function (dishKey) {
       console.log("trying to display: " + dishKey);
       $scope.dishDetail = jQuery.extend(true, {}, $scope.menu[dishKey]); // deep copy
+    }
+
+    $scope.changeSection = function (section) {
+      console.log("trying to change section: " + section);
+      $scope.currentSection = section; // deep copy
     }
 
     $scope.vegetarian = function (dishId) {

@@ -2,33 +2,36 @@
   <h1>Prototype. You are: {{ myKey }}</h1>
   <!--<input type="button" ng-click="assignKey()" ng-model="myKey" value="Join the table" /><br />-->
 
-    <div ng-repeat="user in users" class="user">
-      {{ user }}
-    </div>
-
   <div class="sharedspace">
-    <div ng-repeat="user in users" class="user">
-      {{ user }}
-      <span ng-click="deleteUser(user)">x</span>
-      <draggable ng-repeat="dish in (dishes | toArray) | filter: {author: user}" uniqueDish="{{ dish.id }}"></draggable>
-      <!--
-       ng-style="updatePos(dish.id)"
-     -->
+    <div class="others">
+      <div ng-repeat="user in users | filter:filterNotYou" class="user" ng-click="switchUser(user)">
+        <span>{{ user }}
+        <span ng-click="deleteUser(user)">x</span>
+        </span>
+        <br />
+        <draggable class="draggable" ng-repeat="dish in (dishes | toArray) | filter: {author: user} " uniqueDish="{{ dish.id }}"></draggable>
+        <!--
+         ng-style="updatePos(dish.id)"
+       -->
+      </div>
     </div>
-      
+    
+    <div class="yours" ng-show="myKey">
+    <draggable ng-repeat="dish in (dishes | toArray) | filter: {author: myKey} " uniqueDish="{{ dish.id }}"></draggable>
+    </div>
   </div>
 
   <div id="menuMain">
       <div class="menuLeft">
-        <h2 class="section-title">~ MENU ~</h2>
+        <h2 class="section-title">~ {{ currentSection }} ~</h2>
 <!--
         <div ng-repeat="dish in (menu | toArray)">{{ dish }}</div>
       -->
         
         <div class="all-items">
           
-           <div ng-repeat="dish in (menu | toArray)" ng-click='displayDetail(dish.title)' class="menuItem">
-              <div class="menuItem-main">
+           <div ng-repeat="dish in (menu | toArray) | filter: {section: currentSection}" class="menuItem" ng-style="returnMenuItemStyle(dish.title)">
+              <div class="menuItem-main" ng-click='displayDetail(dish.title)'>
                 <h2 class="title">{{ dish.title }}</h2>
                 <p class="price">${{ dish.price }}</p>
                 <p class="description">{{ dish.description }}</p>
@@ -36,20 +39,13 @@
               <div class="menuItem-add" ng-click='addDish(dish.title)'><img src="../images/add.png"/></div>
           </div>
           
-          <!--
-	         <div ng-repeat="(dishKey, dish) in menu" ng-click='displayDetail("{{ dishKey }}")' class="menuItem">
-	            <div class="menuItem-main">
-	            	<h2 class="title">{{ dish.title }}</h2>
-		            <p class="price">${{ dish.price }}</p>
-		            <p class="description">{{ dish.description }}</p>
-	            </div>
-	            <div class="menuItem-add" ng-click='addDish("{{ dishKey }}")'><img src="../images/add.png"/></div>
-	        </div>
-        -->
-          
-	    </div>
-        <div class="menuNav">
         </div>
+        <div class="section-nav">
+          <ul>
+            <li ng-repeat="section in sections" ng-click="changeSection(section)">{{ section }}</li>
+          </ul>
+        </div>
+
       </div>
 
       <!--<detailView class="menuRight"></detailView>-->

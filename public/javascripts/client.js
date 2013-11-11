@@ -24,3 +24,8 @@ Site.filter('toArray', function () {
         });
     }
 });
+
+/*
+Site.filter('notEqual', function (friend) {
+  return friend.group !== "group2"; 
+} */

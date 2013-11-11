@@ -1,13 +1,18 @@
 <style>
 	.food-icon {
-		width:170px;
+		width:150px;
 		display:inline-block;
 		vertical-align: top;
+		text-align: center;
+		margin-left: 5px;
+		margin-right: 5px;
 	}
-	.food-icon div.infoBox{
+	.food-icon div.infoBox {
 		display: inline-block;
 		vertical-align: top;
 		width: 100px;
+		margin-left: auto;
+		margin-right: auto;
 	}
 	.food-icon div.infoBox img {
 		width: 100px;
@@ -21,13 +26,15 @@
 		display: inline-block;
 		padding:0;
 		margin: 0;
+		margin-top: 10px;
+		max-width: 60px;
 		vertical-align: top;
 	}
 	.food-icon ul li{
 		cursor: pointer;
 		list-style-type: none;
 		margin-top:0;
-		margin-left: 14px;
+		margin-left: 0px;
 		margin-bottom: 6px;
 	}
 	.food-icon ul li img {
@@ -35,6 +42,11 @@
 		height: 25px;
 	}
 	.food-icon h4 {
+
+	}
+	.dish-title {
+		width: 160px;
+		white-space: normal;
 		display:block;
 		margin: 5px;
 		width: 100px;
@@ -42,14 +54,14 @@
 	}
 </style>
 
-<div class="food-icon">
+<div class="food-icon" ng-style="returnBoxStyle(dish.state)">
 	<div class="infoBox">
-		<img ng-src="/{{ dish.photo }}" ng-style="returnColor(dish.state)" width="{{ photoWidth }}" height="{{ photoHeight }}" ng-click="revertButtons(dish.state, dish.id)" />
+		<img ng-src="/{{ dish.photo }}" ng-style="returnDishStyle(dish.state)" ng-click="revertButtons(dish.state, dish.id)" />
 	</div>
 	<ul ng-style="returnButtons(dish.state)">
 		<li class="closeButton" ng-click='deleteDish("{{ dish.id }}", $event)'><img src="../images/remove.png"/></li>
 		<li class="maybeButton" ng-click='maybeDish("{{ dish.id }}", $event)'><img src="../images/maybe.png"/></li>
 		<li class="acceptButton" ng-click='acceptDish("{{ dish.id }}", $event)'><img src="../images/accept.png"/></li>
 	</ul>
-	<h4 class="dish-title">{{ dish.title }}</h4>
+	<p class="dish-title">{{ dish.title }}</p>
 </div>
