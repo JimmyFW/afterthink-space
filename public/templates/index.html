@@ -1,5 +1,17 @@
+<div class="finalOrder" ng-style="returnFinalOrderStyle()">
+  Hi. I am your waiter. Please confirm your order.
+  <ol>
+  <li ng-repeat="dish in (dishes | toArray) | filter: {state: 'accepted'}">{{ dish.title }}</li>
+  </ol>
+  <div ng-click="confirmOrder()">Confirm</div><br />
+  <div ng-click="noConfirmOrder()">Go Back</div>
+  
+</div>
+
 <div id="wrapper">
-  <h1>Prototype. You are: {{ myKey }}</h1>
+  <h1>You are: {{ myKey }}</h1>
+
+
   <!--<input type="button" ng-click="assignKey()" ng-model="myKey" value="Join the table" /><br />-->
 
   <div class="sharedspace">
@@ -21,7 +33,14 @@
 
   <div id="menuMain">
       <div class="menuLeft">
-        <div class="bell" ng-click="callWaiter()"><img ng-src="/images/bell.png" width="50px" height="50px" /></div>
+
+        <div class="bell">
+          <button type="submit" ng-click="callWaiter()"><img ng-src="/images/bell.png" width="50px" height="50px" /></button>
+          <!--
+          style="border: 0; background: transparent"
+          
+        -->
+        </div>
         <div><h2 class="section-title">~ {{ currentSection }} ~</h2></div>
 <!--
         <div ng-repeat="dish in (menu | toArray)">{{ dish }}</div>
@@ -65,9 +84,12 @@
 
   </div>
 
-
+<!--
   <div ng-repeat="dish in (dishes | toArray) | filter: {state: search_state}">{{ dish.id }}</div>
+-->
+  <!--
   <input type="button" ng-click="clearAll()" value="Clear Table" /><br />
+-->
 <!--
   <input type='string' size='4' max='9999' ng-model='search_state'/>
 -->

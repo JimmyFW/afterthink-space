@@ -16,6 +16,9 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     var sections = new Firebase('https://groupthought.firebaseio.com/sections');
     angularFire(sections, $scope, "sections");
 
+    var done = new Firebase('https://groupthought.firebaseio.com/done');
+    angularFire(done, $scope, "done");
+
     dishes.on('child_added', function (snapshot) {
       console.log(snapshot.name());
     });
@@ -72,6 +75,18 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
         console.log(user);
         return user !== $scope.myKey;
       }
+    }
+
+    $scope.returnFinalOrderStyle = function () {
+      var styleObj = {};
+      console.log($scope.done);
+      if($scope.done){
+        styleObj["display"] = "block";
+      }
+      else {
+        styleObj["display"] = "none";
+      }
+      return styleObj;
     }
 
     $scope.returnMenuItemStyle = function (dishKey) {
@@ -241,25 +256,9 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
       };
     }
 
-    $scope.addItem = function (e) {
-      if(e.keyCode != 13) return;
-      $scope.items.push($scope.nextItem);
-      $scope.nextItem = "";
-    }
-
-    $scope.deleteItem = function (index) {
-      if(index >= $scope.items.length) {
-        console.log("we have a problme. index: " + index);
-        return;
-      }
-      // splice returns the elements removed and modifies the array in place
-      $scope.items.splice(index, 1); // remove one item after the index
-      console.log("removed item: " + index);
-    }
-
     $scope.clearAll = function () {
-      $scope.dishes = {};
-      $scope.users = [];
+      $scope.dishes = {"Dummy":{"Hello": "Dummy"}};
+      $scope.users = ["Dummy"];
     }
 
     $scope.displayDetail = function (dishKey) {
@@ -372,7 +371,51 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     }
 
     $scope.callWaiter = function () {
-      alert("Sup");
+      console.log('Bell has been rung');
+      $('#wrapper').hide();
+      $scope.done = true;
+
+      /*
+      var answer = confirm("Hello! I'm your waiter." + $scope.dishes);
+      if (answer == true){
+          return true;
+      }else{
+          return false;
+      }
+      */
+    }
+
+    $scope.confirmOrder = function () {
+      console.log("Order has been confirmed");
+      for(var key in $scope.dishes) {
+        if(key!="9be4a913-83c2-c90e-b0c0-9795500f92d3") {
+          var removed = $scope.dishes[key];
+          delete $scope.dishes[key];
+          console.log("deleting a dish! " + removed);
+          console.log("removed dish: " + key);
+        }
+      }
+      $scope.users.splice(1, $scope.users.length+1);
+      /*
+      for(var i=0; i<$scope.users.length; i++) {
+        if($scope.users[i]!="On The House") {
+          $scope.users.splice(i, 1);
+        }
+      }
+      */
+      /*
+      $scope.watch(function() {
+        $scope.done = false;
+      });*/
+      $scope.done = false;
+      $('#wrapper').show();
+
+    }
+
+    $scope.noConfirmOrder = function () {
+      $scope.done = false;
+      $('#wrapper').show();
+      
     }
 
     $scope.moveDish = function (dishId, event) {
