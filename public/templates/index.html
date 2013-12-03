@@ -14,40 +14,20 @@
 
   <!--<input type="button" ng-click="assignKey()" ng-model="myKey" value="Join the table" /><br />-->
 
-  <div class="sharedspace">
-    <div class="others">
-      <div ng-repeat="user in users | filter:filterNotYou" class="user">
-        <span>{{ user }}</span>
-        <br />
-        <draggable class="draggable" ng-repeat="dish in (dishes | toArray) | filter: {author: user} " uniqueDish="{{ dish.id }}"></draggable>
-        <!--
-         ng-style="updatePos(dish.id)"
-       -->
-      </div>
-    </div>
-    
-    <div class="yours" ng-show="myKey">
-    <draggable ng-repeat="dish in (dishes | toArray) | filter: {author: myKey} " uniqueDish="{{ dish.id }}"></draggable>
-    </div>
-  </div>
-
   <div id="menuMain">
       <div class="menuLeft">
-
-        <div class="bell">
-          <button type="submit" ng-click="callWaiter()"><img ng-src="/images/bell.png" width="50px" height="50px" /></button>
-          <!--
-          style="border: 0; background: transparent"
-          
-        -->
-        </div>
         <div><h2 class="section-title">~ {{ currentSection }} ~</h2></div>
 <!--
         <div ng-repeat="dish in (menu | toArray)">{{ dish }}</div>
       -->
-        
+        <div class="section-nav">
+          <ul>
+            <li ng-repeat="section in sections" ng-click="changeSection(section)">{{ section }}</li>
+          </ul>
+        </div>
+
         <div class="all-items">
-          
+
            <div ng-repeat="dish in (menu | toArray) | filter: {section: currentSection}" class="menuItem" ng-style="returnMenuItemStyle(dish.title)">
               <div class="menuItem-main" ng-click='displayDetail(dish.title)'>
                 <h2 class="title">{{ dish.title }}</h2>
@@ -58,11 +38,6 @@
           </div>
           
         </div>
-        <div class="section-nav">
-          <ul>
-            <li ng-repeat="section in sections" ng-click="changeSection(section)">{{ section }}</li>
-          </ul>
-        </div>
 
       </div>
 
@@ -72,6 +47,12 @@
       </div>
 
   </div>
+    <div class="yours" ng-show="myKey">
+    <draggable ng-repeat="dish in (dishes | toArray) | filter: {author: myKey} " uniqueDish="{{ dish.id }}"></draggable>
+    </div>
+
+
+  <!-- USER SELECTION AND DEBUGING -->
 
   <div class="users">
 
@@ -88,6 +69,7 @@
     <h1>Debug Panel</h1>
     <div>{{myKey}}</div>
     <div ng-repeat="dish in (dishes | toArray) | filter: {state: search_state}">{{ dish.id }}</div>
+
   </div>
 
   <!--

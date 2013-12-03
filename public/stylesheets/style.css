@@ -90,9 +90,7 @@ a {
 }
 
 .yours {
-  position: absolute;
-  bottom: 30px;
-  width: 1375px;
+  position: relative;
   text-align: center;
   overflow-x: auto;
   overflow-y: hidden;
