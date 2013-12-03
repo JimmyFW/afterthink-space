@@ -15,6 +15,10 @@
   <!--<input type="button" ng-click="assignKey()" ng-model="myKey" value="Join the table" /><br />-->
 
   <div class="sharedspace">
+    <div class="bell">
+      <button type="submit" ng-click="callWaiter()"><img ng-src="/images/bell.png" width="50px" height="50px" /></button>
+    </div>
+
     <div class="others">
       <div ng-repeat="user in users | filter:filterNotYou" class="user">
         <span>{{ user }}</span>
@@ -31,20 +35,12 @@
     </div>
   </div>
 
+<!--
   <div id="menuMain">
       <div class="menuLeft">
 
-        <div class="bell">
-          <button type="submit" ng-click="callWaiter()"><img ng-src="/images/bell.png" width="50px" height="50px" /></button>
-          <!--
-          style="border: 0; background: transparent"
-          
-        -->
-        </div>
+
         <div><h2 class="section-title">~ {{ currentSection }} ~</h2></div>
-<!--
-        <div ng-repeat="dish in (menu | toArray)">{{ dish }}</div>
-      -->
         
         <div class="all-items">
           
@@ -66,12 +62,11 @@
 
       </div>
 
-      <!--<detailView class="menuRight"></detailView>-->
-
       <div class="menuRight" ng-style="detailVisible()" detail-view>
       </div>
 
   </div>
+-->
 
   <div class="users">
 
@@ -89,12 +84,4 @@
     <div>{{myKey}}</div>
     <div ng-repeat="dish in (dishes | toArray) | filter: {state: search_state}">{{ dish.id }}</div>
   </div>
-
-  <!--
-  <input type="button" ng-click="clearAll()" value="Clear Table" /><br />
--->
-<!--
-  <input type='string' size='4' max='9999' ng-model='search_state'/>
--->
-
 </div>

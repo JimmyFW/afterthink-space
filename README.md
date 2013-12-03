@@ -1,16 +1,11 @@
-afterthink-engine
+afterthink-space
 =================
 
-Backend of a prototype interface
+"Shared space" view of a prototype restaurant ordering interface
+
 James Wu
 Kai Austin
 Zach Homans
-
-Notes for Kai and Zach
-=====
-* The menu is in menu.json.
-* Thumbnails should go in public/images/thumbnails
-* Photos should go in public/images/photos
 
 Setup
 =====
