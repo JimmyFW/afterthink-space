@@ -35,6 +35,7 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     $scope.photoHeight = 100;
     $scope.done = false;
     $scope.dishDetail = false;
+    $scope.ipad = "bored";
 
     $scope.addUser = function () {
       var index = $scope.users.indexOf($scope.myKey);

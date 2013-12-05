@@ -53,9 +53,23 @@ directives.directive('draggable', function($document) {
     var startX = 0, startY = 0;
     var x = 0, y = 0;
 
-      // update scope variable
+    element.bind('touchstart', function (event) {
+      console.log('touch!');
+      scope.ipad = "touched!";
+    });
 
-    element.on('mousedown', function(event) {
+    element.bind('touchend', function (event) {
+      console.log('stopped being touched');
+      scope.ipad = "not being touched";
+    });
+
+    element.on('mousedown', function (event) {
+      mousedown(event);
+      $document.on('mousemove', mousemove);
+      $document.on('mouseup', mouseup);
+    });
+
+    function mousedown(event) {
       position = element.offset();
       x = position.left + ssPos.left;
       y = position.top + ssPos.top;
@@ -64,10 +78,7 @@ directives.directive('draggable', function($document) {
       event.preventDefault();
       startX = event.screenX - x;
       startY = event.screenY - y;
-
-      $document.on('mousemove', mousemove);
-      $document.on('mouseup', mouseup);
-    });
+    }
 
     function mousemove(event) {
       event.preventDefault();
