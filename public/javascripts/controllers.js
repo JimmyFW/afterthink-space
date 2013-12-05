@@ -190,15 +190,15 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     }
 
     $scope.revertButtons = function (state, dishId) {
-      var author = $scope.dishes[dishId].author;
-      if(author == $scope.myKey) {
+      //var author = $scope.dishes[dishId].author;
+      //if(author == $scope.myKey) {
         if($scope.dishes[dishId].state == "accepted") {
           $scope.dishes[dishId].state = "proposed";
         }
         else if($scope.dishes[dishId].state == "maybe") {
           $scope.dishes[dishId].state = "proposed";
         }
-      }
+      //}
       
     }
 
@@ -318,9 +318,9 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     $scope.addDish = function (dishKey) {
       console.log("adding dish: " + dishKey);
 
-      var index = $scope.users.indexOf($scope.myKey);
+      //var index = $scope.users.indexOf($scope.myKey);
 
-      if(index > -1) {
+      //if(index > -1) {
 
         console.log("adding dish: " + dishKey);
         var dish = jQuery.extend(true, {}, $scope.menu[dishKey]); // deep copy
@@ -332,7 +332,7 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
         dish["ypos"] = 200;
         $scope.dishes[uuid] = dish;
 
-      }
+      //}
 
       function s4() {
         return Math.floor((1 + Math.random()) * 0x10000)
@@ -349,39 +349,39 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
 
     $scope.deleteDish = function (dishId) {
 
-      var author = $scope.dishes[dishId].author;
-      if(author == $scope.myKey) {
+      //var author = $scope.dishes[dishId].author;
+      //if(author == $scope.myKey) {
 
       var removed = $scope.dishes[dishId];
       delete $scope.dishes[dishId];
       console.log("deleting a dish! " + removed);
       console.log("removed dish: " + dishId);
-      }
+      //}
       
     }
 
     $scope.acceptDish = function (dishId, event) {
       event.preventDefault();
 
-      var author = $scope.dishes[dishId].author;
-      if(author == $scope.myKey) {
+      //var author = $scope.dishes[dishId].author;
+      //if(author == $scope.myKey) {
 
       $scope.dishes[dishId].state = "accepted";
       console.log("accepted dish: " + dishId);
 
-      }
+      //}
       
     }
 
     $scope.maybeDish = function (dishId, event) {
       event.preventDefault();
 
-      var author = $scope.dishes[dishId].author;
-      if(author == $scope.myKey) {
+      //var author = $scope.dishes[dishId].author;
+      //if(author == $scope.myKey) {
 
       $scope.dishes[dishId].state = "maybe";
       console.log("maybed dish: " + dishId);
-      }
+      //}
       
     }
 
