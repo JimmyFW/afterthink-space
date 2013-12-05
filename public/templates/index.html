@@ -18,21 +18,7 @@
       <button type="submit" ng-click="callWaiter()"><img ng-src="/images/bell.png" width="50px" height="50px" /></button>
     </div>
 
-        <!--
-         ng-style="updatePos(dish.id)"
-         ng-style="{ top: dish.ypos, left: dish.xpos }"
-       -->
-    <!--<div class="others">-->
-      <draggable class="draggable" ng-repeat="dish in dishes" uniqueDish="{{ dish.id }}"  ng-style="{ top: dish.ypos, left: dish.xpos }"></draggable>
-      <!--
-      (dishes | toArray)
-      <div ng-repeat="user in users | filter:filterNotYou" class="user">
-        <span>{{ user }}</span>
-        <br />
-        <draggable class="draggable" ng-repeat="dish in (dishes | toArray) | filter: {author: user} " uniqueDish="{{ dish.id }}" ng-style="{ top: dish.ypos, left: dish.xpos }"></draggable>
-      </div>
-      -->
-    <!--</div>-->
+    <draggable class="draggable" ng-repeat="dish in dishes" uniqueDish="{{ dish.id }}"  ng-style="{ top: dish.ypos, left: dish.xpos }"></draggable>
     
     <div class="yours" ng-show="myKey">
     <draggable ng-repeat="dish in (dishes | toArray) | filter: {author: myKey} " uniqueDish="{{ dish.id }}"></draggable>

@@ -349,8 +349,6 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
 
     $scope.deleteDish = function (dishId) {
 
-      //event.preventDefault();
-
       var author = $scope.dishes[dishId].author;
       if(author == $scope.myKey) {
 
@@ -391,15 +389,6 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
       console.log('Bell has been rung');
       $('#wrapper').hide();
       $scope.done = true;
-
-      /*
-      var answer = confirm("Hello! I'm your waiter." + $scope.dishes);
-      if (answer == true){
-          return true;
-      }else{
-          return false;
-      }
-      */
     }
 
     $scope.confirmOrder = function () {
