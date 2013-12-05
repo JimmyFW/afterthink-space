@@ -32,9 +32,10 @@
               <div class="menuItem-main" ng-click='displayDetail(dish.title)'>
                 <h2 class="title">{{ dish.title }}</h2>
                 <p class="price">${{ dish.price }}</p>
-                <p class="description">{{ dish.description }}</p>
+                <p class="description">{{ dish.description }} <br/><b>Click for more details...</b></p>
               </div>
-              <div class="menuItem-add" ng-click='addDish(dish.title)'><img src="../images/add.png"/></div>
+              <div class="menuItem-add" ng-click='addDish(dish.title)' ng-style="returnAddButtonStyle(dish.title)"><img src="../images/add.png"/></div>
+              <div class="menuItem-like" ng-click='likeDish(dish.title)' ng-style="returnLikeButtonStyle(dish.title)"><img src="../images/like.png"/></div>
           </div>
           
         </div>

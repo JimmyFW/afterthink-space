@@ -132,6 +132,31 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
       return styleObj;
     }
 
+    $scope.returnAddButtonStyle = function (dishKey) {
+      var styleObj = {};
+      for (var key in $scope.dishes) {
+        var value = $scope.dishes[key];
+        if(dishKey == value.title) {
+          if(value.state =="accepted" || value.state=="maybe" || value.state=="proposed"){
+            styleObj["display"] = "none";
+          }
+        }
+      }
+      return styleObj;
+    }
+    $scope.returnLikeButtonStyle = function (dishKey) {
+      var styleObj = {};
+      for (var key in $scope.dishes) {
+        var value = $scope.dishes[key];
+          if(dishKey == value.title) {
+          if(value.state =="accepted" || value.state=="maybe" || value.state=="proposed"){
+            styleObj["display"] = "inline-block";
+          }
+        }
+      }
+      return styleObj;
+    }
+
     $scope.returnBoxStyle = function (state) {
       var styleObj = {
         "display": "inline-block"
@@ -321,15 +346,17 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
       if(index > -1) {
 
         console.log("adding dish: " + $scope.dishes);
+        console.log("adding dish: " + $scope.menu[dishKey].title);
 
         var dish = jQuery.extend(true, {}, $scope.menu[dishKey]); // deep copy
-        var uuid = guid();
+        var uuid = $scope.menu[dishKey].title;
         dish["id"] = uuid;
         dish["state"] = "proposed";
         dish["author"] = $scope.myKey;
+        dish["likes"] = 0;
         $scope.dishes[uuid] = dish;
 
-        function s4() {
+        /*function s4() {
           return Math.floor((1 + Math.random()) * 0x10000)
                      .toString(16)
                      .substring(1);
@@ -338,7 +365,7 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
         function guid() {
           return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
                  s4() + '-' + s4() + s4() + s4();
-        };
+        };*/
       }
 
     }
@@ -381,6 +408,20 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
       console.log("maybed dish: " + dishId);
       }
       
+    }
+
+    $scope.likeDish = function (dishKey) {
+
+      var index = $scope.users.indexOf($scope.myKey);
+
+      if(index > -1) {
+
+        console.log("liking dish: " + $scope.dishes);
+
+        $scope.dishes[dishKey]["likes"] += 1;
+
+      }
+
     }
 
     $scope.callWaiter = function () {

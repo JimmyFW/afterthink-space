@@ -96,12 +96,13 @@ a {
   overflow-y: hidden;
   min-height: 150px;
   max-height: 170px;
+  max-width: 1000px;
   white-space: nowrap;
-
   background: #EEEEEE;
   border: 1px dotted #CCCCCC;
   padding-top: 10px;
-  margin: 10px;
+  margin-left: auto;
+  margin-right: auto;
 
 
   -moz-border-radius: 20px;
@@ -205,13 +206,15 @@ a {
   .menuLeft div.menuItem-main:active {
     background: #FDFDFD;
   }
-   .menuLeft div.menuItem-add:hover, .menuLeft div.menuItem-main:hover {
+   .menuLeft div.menuItem-add:hover, 
+   .menuLeft div.menuItem-main:hover,
+   .menuLeft div.menuItem-like:hover {
       cursor: pointer;
     background: #DDDDDD;
 
    }
 
-  .menuLeft div.menuItem-add {
+  .menuLeft div.menuItem-add, .menuLeft div.menuItem-like {
     /*background: #BBBBBB;*/
   	display: inline-block;
     vertical-align: top;
@@ -219,10 +222,11 @@ a {
     width: 70px;
     height: 100px;
   }
-  .menuLeft div.menuItem-add img{
+  .menuLeft div.menuItem-add img,
+  .menuLeft div.menuItem-like img{
   	width: 30px;
-	height: 30px;
-	margin: 20px;
+	 height: 30px;
+	 margin: 20px;
   }
 
  .menuRight {
@@ -234,6 +238,10 @@ a {
     /*overflow-y: scroll;*/
  }
 
+
+.menuLeft .all-items .menuItem-like {
+  display: none;
+}
 
   .section-nav {
     display: block;

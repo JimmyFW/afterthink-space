@@ -55,6 +55,7 @@
 </style>
 
 <div class="food-icon" ng-style="returnBoxStyle(dish.state)">
+	<p class="total-count">{{ dish.likes }}</p>
 	<div class="infoBox">
 		<img ng-src="/{{ dish.photo }}" ng-style="returnDishStyle(dish.state)" ng-click="revertButtons(dish.state, dish.id)" />
 	</div>
