@@ -86,14 +86,14 @@ a {
 
 .others {
   max-height: 520px;
-  overflow-y: auto;
+  /*overflow-y: auto;*/
 }
 
 .yours {
   position: relative;
   text-align: center;
-  overflow-x: auto;
-  overflow-y: hidden;
+  /*overflow-x: auto;*/
+  /*overflow-y: hidden;*/
   min-height: 150px;
   max-height: 170px;
   max-width: 1000px;

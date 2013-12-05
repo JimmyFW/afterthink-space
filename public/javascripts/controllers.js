@@ -353,20 +353,11 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
         dish["id"] = uuid;
         dish["state"] = "proposed";
         dish["author"] = $scope.myKey;
-        dish["likes"] = 0;
-        dish["wholiked"] = ["Waiter"];
+        dish["likes"] = 1;
+        dish["wholiked"] = [$scope.myKey];
+        dish["ordercount"] = 0;
+
         $scope.dishes[uuid] = dish;
-
-        /*function s4() {
-          return Math.floor((1 + Math.random()) * 0x10000)
-                     .toString(16)
-                     .substring(1);
-        };
-
-        function guid() {
-          return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-                 s4() + '-' + s4() + s4() + s4();
-        };*/
       }
 
     }
@@ -418,7 +409,6 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
       if(index > -1) {
 
         console.dir("liking dish: " + $scope.dishes[dishKey]);
-        console.log("liking dish: " + $scope.dishes[dishKey]["likes"]);
 
         var dishLikedList= $scope.dishes[dishKey]["wholiked"];
         var myKey = $scope.myKey;
@@ -451,6 +441,20 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
           return false;
       }
       */
+    }
+
+    $scope.increaseOrderCount = function(dishKey){
+        $scope.dishes[dishKey]["ordercount"] += 1;
+        $scope.dishes[dishKey]["state"] = "accepted";
+    }
+
+    $scope.decreaseOrderCount = function(dishKey){
+      if ($scope.dishes[dishKey]["ordercount"] > 0){
+        $scope.dishes[dishKey]["ordercount"] -= 1;
+      }
+      if ($scope.dishes[dishKey]["ordercount"] == 0){
+        $scope.dishes[dishKey]["state"] = "proposed";
+      }
     }
 
     $scope.confirmOrder = function () {

@@ -1,6 +1,7 @@
 <style>
 	.food-icon {
-		width:150px;
+		width:200px;
+		padding-top: 50px;
 		display:inline-block;
 		vertical-align: top;
 		text-align: center;
@@ -24,26 +25,40 @@
 	}
 	.food-icon ul {
 		display: inline-block;
+		position: relative;
 		padding:0;
-		margin: 0;
+		margin-left: 20px;
 		margin-top: 10px;
 		max-width: 60px;
 		vertical-align: top;
 	}
 	.food-icon ul li{
+		display: block;
 		cursor: pointer;
-		list-style-type: none;
-		margin-top:0;
-		margin-left: 0px;
-		margin-bottom: 6px;
+		margin: 0;
+		padding: 0;
+	}
+	.food-icon ul li.minus-order{
+		margin-top: -5px;
+		padding: 0;
 	}
 	.food-icon ul li img {
 		width: auto;
-		height: 25px;
+		height: 30px;
+		padding: 0;
+		margin:0;
 	}
-	.food-icon h4 {
+	.food-icon ul li.order-count {
+		position: absolute;
+		top: -50px;
+		left: -20px;
+		font-size: 20px;
+	}
+	.food-icon ul li.order-count span {
+		font-size: 40px;
+		opacity: .7;
+	}
 
-	}
 	.dish-title {
 		width: 160px;
 		white-space: normal;
@@ -79,7 +94,9 @@
 		<img ng-src="/{{ dish.photo }}" ng-style="returnDishStyle(dish.state)" ng-click="revertButtons(dish.state, dish.id)" />
 	</div>
 	<ul> <!--ng-style="returnButtons(dish.state)">-->
-		<li class="closeButton" ng-click='deleteDish("{{ dish.id }}")'><img src="../images/remove.png"/></li>
+		<li class="order-count"><span>{{ dish.ordercount }}</span>x</li>
+		<li class="plus-order" ng-click="increaseOrderCount(dish.id)"><img src="../images/moreOrder.png"/></li>
+		<li class="minus-order" ng-click="decreaseOrderCount(dish.id)"><img src="../images/lessOrder.png"/></li>
 		<!--<li class="maybeButton" ng-click='maybeDish("{{ dish.id }}", $event)'><img src="../images/maybe.png"/></li>
 		<li class="acceptButton" ng-click='acceptDish("{{ dish.id }}", $event)'><img src="../images/accept.png"/></li>-->
 	</ul>
