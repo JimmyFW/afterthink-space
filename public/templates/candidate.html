@@ -52,14 +52,33 @@
 		width: 100px;
 		text-align: center;
 	}
+
+	.icon-likes {
+		position: absolute;
+		margin-top: 10px;
+		margin-left: -30px;
+		padding-top:5px;
+		background: #EFEFEF;
+		border: 1px #888 solid;
+		border-radius:30px;
+		font-size: 20px;
+		opacity: .7;
+		font-weight: 700;
+		text-align: center;
+		overflow: hidden;
+	}
+	.icon-likes img {
+		width: 30px;
+		height: auto;
+	}
 </style>
 
 <div class="food-icon" ng-style="returnBoxStyle(dish.state)">
-	<p class="total-count">{{ dish.likes }}</p>
+	<div class="icon-likes">{{ dish.likes }} <br/> <img src="../images/like.png"/></div>
 	<div class="infoBox">
 		<img ng-src="/{{ dish.photo }}" ng-style="returnDishStyle(dish.state)" ng-click="revertButtons(dish.state, dish.id)" />
 	</div>
-	<ul ng-style="returnButtons(dish.state)">
+	<ul> <!--ng-style="returnButtons(dish.state)">-->
 		<li class="closeButton" ng-click='deleteDish("{{ dish.id }}")'><img src="../images/remove.png"/></li>
 		<!--<li class="maybeButton" ng-click='maybeDish("{{ dish.id }}", $event)'><img src="../images/maybe.png"/></li>
 		<li class="acceptButton" ng-click='acceptDish("{{ dish.id }}", $event)'><img src="../images/accept.png"/></li>-->

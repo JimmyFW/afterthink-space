@@ -432,6 +432,7 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
         }
           //If they have not, then up the like and note they have liked it
           $scope.dishes[dishKey]["likes"] += 1;
+          $scope.dishes[dishKey]["state"] = "accepted";
           $scope.dishes[dishKey]["wholiked"].push($scope.myKey);
       }
 
