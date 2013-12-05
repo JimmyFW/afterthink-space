@@ -84,10 +84,11 @@ a {
   background: #FFFFFF;
 }
 
+/*
 .others {
-  max-height: 520px;
+  height: 520px;
   overflow-y: auto;
-}
+}*/
 
 .yours {
   position: absolute;
@@ -114,6 +115,7 @@ a {
   width: 170px;
   overflow: hidden;
   white-space: nowrap;
+  position: absolute;
 }
 
 .user {
@@ -223,8 +225,8 @@ a {
   }
   .menuLeft div.menuItem-add img{
   	width: 30px;
-	height: 30px;
-	margin: 20px;
+  	height: 30px;
+    margin: 20px;
   }
 
  .menuRight {

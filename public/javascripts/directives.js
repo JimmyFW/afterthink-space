@@ -51,14 +51,46 @@ directives.directive('draggable', function($document) {
   }
 
   function drag(scope, element, attr) {
-    var startX = 0, startY = 0, x = scope.dish.xpos, y = scope.dish.ypos;
+    var ssPos = $('.sharedspace').offset();
+    var position = element.offset();
+    var startX = 0, startY = 0;
+    //var startX = position.left, startY = position.top;
+    //var x = scope.dish.xpos, y = scope.dish.ypos;
+    var x = 0, y = 0;
+
       // update scope variable
 
+    element.css({
+    border: '1px solid red',
+    backgroundColor: 'lightgrey',
+    cursor: 'pointer'
+    });
+
     element.on('mousedown', function(event) {
+      position = element.offset();
+      x = position.left + ssPos.left;
+      y = position.top + ssPos.top;
+      console.log("event! " + event.screenX + " " + event.screenY);
+      console.log("listen! " + element.offset().left + " " + element.offset().top);
+      console.log("ss! " + ssPos.left + " " + ssPos.top);
+      console.log();
+
+      console.log("position! " + position.left + " " + position.top);
+      console.log("position plus ss! " + (position.left + ssPos.left) + " " + (position.top + ssPos.top));
+      console.log();
+
       // Prevent default dragging of selected content
       event.preventDefault();
-      startX = event.screenX - scope.dish.xpos;
-      startY = event.screenY - scope.dish.ypos;
+      startX = event.screenX - x;
+      startY = event.screenY - y;
+      //startX = event.screenX;
+      //startY = event.screenY;
+      //startX = event.screenX - scope.dish.xpos;
+      //startY = event.screenY - scope.dish.ypos;
+
+
+      console.log("mousedown... " + x + " " + y);
+      console.log("mousedown... start " + startX + " " + startY);
       $document.on('mousemove', mousemove);
       $document.on('mouseup', mouseup);
     });
@@ -66,15 +98,16 @@ directives.directive('draggable', function($document) {
     function mousemove(event) {
       event.preventDefault();
 
-      y = event.screenY - startY;
+      position = element.offset();
+
       x = event.screenX - startX;
+      y = event.screenY - startY;
 
-      var position = element.offset();
-      console.log("original pos x:" + position.left + " y: " + position.top);
-      console.log("new pos x:" + x + " y: " + y);
+      console.log("offset x:" + startX + " y: " + startY);
+      console.log("adjusted x:" + (x - ssPos.left) + " dy: " + (y - ssPos.top));
 
-            scope.dish.xpos = x;
-            scope.dish.ypos = y;
+            //scope.dish.xpos = x;
+            //scope.dish.ypos = y;
 /*
           scope.$apply(function () {
             scope.dish.xpos = x;
@@ -82,22 +115,29 @@ directives.directive('draggable', function($document) {
           });
 */
 
-      // update element position
-      /*
-      element.css({
-        left: x + 'px',
-        top: y + 'px'
-      });
 
+      // update element position
+/*
+      element.css({
+        left: (x) + 'px',
+        top: (y) + 'px'
+      });
+*/
+      
+      element.css({
+        left: (x - ssPos.left) + 'px',
+        top: (y - ssPos.top) + 'px'
+      });
+      
       scope.$watch(function () {
         scope.dish.xpos = element.css('left');
         scope.dish.ypos = element.css('top');
       });
-      */
+      
     }
 
     function mouseup() {
-      console.log("mouseup!");
+      console.log("mouseup! " + x + " " + y);
       $document.unbind('mousemove', mousemove);
       $document.unbind('mouseup', mouseup);
     }
@@ -146,6 +186,6 @@ directives.directive('draggable', function($document) {
     restrict: 'E',
     transclude: true,
     templateUrl: 'templates/candidate.html',
-    link: nodrag
+    link: drag
   }
 });

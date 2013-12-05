@@ -33,6 +33,8 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     $scope.currentSection = "starters";
     $scope.photoWidth = 100;
     $scope.photoHeight = 100;
+    $scope.done = false;
+    $scope.dishDetail = false;
 
     $scope.addUser = function () {
       var index = $scope.users.indexOf($scope.myKey);
@@ -109,9 +111,7 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     $scope.returnMenuItemStyle = function (dishKey) {
       var styleObj = {};
       for (var key in $scope.dishes) {
-        //var lookedAt = [];
         var value = $scope.dishes[key];
-        //lookedAt.push(key);
         if(dishKey == value.title) {
           if(value.state=="accepted") {
             styleObj["border-color"] = "#00FF00";
@@ -289,6 +289,7 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     }
 
     $scope.vegetarian = function (dishId) {
+      console.log(dishId);
       if($scope.menu[dishId].vegetarian) {
         return {
           "opacity": 1
@@ -315,31 +316,34 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     }
 
     $scope.addDish = function (dishKey) {
+      console.log("adding dish: " + dishKey);
 
       var index = $scope.users.indexOf($scope.myKey);
 
       if(index > -1) {
 
-        console.log("adding dish: " + $scope.dishes);
-
+        console.log("adding dish: " + dishKey);
         var dish = jQuery.extend(true, {}, $scope.menu[dishKey]); // deep copy
         var uuid = guid();
         dish["id"] = uuid;
         dish["state"] = "proposed";
         dish["author"] = $scope.myKey;
+        dish["xpos"] = 100;
+        dish["ypos"] = 200;
         $scope.dishes[uuid] = dish;
 
-        function s4() {
-          return Math.floor((1 + Math.random()) * 0x10000)
-                     .toString(16)
-                     .substring(1);
-        };
-
-        function guid() {
-          return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-                 s4() + '-' + s4() + s4() + s4();
-        };
       }
+
+      function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000)
+                   .toString(16)
+                   .substring(1);
+      };
+
+      function guid() {
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+               s4() + '-' + s4() + s4() + s4();
+      };
 
     }
 
@@ -409,17 +413,6 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
         }
       }
       $scope.users.splice(1, $scope.users.length+1);
-      /*
-      for(var i=0; i<$scope.users.length; i++) {
-        if($scope.users[i]!="On The House") {
-          $scope.users.splice(i, 1);
-        }
-      }
-      */
-      /*
-      $scope.watch(function() {
-        $scope.done = false;
-      });*/
       $scope.done = false;
       $('#wrapper').show();
 
@@ -431,65 +424,7 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
       
     }
 
-    $scope.moveDish = function (dishId, event) {
-      if($scope.dishes[dishId].startX == -1) {
-        return;
-      }
-      else {
-        //console.log($scope.dishes[dishId].startX)
-      }
-      if($scope.dishes[dishId].startY == -1) return;
-      //console.log(event);
-      event.preventDefault();
-      //console.log($scope.dishes[dishId]);
 
-      var y = event.screenY - $scope.dishes[dishId].startY;
-      var x = event.screenX - $scope.dishes[dishId].startX;
-      console.log(x);
-      console.log(y);
-
-      // update scope variable
-      //$scope.dishes[dishId].xpos = $scope.dishes[dishId].xpos + 1;
-      //$scope.dishes[dishId].ypos = $scope.dishes[dishId].ypos + 1;
-      $scope.dishes[dishId].xpos = x;
-      $scope.dishes[dishId].ypos = y;
-    }
-
-    $scope.grabDish = function (dishId, event) {
-      //console.log(event);
-      event.preventDefault();
-
-      $scope.dishes[dishId].startX = event.screenX - $scope.dishes[dishId].xpos;
-      $scope.dishes[dishId].startY = event.screenY - $scope.dishes[dishId].ypos;
-      /*
-
-      var y = event.screenY - $scope.dishes[dishId].startY;
-      var x = event.screenX - $scope.dishes[dishId].startX;
-
-      // update scope variable
-      $scope.dishes[dishId].xpos = x;
-      $scope.dishes[dishId].ypos = y;
-      */
-    }
-
-    $scope.releaseDish = function (dishId, event) {
-      //console.log(event);
-      event.preventDefault();
-
-      $scope.dishes[dishId].startX = -1;
-      $scope.dishes[dishId].startY = -1;
-    }
-
-    $scope.updatePos = function (dishId) {
-      console.log("dish id: " + dishId);
-      var positionStyle = {
-        'left': $scope.dishes[dishId].xpos + 'px',
-        'top': $scope.dishes[dishId].ypos + 'px'
-      };
-      console.log(positionStyle);
-      //console.log($scope.dishes[dishId].startX + ' ' + $scope.dishes[dishId].startY);
-      return positionStyle;
-    }
 
   }
 ]);

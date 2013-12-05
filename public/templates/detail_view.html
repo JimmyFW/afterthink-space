@@ -94,8 +94,8 @@
 
 </style>
 
-
-<table>
+<ng:switch on="detailVisible()">
+<table ng:switch-when="true">
 	<tr>
 		<td>
 		<div id="name">{{ dishDetail.title }}</div>
@@ -173,3 +173,4 @@
 		</td>
 	</tr>
 </table>
+</ng:switch>
