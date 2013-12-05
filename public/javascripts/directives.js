@@ -53,12 +53,12 @@ directives.directive('draggable', function($document) {
     var startX = 0, startY = 0;
     var x = 0, y = 0;
 
-    element.bind('touchstart', function (event) {
+    element.on('touchstart', function (event) {
       console.log('touch!');
       scope.ipad = "touched!";
     });
 
-    element.bind('touchend', function (event) {
+    element.on('touchend', function (event) {
       console.log('stopped being touched');
       scope.ipad = "not being touched";
     });
