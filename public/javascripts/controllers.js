@@ -354,6 +354,7 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
         dish["state"] = "proposed";
         dish["author"] = $scope.myKey;
         dish["likes"] = 0;
+        dish["wholiked"] = ["Waiter"];
         $scope.dishes[uuid] = dish;
 
         /*function s4() {
@@ -416,10 +417,22 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
 
       if(index > -1) {
 
-        console.log("liking dish: " + $scope.dishes);
+        console.dir("liking dish: " + $scope.dishes[dishKey]);
+        console.log("liking dish: " + $scope.dishes[dishKey]["likes"]);
 
-        $scope.dishes[dishKey]["likes"] += 1;
-
+        var dishLikedList= $scope.dishes[dishKey]["wholiked"];
+        var myKey = $scope.myKey;
+        console.log(dishLikedList);
+        //Check to see if the clicker has liked the item before
+        for (var i=0; i<dishLikedList.length; i++){
+          if (myKey == dishLikedList[i]){
+            console.log("You already liked this!");
+            return;
+          }
+        }
+          //If they have not, then up the like and note they have liked it
+          $scope.dishes[dishKey]["likes"] += 1;
+          $scope.dishes[dishKey]["wholiked"].push($scope.myKey);
       }
 
     }
