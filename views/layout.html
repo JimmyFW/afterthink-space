@@ -11,6 +11,11 @@
     <script type="text/javascript" src="/javascripts/client.js"></script>
     <script type="text/javascript" src="/javascripts/controllers.js"></script>
     <script type="text/javascript" src="/javascripts/directives.js"></script>
+    <script>
+      document.body.addEventListener('touchmove', function(event) {
+        event.preventDefault();
+      }, false); 
+    </script>
 </head>
 <body>
   <ng-view></ng-view>
