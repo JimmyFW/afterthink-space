@@ -79,6 +79,8 @@ directives.directive('draggable', function($document) {
 
     function touchmove(event) {
 
+      $("ipad").append(event.targetTouches);
+
       if(event.targetTouches.length != 1) {
         $("ipad").append("got messed up");
         return;
@@ -111,7 +113,7 @@ directives.directive('draggable', function($document) {
 
     function touchup() {
       //console.log("touchup! " + x + " " + y);
-      $('#ipad').html("<br />stopped being touched by ipad");
+      $('#ipad').append("<br />stopped being touched by ipad");
 
       //$document.unbind('touchmove', touchmove);
       //$document.unbind('touchup', touchup);

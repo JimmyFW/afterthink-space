@@ -25,6 +25,7 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     var ipad = new Firebase('https://groupthought.firebaseio.com/ipad');
     angularFire(ipad, $scope, "ipad");
 
+    /*
     dishes.on('child_added', function (snapshot) {
       console.log(snapshot.name());
     });
@@ -32,6 +33,7 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     dishes.on('child_removed', function (snapshot) {
       console.log(snapshot.name());
     });
+    */
 
     $scope.currentSection = "starters";
     $scope.photoWidth = 100;
@@ -101,7 +103,7 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
 
     $scope.returnFinalOrderStyle = function () {
       var styleObj = {};
-      console.log($scope.done);
+      //console.log($scope.done);
       if($scope.done){
         styleObj["display"] = "block";
       }
