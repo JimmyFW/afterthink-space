@@ -22,6 +22,9 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     var debug = new Firebase('https://groupthought.firebaseio.com/debug');
     angularFire(debug, $scope, "debug");
 
+    var ipad = new Firebase('https://groupthought.firebaseio.com/ipad');
+    angularFire(ipad, $scope, "ipad");
+
     dishes.on('child_added', function (snapshot) {
       console.log(snapshot.name());
     });
@@ -35,7 +38,6 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     $scope.photoHeight = 100;
     $scope.done = false;
     $scope.dishDetail = false;
-    $scope.ipad = "bored";
 
     $scope.addUser = function () {
       var index = $scope.users.indexOf($scope.myKey);
