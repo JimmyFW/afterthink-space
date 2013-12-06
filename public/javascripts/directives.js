@@ -55,6 +55,9 @@ directives.directive('draggable', function($document) {
 
     element.on('touchstart', function (event) {
       $("#ipad").html("Touched by ipad");
+      mousedown(event);
+      element.on('touchmove', touchmove);
+      element.on('touchend', touchup);
     });
 
     element.on('touchend', function (event) {
@@ -62,12 +65,41 @@ directives.directive('draggable', function($document) {
       $('#ipad').html("stopped being touched by ipad");
     });
 
+    function touchmove(event) {
+      event.preventDefault();
+
+      position = element.offset();
+
+      x = event.touches[0].pageX - startX;
+      y = event.touches[0].pageX - startY;
+      
+      element.css({
+        left: (x - ssPos.left) + 'px',
+        top: (y - ssPos.top) + 'px'
+      });
+      
+      scope.$watch(function () {
+        scope.dish.xpos = element.css('left');
+        scope.dish.ypos = element.css('top');
+      });
+      
+    }
+
+    function touchup() {
+      console.log("touchup! " + x + " " + y);
+      $('#ipad').html("stopped being touched by mouse");
+
+      element.unbind('touchmove', touchmove);
+      element.unbind('touchup', touchup);
+    }
+
+
     element.on('mousedown', function (event) {
       console.log('touched by mouse!');
       $("#ipad").html("Touched by mouse");
       mousedown(event);
-      $document.on('mousemove', mousemove);
-      $document.on('mouseup', mouseup);
+      $document.on('touchmove', mousemove);
+      $document.on('touchend', mouseup);
     });
 
     function mousedown(event) {
