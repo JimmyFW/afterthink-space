@@ -352,6 +352,8 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
         var uuid = $scope.menu[dishKey].title;
         dish["id"] = uuid;
         dish["state"] = "proposed";
+        dish["xpos"] = 100;
+        dish["ypos"] = 200;
         dish["author"] = $scope.myKey;
         dish["likes"] = 1;
         dish["wholiked"] = [$scope.myKey];
@@ -490,64 +492,12 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
       
     }
 
-    $scope.moveDish = function (dishId, event) {
-      if($scope.dishes[dishId].startX == -1) {
-        return;
-      }
-      else {
-        //console.log($scope.dishes[dishId].startX)
-      }
-      if($scope.dishes[dishId].startY == -1) return;
-      //console.log(event);
-      event.preventDefault();
-      //console.log($scope.dishes[dishId]);
-
-      var y = event.screenY - $scope.dishes[dishId].startY;
-      var x = event.screenX - $scope.dishes[dishId].startX;
-      console.log(x);
-      console.log(y);
-
-      // update scope variable
-      //$scope.dishes[dishId].xpos = $scope.dishes[dishId].xpos + 1;
-      //$scope.dishes[dishId].ypos = $scope.dishes[dishId].ypos + 1;
-      $scope.dishes[dishId].xpos = x;
-      $scope.dishes[dishId].ypos = y;
-    }
-
-    $scope.grabDish = function (dishId, event) {
-      //console.log(event);
-      event.preventDefault();
-
-      $scope.dishes[dishId].startX = event.screenX - $scope.dishes[dishId].xpos;
-      $scope.dishes[dishId].startY = event.screenY - $scope.dishes[dishId].ypos;
-      /*
-
-      var y = event.screenY - $scope.dishes[dishId].startY;
-      var x = event.screenX - $scope.dishes[dishId].startX;
-
-      // update scope variable
-      $scope.dishes[dishId].xpos = x;
-      $scope.dishes[dishId].ypos = y;
-      */
-    }
-
     $scope.releaseDish = function (dishId, event) {
       //console.log(event);
       event.preventDefault();
 
       $scope.dishes[dishId].startX = -1;
       $scope.dishes[dishId].startY = -1;
-    }
-
-    $scope.updatePos = function (dishId) {
-      console.log("dish id: " + dishId);
-      var positionStyle = {
-        'left': $scope.dishes[dishId].xpos + 'px',
-        'top': $scope.dishes[dishId].ypos + 'px'
-      };
-      console.log(positionStyle);
-      //console.log($scope.dishes[dishId].startX + ' ' + $scope.dishes[dishId].startY);
-      return positionStyle;
     }
 
   }

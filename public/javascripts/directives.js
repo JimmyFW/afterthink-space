@@ -1,41 +1,5 @@
 var directives = angular.module('afterthink.directives', []);
 
-directives.directive('waiterModal', function(){
-        return {
-                restrict: 'A',
-
-                scope: {
-                        modalCourse: '=modalCourse',
-                        schedule: '=schedule',
-                },
-
-                templateUrl: "templates/waiter.html",
-
-                link: function (scope, elem, attrs) {
-                scope.open = function(){
-                        $('#' + scope.formatId(scope.modalCourse.className)).modal('toggle');
-                }
-
-                scope.close = function(){
-                        $('#' + scope.formatId(scope.modalCourse.className)).modal('toggle');
-                };
-
-                scope.addCourseToSchedule = function(course, section){
-                                scope.schedule.addCourse(course, course.sections.indexOf(section), scope.schedule.courses.length);
-                };
-
-            scope.strToInt = function(str){
-                return parseInt(str, 10);
-            }
-
-                scope.formatId = function(className){
-                        // console.log(className)
-                        return className.split(" ").join("");
-                };
-              }
-        };
-});
-
 directives.directive('detailView', function($document) {
 
   return {
@@ -73,27 +37,9 @@ directives.directive('draggable', function($document) {
       console.log("original pos x:" + position.left + " y: " + position.top);
       console.log("new pos x:" + x + " y: " + y);
 
-            scope.dish.xpos = x;
-            scope.dish.ypos = y;
-/*
-          scope.$apply(function () {
-            scope.dish.xpos = x;
-            scope.dish.ypos = y;
-          });
-*/
+      scope.dish.xpos = x;
+      scope.dish.ypos = y;
 
-      // update element position
-      /*
-      element.css({
-        left: x + 'px',
-        top: y + 'px'
-      });
-
-      scope.$watch(function () {
-        scope.dish.xpos = element.css('left');
-        scope.dish.ypos = element.css('top');
-      });
-      */
     }
 
     function mouseup() {
