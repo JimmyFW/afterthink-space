@@ -69,7 +69,38 @@ directives.directive('draggable', function($document) {
       // Prevent default dragging of selected content
       event.preventDefault();
       console.log(event.originalEvent.targetTouches);
-      touchmove(event); // this is where the magic happens
+      //touchmove(event); // this is where the magic happens
+
+
+      $("ipad").append(event.originalEvent.targetTouches);
+
+      if(event.originalEvent.targetTouches.length != 1) {
+        $("ipad").append("got messed up");
+        return;
+      }
+
+      $("ipad").append("trying to move");
+
+      position = element.offset();
+      x = position.left + ssPos.left;
+      y = position.top + ssPos.top;
+
+      startX = event.originalEvent.targetTouches[0].screenX - x;
+      startY = event.originalEvent.targetTouches[0].screenY - y;
+
+      x = event.originalEvent.targetTouches[0].screenX - startX;
+      y = event.originalEvent.targetTouches[0].screenY - startY;
+      $("#ipadcoords").append("<br />touch coords: " + x + " " + y);
+      
+      element.css({
+        left: (x - ssPos.left) + 'px',
+        top: (y - ssPos.top) + 'px'
+      });
+      
+      scope.$watch(function () {
+        scope.dish.xpos = element.css('left');
+        scope.dish.ypos = element.css('top');
+      });
     });
 
     element.on('touchend', function (event) {
