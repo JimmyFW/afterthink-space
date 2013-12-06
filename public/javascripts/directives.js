@@ -56,7 +56,7 @@ directives.directive('draggable', function($document) {
 
     element.bind('touchstart', function (event) {
       event.preventDefault();
-      console.log(event.originalEvent.touches);
+      console.log("touchstart targetTouches list");
       console.log(event.originalEvent.targetTouches);
       $("#ipad").append("<br />Touched by ipad");
       touchdown(event); // currently only prints a debug statement
@@ -68,6 +68,7 @@ directives.directive('draggable', function($document) {
     element.bind('touchmove', function (event) {
       // Prevent default dragging of selected content
       event.preventDefault();
+      console.log(event.originalEvent.targetTouches);
       touchmove(event); // this is where the magic happens
     });
 
