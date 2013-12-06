@@ -53,8 +53,8 @@ directives.directive('draggable', function($document) {
     var startX = 0, startY = 0;
     var x = 0, y = 0;
 
-/*
-    element.on('touchstart', function (event) {
+
+    element.bind('touchstart', function (event) {
       console.log(event.touches);
       console.log(event.targetTouches);
       $("#ipad").append("<br />Touched by ipad");
@@ -64,16 +64,16 @@ directives.directive('draggable', function($document) {
     });
 
 
-    element.on('touchmove', function (event) {
+    element.bind('touchmove', function (event) {
       // Prevent default dragging of selected content
       event.preventDefault();
       touchmove(event); // this is where the magic happens
     });
 
-    element.on('touchend', function (event) {
+    element.bind('touchend', function (event) {
       touchup(); // currently only prints a debug statement
     });
-*/
+
 
     function touchdown(event) {
       if(event.targetTouches.length == 1) {
