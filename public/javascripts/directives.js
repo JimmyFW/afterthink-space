@@ -62,10 +62,12 @@ directives.directive('draggable', function($document) {
 
 
     element.on('touchmove', function (event) {
+      // Prevent default dragging of selected content
+      event.preventDefault();
       touchmove(event); // this is where the magic happens
     });
 
-    element.on('touchup', function (event) {
+    element.on('touchend', function (event) {
       touchup(); // currently only prints a debug statement
     });
 
@@ -74,8 +76,7 @@ directives.directive('draggable', function($document) {
     }
 
     function touchmove(event) {
-      // Prevent default dragging of selected content
-      event.preventDefault();
+      $("ipad").append("trying to move");
 
       position = element.offset();
       x = position.left + ssPos.left;
