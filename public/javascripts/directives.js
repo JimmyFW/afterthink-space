@@ -57,7 +57,7 @@ directives.directive('draggable', function($document) {
     element.on('touchstart', function (event) {
       event.preventDefault();
       console.log("touchstart targetTouches list");
-      console.log(event.originalEvent.targetTouches);
+      console.log(Object.keys(event.originalEvent.targetTouches));
       $("#ipad").append("<br />Touched by ipad");
       touchdown(event); // currently only prints a debug statement
       //$document.on('touchmove', touchmove);
@@ -76,8 +76,10 @@ directives.directive('draggable', function($document) {
       //$("ipad").append(event.originalEvent.targetTouches[0]);
 
       if(event.originalEvent.targetTouches.length != 1) {
-        $("ipad").append("<br />got messed up");
-        return;
+        console.log("this is probably not good");
+      }
+      else {
+        console.log("this is okay");
       }
 
       $("ipad").append("<br />trying to move");
