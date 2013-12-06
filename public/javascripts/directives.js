@@ -54,7 +54,7 @@ directives.directive('draggable', function($document) {
     var x = 0, y = 0;
 
 
-    element.bind('touchstart', function (event) {
+    element.on('touchstart', function (event) {
       event.preventDefault();
       console.log("touchstart targetTouches list");
       console.log(event.originalEvent.targetTouches);
@@ -65,14 +65,14 @@ directives.directive('draggable', function($document) {
     });
 
 
-    element.bind('touchmove', function (event) {
+    element.on('touchmove', function (event) {
       // Prevent default dragging of selected content
       event.preventDefault();
       console.log(event.originalEvent.targetTouches);
       touchmove(event); // this is where the magic happens
     });
 
-    element.bind('touchend', function (event) {
+    element.on('touchend', function (event) {
       touchup(); // currently only prints a debug statement
     });
 
