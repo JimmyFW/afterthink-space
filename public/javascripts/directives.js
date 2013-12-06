@@ -80,7 +80,7 @@ directives.directive('draggable', function($document) {
       event.preventDefault();
       startX = event.touches[0].pageX - x;
       startY = event.touches[0].pageY - y;
-      $("ipadcoords").html("touch coords: " + event.touches[0].pageX + " " + event.touches[0].pageY);
+      $("#ipadcoords").html("touch coords: " + event.touches[0].pageX + " " + event.touches[0].pageY);
     }
 
     function touchmove(event) {
@@ -89,7 +89,7 @@ directives.directive('draggable', function($document) {
 
       x = event.touches[0].pageX - startX;
       y = event.touches[0].pageY - startY;
-      $("ipadcoords").html("touch coords: " + x + " " + y);
+      $("#ipadcoords").html("touch coords: " + x + " " + y);
       
       element.css({
         left: (x - ssPos.left) + 'px',
