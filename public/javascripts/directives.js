@@ -55,8 +55,9 @@ directives.directive('draggable', function($document) {
 
 
     element.bind('touchstart', function (event) {
-      console.log(event.touches);
-      console.log(event.targetTouches);
+      event.preventDefault();
+      console.log(event.originalEvent.touches);
+      console.log(event.originalEvent.targetTouches);
       $("#ipad").append("<br />Touched by ipad");
       touchdown(event); // currently only prints a debug statement
       //$document.on('touchmove', touchmove);
@@ -76,16 +77,18 @@ directives.directive('draggable', function($document) {
 
 
     function touchdown(event) {
-      if(event.targetTouches.length == 1) {
-        $("#ipadcoords").append("<br />touchdown coords: " + event.targetTouches[0].screenX + " " + event.targetTouches[0].screenY);
+      event.preventDefault();
+      if(event.originalEvent.targetTouches.length == 1) {
+        $("#ipadcoords").append("<br />touchdown coords: " + event.originalEvent.targetTouches[0].screenX + " " + event.originalEvent.targetTouches[0].screenY);
       }
     }
 
     function touchmove(event) {
+      event.preventDefault();
 
-      $("ipad").append(event.targetTouches);
+      $("ipad").append(event.originalEvent.targetTouches);
 
-      if(event.targetTouches.length != 1) {
+      if(event.originalEvent.targetTouches.length != 1) {
         $("ipad").append("got messed up");
         return;
       }
@@ -96,11 +99,11 @@ directives.directive('draggable', function($document) {
       x = position.left + ssPos.left;
       y = position.top + ssPos.top;
 
-      startX = event.targetTouches[0].screenX - x;
-      startY = event.targetTouches[0].screenY - y;
+      startX = event.originalEvent.targetTouches[0].screenX - x;
+      startY = event.originalEvent.targetTouches[0].screenY - y;
 
-      x = event.targetTouches[0].screenX - startX;
-      y = event.targetTouches[0].screenY - startY;
+      x = event.originalEvent.targetTouches[0].screenX - startX;
+      y = event.originalEvent.targetTouches[0].screenY - startY;
       $("#ipadcoords").append("<br />touch coords: " + x + " " + y);
       
       element.css({
