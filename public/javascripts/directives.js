@@ -55,10 +55,33 @@ directives.directive('draggable', function($document) {
 
     element.on('touchstart', function (event) {
       $("#ipad").html("Touched by ipad");
-      mousedown(event);
+      touchdown(event);
       $document.on('touchmove', touchmove);
       $document.on('touchend', touchup);
     });
+
+/*
+    element.on('touchmove', function (event) {
+      touchmove(event);
+    });
+
+    element.on('touchup', function (event) {
+      touchup();
+    });
+*/
+
+    function touchdown(event) {
+
+      position = element.offset();
+      x = position.left + ssPos.left;
+      y = position.top + ssPos.top;
+
+      // Prevent default dragging of selected content
+      event.preventDefault();
+      startX = event.touches[0].pageX - x;
+      startY = event.touches[0].pageY - y;
+      $("ipadcoords").html("touch coords: " + event.touches[0].pageX + " " + event.touches[0].pageY);
+    }
 
     function touchmove(event) {
 
@@ -66,7 +89,7 @@ directives.directive('draggable', function($document) {
 
       x = event.touches[0].pageX - startX;
       y = event.touches[0].pageY - startY;
-      $("ipad").html("touch coords: " + x + " " + y);
+      $("ipadcoords").html("touch coords: " + x + " " + y);
       
       element.css({
         left: (x - ssPos.left) + 'px',

@@ -8,7 +8,7 @@ var _ = require('underscore');
 var app = express();
 
 app.configure(function(){
-  app.set('port', process.env.PORT || 3000);
+  app.set('port', process.env.PORT || 4000);
   app.set('views', __dirname + '/views');
   app.engine('html', require('uinexpress').__express)
   app.set('view engine', 'html')
