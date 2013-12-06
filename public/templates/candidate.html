@@ -59,9 +59,9 @@
 		<img ng-src="/{{ dish.photo }}" ng-style="returnDishStyle(dish.state)" ng-click="revertButtons(dish.state, dish.id)" />
 	</div>
 	<ul ng-style="returnButtons(dish.state)">
-		<li class="closeButton" ng-click='deleteDish("{{ dish.id }}")'><img src="../images/remove.png"/></li>
-		<li class="maybeButton" ng-click='maybeDish("{{ dish.id }}", $event)'><img src="../images/maybe.png"/></li>
-		<li class="acceptButton" ng-click='acceptDish("{{ dish.id }}", $event)'><img src="../images/accept.png"/></li>
+		<li class="closeButton" ng-click='deleteDish(dish.id)'><img src="../images/remove.png"/></li>
+		<li class="maybeButton" ng-click='maybeDish(dish.id, $event)'><img src="../images/maybe.png"/></li>
+		<li class="acceptButton" ng-click='acceptDish(dish.id, $event)'><img src="../images/accept.png"/></li>
 	</ul>
 	<p class="dish-title">{{ dish.title }}</p>
 	<p class="boxwidth"></p>

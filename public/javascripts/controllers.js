@@ -197,6 +197,7 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     $scope.revertButtons = function (state, dishId) {
       //var author = $scope.dishes[dishId].author;
       //if(author == $scope.myKey) {
+        console.log(dishId);
         if($scope.dishes[dishId].state == "accepted") {
           $scope.dishes[dishId].state = "proposed";
         }
@@ -379,13 +380,13 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     }
 
     $scope.maybeDish = function (dishId, event) {
+      console.log("maybed dish: " + dishId);
       event.preventDefault();
 
       //var author = $scope.dishes[dishId].author;
       //if(author == $scope.myKey) {
 
       $scope.dishes[dishId].state = "maybe";
-      console.log("maybed dish: " + dishId);
       //}
       
     }

@@ -1,4 +1,4 @@
-var Site = angular.module('Site', ['afterthink.controllers', 'afterthink.directives', 'firebase']);
+var Site = angular.module('Site', ['ngRoute', 'afterthink.controllers', 'afterthink.directives', 'firebase']);
 
 Site.config(function ($routeProvider) {
   $routeProvider
@@ -28,4 +28,5 @@ Site.filter('toArray', function () {
 /*
 Site.filter('notEqual', function (friend) {
   return friend.group !== "group2"; 
+  <script src="//code.angularjs.org/1.2.0/angular-touch.js"></script>
 } */
