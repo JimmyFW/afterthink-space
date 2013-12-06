@@ -54,6 +54,8 @@ directives.directive('draggable', function($document) {
     var x = 0, y = 0;
 
     element.on('touchstart', function (event) {
+      console.log(event.touches);
+      console.log(event.targetTouches);
       $("#ipad").append("<br />Touched by ipad");
       touchdown(event); // currently only prints a debug statement
       //$document.on('touchmove', touchmove);

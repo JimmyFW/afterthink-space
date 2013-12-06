@@ -30,6 +30,9 @@ a {
   top: 20px;
   right: 70px;
   z-index: 10;
+  -webkit-appearance: none; /* these three preoperties */
+  -moz-appearance: none; /* allow the button to be custom styled */
+  appearance: none;  /* in safari mobile */
   /*background: #000000;*/
 }
 
