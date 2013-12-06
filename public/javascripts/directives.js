@@ -72,21 +72,29 @@ directives.directive('draggable', function($document) {
     });
 
     function touchdown(event) {
-      $("#ipadcoords").append("<br />touchdown coords: " + event.touches[0].screenX + " " + event.touches[0].screenY);
+      if(event.targetTouches.length == 1) {
+        $("#ipadcoords").append("<br />touchdown coords: " + event.targetTouches[0].screenX + " " + event.targetTouches[0].screenY);
+      }
     }
 
     function touchmove(event) {
+
+      if(event.targetTouches.length != 1) {
+        $("ipad").append("got messed up");
+        return;
+      }
+
       $("ipad").append("trying to move");
 
       position = element.offset();
       x = position.left + ssPos.left;
       y = position.top + ssPos.top;
 
-      startX = event.touches[0].screenX - x;
-      startY = event.touches[0].screenY - y;
+      startX = event.targetTouches[0].screenX - x;
+      startY = event.targetTouches[0].screenY - y;
 
-      x = event.touches[0].screenX - startX;
-      y = event.touches[0].screenY - startY;
+      x = event.targetTouches[0].screenX - startX;
+      y = event.targetTouches[0].screenY - startY;
       $("#ipadcoords").append("<br />touch coords: " + x + " " + y);
       
       element.css({
