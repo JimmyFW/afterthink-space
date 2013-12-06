@@ -68,19 +68,19 @@ directives.directive('draggable', function($document) {
     element.on('touchmove', function (event) {
       // Prevent default dragging of selected content
       event.preventDefault();
-      console.log(event.originalEvent.targetTouches[0]);
+      console.log(Object.keys(event.originalEvent.targetTouches[0]));
       console.log("length of touches: " + event.originalEvent.targetTouches.length);
       //touchmove(event); // this is where the magic happens
 
 
-      $("ipad").append(event.originalEvent.targetTouches[0]);
+      //$("ipad").append(event.originalEvent.targetTouches[0]);
 
       if(event.originalEvent.targetTouches.length != 1) {
-        $("ipad").append("got messed up");
+        $("ipad").append("<br />got messed up");
         return;
       }
 
-      $("ipad").append("trying to move");
+      $("ipad").append("<br />trying to move");
 
       position = element.offset();
       x = position.left + ssPos.left;
