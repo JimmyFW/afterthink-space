@@ -1,4 +1,4 @@
-var Site = angular.module('Site', ['ngRoute', 'afterthink.controllers', 'afterthink.directives', 'firebase']);
+var Site = angular.module('Site', ['ngRoute', 'afterthink.controllers', 'afterthink.directives', 'firebase', 'ngTouch']);
 
 Site.config(function ($routeProvider) {
   $routeProvider
