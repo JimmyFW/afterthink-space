@@ -125,13 +125,12 @@ directives.directive('draggable', function($document) {
     });
 
     function mousedown(event) {
+      event.preventDefault();
 
       position = element.offset();
       x = position.left + ssPos.left;
       y = position.top + ssPos.top;
 
-      // Prevent default dragging of selected content
-      //event.preventDefault();
       startX = event.screenX - x;
       startY = event.screenY - y;
     }
