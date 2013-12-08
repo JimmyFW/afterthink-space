@@ -99,13 +99,17 @@ directives.directive('draggable', function($document) {
         top: (y - ssPos.top) + 'px'
       });
       
+      //scope.$watch(function () {
+        scope.dish.xpos = element.css('left');
+        scope.dish.ypos = element.css('top');
+      //});
+    });
+
+    element.on('touchend', function (event) {
       scope.$watch(function () {
         scope.dish.xpos = element.css('left');
         scope.dish.ypos = element.css('top');
       });
-    });
-
-    element.on('touchend', function (event) {
       //console.log("touchup! " + x + " " + y);
       //$('#ipad').append("<br />stopped being touched by ipad");
 
