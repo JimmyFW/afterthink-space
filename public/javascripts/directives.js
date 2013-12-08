@@ -106,7 +106,7 @@ directives.directive('draggable', function($document) {
     });
 
     element.on('touchend', function (event) {
-      scope.$watch(function () {
+      scope.$apply(function () {
         scope.dish.xpos = element.css('left');
         scope.dish.ypos = element.css('top');
       });
