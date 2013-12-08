@@ -54,19 +54,19 @@ directives.directive('draggable', function($document) {
 
     element.on('touchstart', function (event) {
       event.preventDefault();
-      console.log(Object.keys(event.originalEvent.touches));
+      console.log(Object.keys(event.originalEvent.targetTouches));
       //$("#ipad").append("<br />Touched by ipad");
 
-      if(event.originalEvent.touches.length == 1) {
-        //$("#ipadcoords").append("<br />touchdown coords: " + event.originalEvent.touches[0].screenX + " " + event.originalEvent.touches[0].screenY);
-        //console.log("touchdown coords: " + event.originalEvent.touches[0].screenX + " " + event.originalEvent.touches[0].screenY);
+      if(event.originalEvent.targetTouches.length == 1) {
+        //$("#ipadcoords").append("<br />touchdown coords: " + event.originalEvent.targetTouches[0].screenX + " " + event.originalEvent.targetTouches[0].screenY);
+        //console.log("touchdown coords: " + event.originalEvent.targetTouches[0].screenX + " " + event.originalEvent.targetTouches[0].screenY);
       }
       position = element.offset();
       x = position.left + ssPos.left;
       y = position.top + ssPos.top;
 
-      startX = event.originalEvent.touches[0].screenX - x;
-      startY = event.originalEvent.touches[0].screenY - y;
+      startX = event.originalEvent.targetTouches[0].screenX - x;
+      startY = event.originalEvent.targetTouches[0].screenY - y;
 
 
       //$document.on('touchmove', touchmove);
@@ -77,19 +77,19 @@ directives.directive('draggable', function($document) {
     element.on('touchmove', function (event) {
       // Prevent default dragging of selected content
       event.preventDefault();
-      //console.log(Object.keys(event.originalEvent.touches[0]));
-      //console.log("length of touches: " + event.originalEvent.touches.length);
-      //$("ipad").append(event.originalEvent.touches[0]);
+      //console.log(Object.keys(event.originalEvent.targetTouches[0]));
+      //console.log("length of touches: " + event.originalEvent.targetTouches.length);
+      //$("ipad").append(event.originalEvent.targetTouches[0]);
 
-      if(event.originalEvent.touches.length != 1) {
+      if(event.originalEvent.targetTouches.length != 1) {
         console.log("multiple touches, should not move");
       }
       else {
         console.log("trying to move");
       }
 
-      x = event.originalEvent.touches[0].screenX - startX;
-      y = event.originalEvent.touches[0].screenY - startY;
+      x = event.originalEvent.targetTouches[0].screenX - startX;
+      y = event.originalEvent.targetTouches[0].screenY - startY;
       //$("#ipadcoords").append("<br />touch coords: " + x + " " + y);
       //console.log("touch coords: " + x + " " + y);
 
@@ -99,7 +99,7 @@ directives.directive('draggable', function($document) {
         top: (y - ssPos.top) + 'px'
       });
       
-      scope.$apply(function () {
+      scope.$watch(function () {
         scope.dish.xpos = element.css('left');
         scope.dish.ypos = element.css('top');
       });
