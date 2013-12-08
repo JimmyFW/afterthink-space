@@ -55,7 +55,7 @@ directives.directive('draggable', function($document) {
 
 
     element.on('touchstart', function (event) {
-      //event.preventDefault();
+      event.preventDefault();
       console.log("touchstart targetTouches list");
       console.log(Object.keys(event.originalEvent.targetTouches));
       //$("#ipad").append("<br />Touched by ipad");
