@@ -55,11 +55,23 @@ directives.directive('draggable', function($document) {
 
 
     element.on('touchstart', function (event) {
-      event.preventDefault();
+      //event.preventDefault();
       console.log("touchstart targetTouches list");
       console.log(Object.keys(event.originalEvent.targetTouches));
       //$("#ipad").append("<br />Touched by ipad");
-      touchdown(event); // currently only prints a debug statement
+
+      if(event.originalEvent.targetTouches.length == 1) {
+        //$("#ipadcoords").append("<br />touchdown coords: " + event.originalEvent.targetTouches[0].screenX + " " + event.originalEvent.targetTouches[0].screenY);
+        console.log("touchdown coords: " + event.originalEvent.targetTouches[0].screenX + " " + event.originalEvent.targetTouches[0].screenY);
+      }
+      position = element.offset();
+      x = position.left + ssPos.left;
+      y = position.top + ssPos.top;
+
+      startX = event.originalEvent.targetTouches[0].screenX - x;
+      startY = event.originalEvent.targetTouches[0].screenY - y;
+
+
       //$document.on('touchmove', touchmove);
       //$document.on('touchend', touchup);
     });
@@ -83,7 +95,9 @@ directives.directive('draggable', function($document) {
 
       x = event.originalEvent.targetTouches[0].screenX - startX;
       y = event.originalEvent.targetTouches[0].screenY - startY;
-      $("#ipadcoords").append("<br />touch coords: " + x + " " + y);
+      //$("#ipadcoords").append("<br />touch coords: " + x + " " + y);
+      console.log("touch coords: " + x + " " + y);
+
       
       element.css({
         left: (x - ssPos.left) + 'px',
@@ -104,21 +118,6 @@ directives.directive('draggable', function($document) {
       //$document.unbind('touchup', touchup);
     });
 
-
-    function touchdown(event) {
-      event.preventDefault();
-      if(event.originalEvent.targetTouches.length == 1) {
-        $("#ipadcoords").append("<br />touchdown coords: " + event.originalEvent.targetTouches[0].screenX + " " + event.originalEvent.targetTouches[0].screenY);
-      }
-      position = element.offset();
-      x = position.left + ssPos.left;
-      y = position.top + ssPos.top;
-
-      startX = event.originalEvent.targetTouches[0].screenX - x;
-      startY = event.originalEvent.targetTouches[0].screenY - y;
-    }
-
-
     element.on('mousedown', function (event) {
       mousedown(event);
       $document.on('mousemove', mousemove);
@@ -132,7 +131,7 @@ directives.directive('draggable', function($document) {
       y = position.top + ssPos.top;
 
       // Prevent default dragging of selected content
-      event.preventDefault();
+      //event.preventDefault();
       startX = event.screenX - x;
       startY = event.screenY - y;
     }
