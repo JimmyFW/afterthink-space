@@ -189,15 +189,15 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
         "height": $scope.photoHeight
       }
       if(state=="accepted") {
-        styleObj["border"] = "4px #00FF00 solid";
+        styleObj["border"] = "4px #FFFFCC solid";
       }
       else if(state=="proposed") {
-        styleObj["border"] = "4px #CCCCCC solid";
+        styleObj["border"] = "2px #CCCCCC solid";
         styleObj["width"] = 50;
         styleObj["height"] = 50;
       }
       else if(state=="maybe") {
-        styleObj["border"] = "4px #0000FF solid";
+        styleObj["border"] = "2px #FFCCCC solid";
         styleObj["width"] = 50;
         styleObj["height"] = 50;
       }

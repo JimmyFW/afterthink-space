@@ -99,10 +99,20 @@ directives.directive('draggable', function($document) {
         top: (y - ssPos.top) + 'px'
       });
       
-      //scope.$watch(function () {
-        scope.dish.xpos = element.css('left');
-        scope.dish.ypos = element.css('top');
-      //});
+      scope.dish.xpos = element.css('left');
+      scope.dish.ypos = element.css('top');
+
+      if(x > 910 && y > 460) {
+        $('.trash').css({
+          border: '4px solid #000000'
+        });
+      }
+      else {
+        $('.trash').css({
+          border: '0'
+        });
+      }
+      
     });
 
     element.on('touchend', function (event) {
@@ -110,8 +120,6 @@ directives.directive('draggable', function($document) {
         scope.dish.xpos = element.css('left');
         scope.dish.ypos = element.css('top');
       });
-      //console.log("touchup! " + x + " " + y);
-      //$('#ipad').append("<br />stopped being touched by ipad");
 
       //$document.unbind('touchmove', touchmove);
       //$document.unbind('touchup', touchup);
@@ -151,6 +159,17 @@ directives.directive('draggable', function($document) {
         scope.dish.xpos = element.css('left');
         scope.dish.ypos = element.css('top');
       });
+
+      if(x > 910 && y > 460) {
+        $('.trash').css({
+          border: '4px solid #000000'
+        });
+      }
+      else {
+        $('.trash').css({
+          border: '0'
+        });
+      }
     }
 
     function mouseup() {
@@ -158,12 +177,24 @@ directives.directive('draggable', function($document) {
       
       $document.unbind('mousemove', mousemove);
       $document.unbind('mouseup', mouseup);
+
+      if(x > 910 && y > 460) {
+        console.log('deleting item!' + $(element).attr('uniqueDish'));
+        scope.deleteDish($(element).attr('uniqueDish'));
+        $('.trash').css({
+          border: '0'
+        });
+      }
     }
   }
 
   return {
     restrict: 'E',
     transclude: true,
+    /*
+    scope: {
+      ddd: '=uniqueDish'
+    },*/
     templateUrl: 'templates/candidate.html',
     link: drag
   }
