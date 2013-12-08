@@ -93,14 +93,18 @@ directives.directive('draggable', function($document) {
         top: (y - ssPos.top) + 'px'
       });
       
-      scope.$watch(function () {
+      scope.$apply(function () {
         scope.dish.xpos = element.css('left');
         scope.dish.ypos = element.css('top');
       });
     });
 
     element.on('touchend', function (event) {
-      touchup(); // currently only prints a debug statement
+      //console.log("touchup! " + x + " " + y);
+      //$('#ipad').append("<br />stopped being touched by ipad");
+
+      //$document.unbind('touchmove', touchmove);
+      //$document.unbind('touchup', touchup);
     });
 
 
@@ -115,49 +119,6 @@ directives.directive('draggable', function($document) {
 
       startX = event.originalEvent.targetTouches[0].screenX - x;
       startY = event.originalEvent.targetTouches[0].screenY - y;
-    }
-
-    function touchmove(event) {
-      event.preventDefault();
-
-      $("ipad").append(event.originalEvent.targetTouches);
-
-      if(event.originalEvent.targetTouches.length != 1) {
-        $("ipad").append("got messed up");
-        return;
-      }
-
-      $("ipad").append("trying to move");
-
-      position = element.offset();
-      x = position.left + ssPos.left;
-      y = position.top + ssPos.top;
-
-      startX = event.originalEvent.targetTouches[0].screenX - x;
-      startY = event.originalEvent.targetTouches[0].screenY - y;
-
-      x = event.originalEvent.targetTouches[0].screenX - startX;
-      y = event.originalEvent.targetTouches[0].screenY - startY;
-      $("#ipadcoords").append("<br />touch coords: " + x + " " + y);
-      
-      element.css({
-        left: (x - ssPos.left) + 'px',
-        top: (y - ssPos.top) + 'px'
-      });
-      
-      scope.$watch(function () {
-        scope.dish.xpos = element.css('left');
-        scope.dish.ypos = element.css('top');
-      });
-      
-    }
-
-    function touchup() {
-      //console.log("touchup! " + x + " " + y);
-      //$('#ipad').append("<br />stopped being touched by ipad");
-
-      //$document.unbind('touchmove', touchmove);
-      //$document.unbind('touchup', touchup);
     }
 
 
