@@ -68,21 +68,18 @@ directives.directive('draggable', function($document) {
     element.on('touchmove', function (event) {
       // Prevent default dragging of selected content
       event.preventDefault();
-      console.log(Object.keys(event.originalEvent.targetTouches[0]));
-      console.log("length of touches: " + event.originalEvent.targetTouches.length);
-      //touchmove(event); // this is where the magic happens
+      //console.log(Object.keys(event.originalEvent.targetTouches[0]));
+      //console.log("length of touches: " + event.originalEvent.targetTouches.length);
 
 
       //$("ipad").append(event.originalEvent.targetTouches[0]);
 
       if(event.originalEvent.targetTouches.length != 1) {
-        console.log("this is probably not good");
+        console.log("multiple touches, should not move");
       }
       else {
-        console.log("this is okay");
+        console.log("trying to move");
       }
-
-      $("#ipad").append("<br />trying to move");
 
       x = event.originalEvent.targetTouches[0].screenX - startX;
       y = event.originalEvent.targetTouches[0].screenY - startY;
@@ -123,7 +120,6 @@ directives.directive('draggable', function($document) {
 
 
     element.on('mousedown', function (event) {
-      $("#ipad").append("<br />Touched by mouse");
       mousedown(event);
       $document.on('mousemove', mousemove);
       $document.on('mouseup', mouseup);
@@ -163,7 +159,6 @@ directives.directive('draggable', function($document) {
 
     function mouseup() {
       console.log("mouseup! " + x + " " + y);
-      $("#ipad").append("<br />stopped being touched by mouse");
       
       $document.unbind('mousemove', mousemove);
       $document.unbind('mouseup', mouseup);
