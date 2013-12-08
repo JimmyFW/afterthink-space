@@ -1,6 +1,5 @@
 var directives = angular.module('afterthink.directives', []);
 
-
 directives.directive('waiterModal', function(){
   return {
     restrict: 'A',
@@ -32,7 +31,6 @@ directives.directive('waiterModal', function(){
     }
   };
 });
-
 
 directives.directive('detailView', function($document) {
   return {
@@ -152,7 +150,6 @@ directives.directive('draggable', function($document) {
         scope.dish.xpos = element.css('left');
         scope.dish.ypos = element.css('top');
       });
-      
     }
 
     function mouseup() {

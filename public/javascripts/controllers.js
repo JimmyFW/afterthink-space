@@ -137,6 +137,31 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
       return styleObj;
     }
 
+    $scope.returnAddButtonStyle = function (dishKey) {
+      var styleObj = {};
+      for (var key in $scope.dishes) {
+        var value = $scope.dishes[key];
+        if(dishKey == value.title) {
+          if(value.state =="accepted" || value.state=="maybe" || value.state=="proposed"){
+            styleObj["display"] = "none";
+          }
+        }
+      }
+      return styleObj;
+    }
+    $scope.returnLikeButtonStyle = function (dishKey) {
+      var styleObj = {};
+      for (var key in $scope.dishes) {
+        var value = $scope.dishes[key];
+          if(dishKey == value.title) {
+          if(value.state =="accepted" || value.state=="maybe" || value.state=="proposed"){
+            styleObj["display"] = "inline-block";
+          }
+        }
+      }
+      return styleObj;
+    }
+
     $scope.returnBoxStyle = function (state) {
       var styleObj = {
         "display": "inline-block"
@@ -322,23 +347,20 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     }
 
     $scope.addDish = function (dishKey) {
+
       console.log("adding dish: " + dishKey);
+      var dish = jQuery.extend(true, {}, $scope.menu[dishKey]); // deep copy
+      var uuid = $scope.menu[dishKey].title;
+      dish["id"] = uuid;
+      dish["state"] = "proposed";
+      dish["xpos"] = 100;
+      dish["ypos"] = 200;
+      dish["author"] = $scope.myKey;
+      dish["likes"] = 1;
+      dish["wholiked"] = [$scope.myKey];
+      dish["ordercount"] = 0;
+      $scope.dishes[uuid] = dish;
 
-      //var index = $scope.users.indexOf($scope.myKey);
-
-      //if(index > -1) {
-
-        console.log("adding dish: " + dishKey);
-        var dish = jQuery.extend(true, {}, $scope.menu[dishKey]); // deep copy
-        var uuid = guid();
-        dish["id"] = uuid;
-        dish["state"] = "proposed";
-        dish["author"] = $scope.myKey;
-        dish["xpos"] = 100;
-        dish["ypos"] = 200;
-        $scope.dishes[uuid] = dish;
-
-      //}
 
       function s4() {
         return Math.floor((1 + Math.random()) * 0x10000)
@@ -391,10 +413,50 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
       
     }
 
+    $scope.likeDish = function (dishKey) {
+
+      var index = $scope.users.indexOf($scope.myKey);
+
+      if(index > -1) {
+
+        console.dir("liking dish: " + $scope.dishes[dishKey]);
+
+        var dishLikedList= $scope.dishes[dishKey]["wholiked"];
+        var myKey = $scope.myKey;
+        console.log(dishLikedList);
+        //Check to see if the clicker has liked the item before
+        for (var i=0; i<dishLikedList.length; i++){
+          if (myKey == dishLikedList[i]){
+            console.log("You already liked this!");
+            return;
+          }
+        }
+          //If they have not, then up the like and note they have liked it
+          $scope.dishes[dishKey]["likes"] += 1;
+          $scope.dishes[dishKey]["state"] = "accepted";
+          $scope.dishes[dishKey]["wholiked"].push($scope.myKey);
+      }
+
+    }
+
     $scope.callWaiter = function () {
       console.log('Bell has been rung');
       $('#wrapper').hide();
       $scope.done = true;
+    }
+
+    $scope.increaseOrderCount = function(dishKey){
+        $scope.dishes[dishKey]["ordercount"] += 1;
+        $scope.dishes[dishKey]["state"] = "accepted";
+    }
+
+    $scope.decreaseOrderCount = function(dishKey){
+      if ($scope.dishes[dishKey]["ordercount"] > 0){
+        $scope.dishes[dishKey]["ordercount"] -= 1;
+      }
+      if ($scope.dishes[dishKey]["ordercount"] == 0){
+        $scope.dishes[dishKey]["state"] = "proposed";
+      }
     }
 
     $scope.confirmOrder = function () {
@@ -418,8 +480,6 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
       $('#wrapper').show();
       
     }
-
-
 
   }
 ]);
