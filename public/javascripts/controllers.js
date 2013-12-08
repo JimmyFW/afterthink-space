@@ -193,6 +193,8 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
       }
       else if(state=="proposed") {
         styleObj["border"] = "4px #CCCCCC solid";
+        styleObj["width"] = 50;
+        styleObj["height"] = 50;
       }
       else if(state=="maybe") {
         styleObj["border"] = "4px #0000FF solid";
@@ -220,16 +222,15 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     }
 
     $scope.revertButtons = function (state, dishId) {
-      //var author = $scope.dishes[dishId].author;
-      //if(author == $scope.myKey) {
-        console.log(dishId);
-        if($scope.dishes[dishId].state == "accepted") {
-          $scope.dishes[dishId].state = "proposed";
-        }
-        else if($scope.dishes[dishId].state == "maybe") {
-          $scope.dishes[dishId].state = "proposed";
-        }
-      //}
+      /*
+      console.log(dishId);
+      if($scope.dishes[dishId].state == "accepted") {
+        $scope.dishes[dishId].state = "proposed";
+      }
+      else if($scope.dishes[dishId].state == "maybe") {
+        $scope.dishes[dishId].state = "proposed";
+      }
+      */
       
     }
 
@@ -453,8 +454,9 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     $scope.decreaseOrderCount = function(dishKey){
       if ($scope.dishes[dishKey]["ordercount"] > 0){
         $scope.dishes[dishKey]["ordercount"] -= 1;
+        $scope.dishes[dishKey]["state"] = "accepted";
       }
-      if ($scope.dishes[dishKey]["ordercount"] == 0){
+      if ($scope.dishes[dishKey]["ordercount"] <= 0){
         $scope.dishes[dishKey]["state"] = "proposed";
       }
     }
