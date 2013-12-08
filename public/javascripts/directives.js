@@ -121,6 +121,13 @@ directives.directive('draggable', function($document) {
         scope.dish.ypos = element.css('top');
       });
 
+      if(x > 910 && y > 460) {
+        console.log('deleting item!' + $(element).attr('uniqueDish'));
+        scope.deleteDish($(element).attr('uniqueDish'));
+        $('.trash').css({
+          border: '0'
+        });
+      }
       //$document.unbind('touchmove', touchmove);
       //$document.unbind('touchup', touchup);
     });
