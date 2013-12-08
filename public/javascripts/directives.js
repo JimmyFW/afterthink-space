@@ -58,7 +58,7 @@ directives.directive('draggable', function($document) {
       event.preventDefault();
       console.log("touchstart targetTouches list");
       console.log(Object.keys(event.originalEvent.targetTouches));
-      $("#ipad").append("<br />Touched by ipad");
+      //$("#ipad").append("<br />Touched by ipad");
       touchdown(event); // currently only prints a debug statement
       //$document.on('touchmove', touchmove);
       //$document.on('touchend', touchup);
@@ -82,14 +82,7 @@ directives.directive('draggable', function($document) {
         console.log("this is okay");
       }
 
-      $("ipad").append("<br />trying to move");
-
-      position = element.offset();
-      x = position.left + ssPos.left;
-      y = position.top + ssPos.top;
-
-      startX = event.originalEvent.targetTouches[0].screenX - x;
-      startY = event.originalEvent.targetTouches[0].screenY - y;
+      $("#ipad").append("<br />trying to move");
 
       x = event.originalEvent.targetTouches[0].screenX - startX;
       y = event.originalEvent.targetTouches[0].screenY - startY;
@@ -116,6 +109,12 @@ directives.directive('draggable', function($document) {
       if(event.originalEvent.targetTouches.length == 1) {
         $("#ipadcoords").append("<br />touchdown coords: " + event.originalEvent.targetTouches[0].screenX + " " + event.originalEvent.targetTouches[0].screenY);
       }
+      position = element.offset();
+      x = position.left + ssPos.left;
+      y = position.top + ssPos.top;
+
+      startX = event.originalEvent.targetTouches[0].screenX - x;
+      startY = event.originalEvent.targetTouches[0].screenY - y;
     }
 
     function touchmove(event) {
@@ -155,7 +154,7 @@ directives.directive('draggable', function($document) {
 
     function touchup() {
       //console.log("touchup! " + x + " " + y);
-      $('#ipad').append("<br />stopped being touched by ipad");
+      //$('#ipad').append("<br />stopped being touched by ipad");
 
       //$document.unbind('touchmove', touchmove);
       //$document.unbind('touchup', touchup);
