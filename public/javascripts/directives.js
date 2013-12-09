@@ -80,19 +80,17 @@ directives.directive('draggable', function($document) {
       //console.log(Object.keys(event.originalEvent.targetTouches[0]));
       //console.log("length of touches: " + event.originalEvent.targetTouches.length);
       //$("ipad").append(event.originalEvent.targetTouches[0]);
-
+      /*
       if(event.originalEvent.targetTouches.length != 1) {
         console.log("multiple touches, should not move");
       }
       else {
         console.log("trying to move");
       }
+      */
 
       x = event.originalEvent.targetTouches[0].screenX - startX;
       y = event.originalEvent.targetTouches[0].screenY - startY;
-      //$("#ipadcoords").append("<br />touch coords: " + x + " " + y);
-      //console.log("touch coords: " + x + " " + y);
-
       
       element.css({
         left: (x - ssPos.left) + 'px',
@@ -102,7 +100,7 @@ directives.directive('draggable', function($document) {
       scope.dish.xpos = element.css('left');
       scope.dish.ypos = element.css('top');
 
-      if(x > 910 && y > 460) {
+      if(x > 870 && y > 420) {
         $('.trash').css({
           border: '4px solid #000000'
         });
