@@ -38,7 +38,7 @@ a {
   position: absolute;
   bottom: 20px;
   right: 20px;
-  z-index: 1;
+  z-index: 4;
   -webkit-appearance: none; /* these three preoperties */
   -moz-appearance: none; /* allow the button to be custom styled */
   appearance: none;  /* in safari mobile */
