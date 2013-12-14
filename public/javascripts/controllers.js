@@ -378,14 +378,13 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
 
     $scope.deleteDish = function (dishId) {
 
-      //var author = $scope.dishes[dishId].author;
-      //if(author == $scope.myKey) {
-
+      if(dishId == "9be4a913-83c2-c90e-b0c0-9795500f92d3") {
+        return;
+      }
       var removed = $scope.dishes[dishId];
       delete $scope.dishes[dishId];
       console.log("deleting a dish! " + removed);
       console.log("removed dish: " + dishId);
-      //}
       
     }
 
@@ -464,7 +463,7 @@ controllers.controller('MyCtrl', ['$scope', 'angularFire',
     $scope.confirmOrder = function () {
       console.log("Order has been confirmed");
       for(var key in $scope.dishes) {
-        if(key!="9be4a913-83c2-c90e-b0c0-9795500f92d3") {
+        if(key!="SPRING ROLLS") {
           var removed = $scope.dishes[key];
           delete $scope.dishes[key];
           console.log("deleting a dish! " + removed);
