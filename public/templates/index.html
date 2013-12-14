@@ -63,21 +63,15 @@
 
   <!-- USER SELECTION AND DEBUGING -->
 
-  <div class="users">
-
-    <ul>
-      <li ng-repeat="user in users"><span ng-click="switchUser(user)">{{ user }}</span>&nbsp;<span ng-click="deleteUser(user)">x</span></li>
-    </ul>
-
-  <input type="string" ng-model="myKey" />
-  <input type="button" ng-click="addUser()" value="Join Table" /><br />
-
-  </div>
-
   <div id="debug" ng-style="returnDebugStyle()">
     <h1>Debug Panel</h1>
     <div>{{myKey}}</div>
+    <h4>List of dishes:</h4>
     <div ng-repeat="dish in (dishes | toArray) | filter: {state: search_state}">{{ dish.id }}</div>
+    <h4>List of users:</h4>
+    <ul>
+      <li ng-repeat="user in users"><span ng-click="switchUser(user)">{{ user }}</span>&nbsp;<span ng-click="deleteUser(user)">x</span></li>
+    </ul>
 
   </div>
 </div>
