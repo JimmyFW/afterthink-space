@@ -8,6 +8,8 @@
   
 </div>
 
+<div id="test"></div>
+
 <div id="wrapper">
 
   <!--<input type="button" ng-click="assignKey()" ng-model="myKey" value="Join the table" /><br />-->
@@ -24,9 +26,6 @@
     </div>
 
     <draggable class="draggable" ng-repeat="dish in dishes" uniqueDish="{{ dish.id }}"  ng-style="{ top: dish.ypos, left: dish.xpos }"></draggable>
-    
-    <div class="yours" ng-show="myKey">
-    <draggable ng-repeat="dish in (dishes | toArray) | filter: {author: myKey} " uniqueDish="{{ dish.id }}"></draggable>
     </div>
   </div>
 
